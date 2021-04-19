@@ -1,4 +1,38 @@
-.main {
-  text-align: center;
+:root {
+  --nav-color: #242526;
+  --background-color: #18191a;
 }
 
+.Navbar {
+  position: relative;
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: var(--nav-color) !important;
+}
+
+.navbarExpand {
+   -ms-flex-flow: row nowrap;
+   flex-flow: row nowrap;
+   -ms-flex-pack: start;
+   justify-content: flex-start;
+}
+
+.NavLogo {
+  display: inline-block;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-right: auto;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.NavLogo > img {
+  vertical-align: top;
+  border-style: none;
+}
