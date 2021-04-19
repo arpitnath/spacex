@@ -1,7 +1,15 @@
 :root {
+    /*Color*/
   --nav-color: #242526;
   --footer-color: #303846;
-  --background-color: #18191a;
-  --padding-1: 0.5rem 1rem;
+  --primary-background-color: #18191a;
   --font-color-1: #e3e5e9;
+  --secondary-background-color: #292e3e;
+  
+
+  --distance-1: 1rem;
+  --distance-2: 0.5rem;
+
+  --border-type-1: 1px solid #5f6770;
+  --border-color: #5f6770; 
 }
