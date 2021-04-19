@@ -1,7 +1,24 @@
-import './App.css'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Logo from './assets/Logo.svg'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+import HomeScreen from './screens/HomeScreen'
+import LaunchScreen from './screens/LaunchScreen'
 
 function App() {
-  return <div className='App'>test</div>
+  return (
+    <Router>
+      <div className='main'>
+        <Navbar logo={Logo} />
+        <Switch>
+          <Route path='/launch' component={LaunchScreen} />
+          <Route path='/' component={HomeScreen} exact />
+        </Switch>
+        <Footer logo={Logo} />
+      </div>
+    </Router>
+  )
 }
 
 export default App

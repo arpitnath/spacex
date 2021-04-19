@@ -1,0 +1,78 @@
+:root {
+  --nav-color: #242526;
+  --footer-color: #303846;
+  --background-color: #18191a;
+  --padding-1: 0.5rem 1rem;
+  --font-color-1: #e3e5e9;
+}
+
+.Navbar {
+  position: relative;
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: var(--padding-1);
+  background-color: var(--nav-color) !important;
+}
+
+.navbarExpand {
+   -ms-flex-flow: row nowrap;
+   flex-flow: row nowrap;
+   -ms-flex-pack: start;
+   justify-content: flex-start;
+}
+
+.NavLogo {
+  display: inline-block;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-right: auto;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.NavLogo > img {
+  vertical-align: top;
+  border-style: none;
+}
+
+.Footer {
+  background-color: var(--footer-color);
+  height: 10rem;
+  padding: var(--padding-1);
+  margin-top: 75vh;
+  position: sticky;
+}
+
+.Footer img {
+  height: 20px;
+}
+
+.Footer > div {
+   color: var(--font-color-1);
+   display: block;
+   padding-top: .3rem;
+   padding-bottom: .3rem;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 2.5rem;
+   font-size: 1rem;
+   font-weight: 350;
+   line-height: inherit;
+   white-space: nowrap;
+}
+
+.Footer span {
+  font-weight: 500;
+}
+
+/*media queries*/
+/* @media only screen and (max-width: 768px) {
+  body {
+    border: 10px solid blue
+  }
+} */
