@@ -1,3 +1,4 @@
+@import url(./variables.css);
 *, ::after, ::before {
     box-sizing: border-box;
 }
@@ -9,16 +10,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #18191a;
+  background-color: var(--primary-background-color);
   color: #f5f6f7;
 }
 
 .main {
   text-align: center;
+  /* background: url('../assets/rocket.svg') no-repeat  center; */
 }
 
 a {
     color: #007bff;
     text-decoration: none;
     background-color: transparent;
+}
+
+.Wrapper {
+  height: 100%;
+  margin: 5rem;
 }

@@ -1,0 +1,50 @@
+@import url(./variables.css);
+
+.Table {
+    border: var(--border-type-1);
+    height: 100%;
+    width: 100%;
+    color: var(--font-color-1); /*Do something for the color*/
+    margin-bottom: var(--distance-1);
+    border-collapse: collapse;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    padding: var(--distance-1);
+    background-color: var(--secondary-background-color);
+    opacity: .8;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-bottom: 2px solid var(--border-color);
+}
+
+thead th {
+    vertical-align: bottom !important;
+}
+
+.Table td, .Table th {
+    padding: var(--distance-1);
+    vertical-align: top;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+tr {
+   text-align: inherit;
+   display: table-row;
+   vertical-align: inherit;
+   cursor: pointer;
+}
+th {
+    text-align: inherit;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+}

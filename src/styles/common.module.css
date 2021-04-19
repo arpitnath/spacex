@@ -9,7 +9,7 @@
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: var(--padding-1);
+  padding: var(--distance-2) var(--distance-2);
   background-color: var(--nav-color) !important;
 }
 
@@ -38,7 +38,7 @@
   background-color: var(--footer-color);
   height: 10rem;
   padding: var(--padding-1);
-  margin-top: 75vh;
+  margin-top: 50vh;
   position: sticky;
 }
 
@@ -49,11 +49,10 @@
 .Footer > div {
    color: var(--font-color-1);
    display: block;
-   padding-top: .3rem;
-   padding-bottom: .3rem;
+   padding-top: 2rem;
+   padding-bottom: 0.3rem;
    margin-right: auto;
    margin-left: auto;
-   margin-top: 2.5rem;
    font-size: 1rem;
    font-weight: 350;
    line-height: inherit;
@@ -63,6 +62,11 @@
 .Footer span {
   font-weight: 500;
 }
+
+
+
+
+
 
 /*media queries*/
 /* @media only screen and (max-width: 768px) {
