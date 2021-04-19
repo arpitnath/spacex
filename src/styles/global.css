@@ -9,6 +9,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #18191a;
+  color: #f5f6f7;
+}
+
+.main {
+  text-align: center;
 }
 
 a {
