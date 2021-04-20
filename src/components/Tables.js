@@ -1,57 +1,13 @@
 import React from 'react'
 import screenStyles from '../styles/screens.module.css'
 
-const Tables = () => {
-  const launchData = [
-    {
-      id: 0,
-      launch: '22nd March 2020 at 2.30pm',
-      Location: 'California, United States',
-      Misson: 'Apolo II',
-      Orbit: 'Mars',
-      launch_status: 'success',
-      rokcet: 'Falcon 4'
-    },
-    {
-      id: 1,
-      launch: '22nd March 2020 at 2.30pm',
-      Location: 'California, United States',
-      Misson: 'Apolo II',
-      Orbit: 'Mars',
-      launch_status: 'success',
-      rokcet: 'Pikachuu'
-    },
-    {
-      id: 2,
-      launch: '22nd March 2020 at 2.30pm',
-      Location: 'California, United States',
-      Misson: 'Apolo II',
-      Orbit: 'Mars',
-      launch_status: 'success',
-      rokcet: 'Goku'
-    },
-    {
-      id: 3,
-      launch: '22nd March 2020 at 2.30pm',
-      Location: 'California, United States',
-      Misson: 'Apolo II',
-      Orbit: 'Mars',
-      launch_status: 'success',
-      rokcet: 'Falcon 22'
-    },
-    {
-      id: 4,
-      launch: '2nd October 2021 at 2.30pm',
-      Location: 'Mumbai, India',
-      Misson: 'Piku chanachuur',
-      Orbit: 'Galaxy',
-      launch_status: 'upcoming',
-      rokcet: 'Dora'
-    }
-  ]
+const Tables = ({ data, loading }) => {
+  if (!loading) {
+    return <h2>Loading...</h2>
+  }
 
   return (
-    <div className='Wrapper'>
+    <>
       <table className={screenStyles.Table}>
         <thead>
           <tr>
@@ -65,20 +21,23 @@ const Tables = () => {
           </tr>
         </thead>
         <tbody>
-          {launchData.map((launch, index) => (
-            <tr key={launch.id} onClick={() => console.log(launch.rokcet)}>
-              <td>{index + 1}</td>
-              <td>{launch.launch}</td>
-              <td>{launch.Location}</td>
-              <td>{launch.Misson}</td>
-              <td>{launch.Orbit}</td>
-              <td>{launch.launch_status}</td>
-              <td>{launch.rokcet}</td>
+          {data?.map(launch => (
+            <tr
+              key={launch.flight_number}
+              onClick={() => console.log('modal here')}
+            >
+              <td>{launch.flight_number}</td>
+              <td>{launch.launch_date_utc}</td>
+              <td>{launch.launch_site.site_name_long}</td>
+              <td>{launch.mission_name}</td>
+              <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
+              <td>need_to_fix</td>
+              <td>{launch.rocket.rocket_name}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   )
 }
 
