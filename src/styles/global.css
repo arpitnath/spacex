@@ -25,6 +25,16 @@ a {
     background-color: transparent;
 }
 
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.active {
+  border-bottom: 2px solid red;
+  /* background-color: blue !important; */
+}
+
 .Wrapper {
   height: 100%;
   margin: 5rem;
