@@ -1,7 +1,7 @@
 import React from 'react'
 import screenStyles from '../styles/screens.module.css'
 
-const Tables = ({ data }) => {
+const Tables = ({ data, loading }) => {
   // const launchData = [
   //   {
   //     id: 0,
@@ -50,8 +50,12 @@ const Tables = ({ data }) => {
   //   }
   // ]
 
+  if (!loading) {
+    return <h2>Loading...</h2>
+  }
+
   return (
-    <div className='Wrapper'>
+    <>
       <table className={screenStyles.Table}>
         <thead>
           <tr>
@@ -65,9 +69,9 @@ const Tables = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((launch, index) => (
+          {data.map(launch => (
             <tr key={launch.id} onClick={() => console.log(launch.rokcet)}>
-              <td>{index + 1}</td>
+              <td>{launch.id}</td>
               <td>{launch.title}</td>
               <td>{launch.body}</td>
               <td>{launch.userId}</td>
@@ -78,7 +82,7 @@ const Tables = ({ data }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   )
 }
 

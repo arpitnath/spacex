@@ -12,4 +12,7 @@
 
   --border-type-1: 1px solid #5f6770;
   --border-color: #5f6770; 
+
+  --btn-radius: 5px;
+  --btn-bg: var(--nav-color);
 }
