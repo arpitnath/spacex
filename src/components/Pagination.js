@@ -4,6 +4,7 @@ import commonStyles from '../styles/common.module.css'
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    // deepscan-disable-line
     pageNumbers.push(i)
   }
   const nextPage = e => {

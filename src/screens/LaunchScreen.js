@@ -1,23 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
-import { useFetch } from '../useFetch'
+import { useFetch, usePaginate } from '../Hooks'
 
 const LaunchScreen = () => {
   const { data, loading } = useFetch(
     'https://jsonplaceholder.typicode.com/posts'
   )
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage] = useState(10)
-
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexOfFirstpage = indexOfLastPost - postsPerPage
-  const currentPost = data
-    ? data.slice(indexOfFirstpage, indexOfLastPost)
-    : null
-
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   // useEffect(() => {
   //   //query need to add
@@ -26,8 +17,6 @@ const LaunchScreen = () => {
 
   return (
     <div className='Wrapper'>
-      <h1>Launch Screen</h1>
-
       {!data ? (
         'loading...'
       ) : (

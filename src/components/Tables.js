@@ -69,8 +69,8 @@ const Tables = ({ data, loading }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(launch => (
-            <tr key={launch.id} onClick={() => console.log(launch.rokcet)}>
+          {data?.map(launch => (
+            <tr key={launch.id} onClick={() => console.log('modal here')}>
               <td>{launch.id}</td>
               <td>{launch.title}</td>
               <td>{launch.body}</td>
