@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import commonStyles from '../styles/common.module.css'
+import History from './History'
 
-const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
+const Pagination = ({
+  postsPerPage,
+  totalPosts,
+  paginate,
+  currentPage,
+  query
+}) => {
+  const [urlPg] = useState(() => (query ? query : 1))
+
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     // deepscan-disable-line
@@ -18,6 +27,25 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
       paginate(currentPage - 1)
     }
   }
+
+  useEffect(() => {
+    let page = currentPage
+    if (page != null) {
+      if (History.location.pathname === '/launch') {
+        History.push('/launch?q=page' + currentPage)
+        // console.log(page)
+      }
+    }
+
+    return () => {
+      page = null
+    }
+  }, [currentPage])
+
+  useEffect(() => {
+    paginate(urlPg)
+    // eslint-disable-next-line
+  }, [urlPg])
 
   return (
     <div className={commonStyles.PaginateContainer}>

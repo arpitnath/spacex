@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 export const useFetch = url => {
+  const source = axios.CancelToken.source()
   const [state, setState] = useState({ data: null, loading: false })
 
   useEffect(() => {
@@ -10,7 +11,11 @@ export const useFetch = url => {
       setState({ data: res.data, loading: true })
     }
     fetchPost()
-  }, [url, state])
+
+    return () => {
+      source.cancel()
+    }
+  })
 
   return state
 }
@@ -41,6 +46,14 @@ export const usePaginate = data => {
       currentPost: currentPost,
       paginate: paginate
     })
+    return () => {
+      setState({
+        currentPage: null,
+        postsPerPage: null,
+        currentPost: null,
+        paginate: null
+      })
+    }
     // eslint-disable-next-line
   }, [data])
 

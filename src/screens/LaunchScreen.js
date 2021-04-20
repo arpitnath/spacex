@@ -2,20 +2,16 @@ import React from 'react'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import { useFetch, usePaginate } from '../Hooks'
+import History from '../components/History'
 
 const LaunchScreen = () => {
   const { data, loading } = useFetch('https://api.spacexdata.com/v3/launches')
 
-  // if (data) {
-  //   console.log(data[data.length - 1])
-  // }
-
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
-  // useEffect(() => {
-  //   //query need to add
-  //   paginate(url)
-  // })
+  let params = History.location.search
+  let q = params.split('=')[1]
+  let query = parseInt(q)
 
   return (
     <div className='Wrapper'>
@@ -29,6 +25,7 @@ const LaunchScreen = () => {
             postsPerPage={postsPerPage}
             totalPosts={data.length}
             currentPage={currentPage}
+            query={query}
           />
         </>
       )}
