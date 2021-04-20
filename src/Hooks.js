@@ -10,7 +10,7 @@ export const useFetch = url => {
       setState({ data: res.data, loading: true })
     }
     fetchPost()
-  }, [url, setState])
+  }, [url, state])
 
   return state
 }
@@ -41,7 +41,8 @@ export const usePaginate = data => {
       currentPost: currentPost,
       paginate: paginate
     })
-  }, [data, currentPage, currentPost, postsPerPage])
+    // eslint-disable-next-line
+  }, [data])
 
   return state
 }
