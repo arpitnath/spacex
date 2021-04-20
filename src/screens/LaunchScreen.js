@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import { useFetch } from '../useFetch'
