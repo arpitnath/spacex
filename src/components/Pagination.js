@@ -9,7 +9,7 @@ const Pagination = ({
   currentPage,
   query
 }) => {
-  const [urlPg] = useState(() => (query ? query : 1))
+  const [urlPg, setUrlPg] = useState(() => (query ? query : 1))
 
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -44,6 +44,10 @@ const Pagination = ({
 
   useEffect(() => {
     paginate(urlPg)
+
+    return () => {
+      setUrlPg(1)
+    }
     // eslint-disable-next-line
   }, [urlPg])
 

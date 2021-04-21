@@ -10,7 +10,7 @@ const LaunchScreen = () => {
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search
-  let q = params.split('=')[1]
+  let q = params.split('=page')[1]
   let query = parseInt(q)
 
   return (
