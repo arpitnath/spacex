@@ -2,7 +2,7 @@ import React from 'react'
 import screenStyles from '../styles/screens.module.css'
 import { getDate } from '../utils'
 
-const Tables = ({ data, loading }) => {
+const Tables = ({ data, loading, thead }) => {
   if (!loading) {
     return <h2>Loading...</h2>
   }
@@ -12,13 +12,9 @@ const Tables = ({ data, loading }) => {
       <table className={screenStyles.Table}>
         <thead>
           <tr>
-            <th>No:</th>
-            <th>Launch (UTC)</th>
-            <th>Location</th>
-            <th>Mission</th>
-            <th>Orbit</th>
-            <th>Launch Status</th>
-            <th>Rocket</th>
+            {thead.map(th => (
+              <th key={th.id}>{th.title}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
