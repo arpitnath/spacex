@@ -6,7 +6,16 @@ const Tables = ({ data, loading, thead }) => {
   if (!loading) {
     return <h2>Loading...</h2>
   }
-
+  const check = data => {
+    if (data === null) {
+      return 'Upcoming'
+    }
+    if (data) {
+      return 'Success'
+    } else {
+      return 'Failed'
+    }
+  }
   return (
     <>
       <table className={screenStyles.Table}>
@@ -28,7 +37,7 @@ const Tables = ({ data, loading, thead }) => {
               <td>{launch.launch_site.site_name_long}</td>
               <td>{launch.mission_name}</td>
               <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
-              <td>need_to_fix</td>
+              <td>{check(launch.launch_success)}</td>
               <td>{launch.rocket.rocket_name}</td>
             </tr>
           ))}
