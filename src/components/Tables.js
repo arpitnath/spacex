@@ -1,5 +1,6 @@
 import React from 'react'
 import screenStyles from '../styles/screens.module.css'
+import { getDate } from '../utils'
 
 const Tables = ({ data, loading }) => {
   if (!loading) {
@@ -27,7 +28,7 @@ const Tables = ({ data, loading }) => {
               onClick={() => console.log('modal here')}
             >
               <td>{launch.flight_number}</td>
-              <td>{launch.launch_date_utc}</td>
+              <td>{getDate(launch.launch_date_utc)}</td>
               <td>{launch.launch_site.site_name_long}</td>
               <td>{launch.mission_name}</td>
               <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
