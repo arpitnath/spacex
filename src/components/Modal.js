@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import commonStyles from '../styles/common.module.css'
 import picture from '../assets/Logo.svg'
 
 const Modal = ({ setShowModal, data }) => {
-  //useRef needs to be used
+  const modRef = useRef()
+  const closeModel = e => {
+    if (modRef.current === e.target) {
+      setShowModal(false)
+    }
+  }
 
   return (
     <>
-      <div className={commonStyles.ModalBg}>
+      <div className={commonStyles.ModalBg} ref={modRef} onClick={closeModel}>
         <div className={commonStyles.ModalWrapper}>
           <img src={picture} className={commonStyles.ModalImg} alt='react' />
           <div className={commonStyles.ModalContent}>
