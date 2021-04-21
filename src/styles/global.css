@@ -5,9 +5,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Ubuntu Mono',monospace ,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--primary-background-color);
@@ -38,4 +36,16 @@ li {
 .Wrapper {
   height: 100%;
   margin: 5rem;
+}
+
+.success {
+  background: var(--success);
+}
+
+.failed {
+  background: var(--fail);
+}
+
+.upcoming {
+  background: var(--upcoming);
 }

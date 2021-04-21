@@ -1,6 +1,7 @@
 import React from 'react'
 import screenStyles from '../styles/screens.module.css'
 import { getDate } from '../utils'
+import Status from './Status'
 
 const Tables = ({ data, loading, thead }) => {
   if (!loading) {
@@ -8,12 +9,12 @@ const Tables = ({ data, loading, thead }) => {
   }
   const check = data => {
     if (data === null) {
-      return 'Upcoming'
+      return <Status status='upcoming' />
     }
     if (data) {
-      return 'Success'
+      return <Status status='success' />
     } else {
-      return 'Failed'
+      return <Status status='failed' />
     }
   }
   return (

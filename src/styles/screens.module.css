@@ -1,7 +1,7 @@
 @import url(./variables.css);
 
 .Table {
-    border: var(--border-type-1);
+    border: var(--border-type-2);
     height: 100%;
     width: 100%;
     color: var(--font-color-1); /*Do something for the color*/
@@ -12,14 +12,17 @@
     text-indent: initial;
     border-spacing: 2px;
     padding: var(--distance-1);
-    background-color: var(--secondary-background-color);
+    background-color: var(--nav-color);
     opacity: .8;
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 600;
 }
 
 thead {
     display: table-header-group;
     vertical-align: middle;
     border-bottom: 2px solid var(--border-color);
+    background-color: var(--secondary-background-color);
 }
 
 thead th {

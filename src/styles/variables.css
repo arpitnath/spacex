@@ -4,15 +4,21 @@
   --footer-color: #303846;
   --primary-background-color: #18191a;
   --font-color-1: #e3e5e9;
-  --secondary-background-color: #292e3e;
+  --secondary-background-color: #37698A;
+  --success: #3CB371;
+  --fail: #FF4500;
+  --upcoming: #CD853F;
   
 
   --distance-1: 1rem;
   --distance-2: 0.5rem;
+  --distance-3: 0.25rem;
 
-  --border-type-1: 1px solid #5f6770;
+  --border-type-1: 1px solid #37698A;
+  --border-type-2: 3px solid #37698A;
   --border-color: #5f6770; 
 
   --btn-radius: 5px;
+  --btn-radius-2: 50px;
   --btn-bg: var(--nav-color);
 }
