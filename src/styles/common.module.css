@@ -173,7 +173,7 @@
   width: 20px;
   height: 32px;
   padding: 0;
-  z-index: 10;
+  z-index: 10000000;
 }
 
 /*media queries*/

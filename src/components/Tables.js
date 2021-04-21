@@ -6,8 +6,10 @@ import Status from './Status'
 
 const Tables = ({ data, loading, thead }) => {
   const [showModal, setShowModal] = useState(false)
+  const [modalData, setModalData] = useState(null)
 
-  const openModal = () => {
+  const openModal = data => {
+    setModalData(data)
     setShowModal(prev => !prev)
   }
 
@@ -26,7 +28,9 @@ const Tables = ({ data, loading, thead }) => {
   }
   return (
     <>
-      {showModal ? <Modal setShowModal={setShowModal} /> : null}
+      {showModal ? (
+        <Modal setShowModal={setShowModal} data={modalData} />
+      ) : null}
       <table className={screenStyles.Table}>
         <thead>
           <tr>
@@ -37,7 +41,7 @@ const Tables = ({ data, loading, thead }) => {
         </thead>
         <tbody>
           {data?.map(launch => (
-            <tr key={launch.flight_number} onClick={openModal}>
+            <tr key={launch.flight_number} onClick={() => openModal(launch)}>
               <td>{launch.flight_number}</td>
               <td>{getDate(launch.launch_date_utc)}</td>
               <td>{launch.launch_site.site_name_long}</td>

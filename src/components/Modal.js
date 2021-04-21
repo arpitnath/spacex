@@ -2,7 +2,9 @@ import React from 'react'
 import commonStyles from '../styles/common.module.css'
 import picture from '../assets/Logo.svg'
 
-const Modal = ({ setShowModal }) => {
+const Modal = ({ setShowModal, data }) => {
+  //useRef needs to be used
+
   return (
     <>
       <div className={commonStyles.ModalBg}>
@@ -10,7 +12,7 @@ const Modal = ({ setShowModal }) => {
           <img src={picture} className={commonStyles.ModalImg} alt='react' />
           <div className={commonStyles.ModalContent}>
             <h1>headling</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            {data ? <p>{data.mission_name}</p> : 'No Data'}
             <button
               className={commonStyles.ModalCloseBtn}
               onClick={() => setShowModal(prev => !prev)}
