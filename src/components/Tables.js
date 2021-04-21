@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import screenStyles from '../styles/screens.module.css'
 import { getDate } from '../utils'
+import Modal from './Modal'
 import Status from './Status'
 
 const Tables = ({ data, loading, thead }) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   if (!loading) {
     return <h2>Loading...</h2>
   }
@@ -19,6 +26,7 @@ const Tables = ({ data, loading, thead }) => {
   }
   return (
     <>
+      {showModal ? <Modal setShowModal={setShowModal} /> : null}
       <table className={screenStyles.Table}>
         <thead>
           <tr>
@@ -29,10 +37,7 @@ const Tables = ({ data, loading, thead }) => {
         </thead>
         <tbody>
           {data?.map(launch => (
-            <tr
-              key={launch.flight_number}
-              onClick={() => console.log('modal here')}
-            >
+            <tr key={launch.flight_number} onClick={openModal}>
               <td>{launch.flight_number}</td>
               <td>{getDate(launch.launch_date_utc)}</td>
               <td>{launch.launch_site.site_name_long}</td>
