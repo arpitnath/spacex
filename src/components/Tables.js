@@ -1,24 +1,30 @@
 import React from 'react'
 import screenStyles from '../styles/screens.module.css'
 import { getDate } from '../utils'
+import Status from './Status'
 
-const Tables = ({ data, loading }) => {
+const Tables = ({ data, loading, thead }) => {
   if (!loading) {
     return <h2>Loading...</h2>
   }
-
+  const check = data => {
+    if (data === null) {
+      return <Status status='upcoming' />
+    }
+    if (data) {
+      return <Status status='success' />
+    } else {
+      return <Status status='failed' />
+    }
+  }
   return (
     <>
       <table className={screenStyles.Table}>
         <thead>
           <tr>
-            <th>No:</th>
-            <th>Launch (UTC)</th>
-            <th>Location</th>
-            <th>Mission</th>
-            <th>Orbit</th>
-            <th>Launch Status</th>
-            <th>Rocket</th>
+            {thead.map(th => (
+              <th key={th.id}>{th.title}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -32,7 +38,7 @@ const Tables = ({ data, loading }) => {
               <td>{launch.launch_site.site_name_long}</td>
               <td>{launch.mission_name}</td>
               <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
-              <td>need_to_fix</td>
+              <td>{check(launch.launch_success)}</td>
               <td>{launch.rocket.rocket_name}</td>
             </tr>
           ))}

@@ -3,6 +3,7 @@ import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import { useFetch, usePaginate } from '../Hooks'
 import History from '../components/History'
+import { launchtableHead } from '../data'
 
 const LaunchScreen = () => {
   const { data, loading } = useFetch('https://api.spacexdata.com/v3/launches')
@@ -19,7 +20,11 @@ const LaunchScreen = () => {
         'loading...'
       ) : (
         <>
-          <Tables data={currentPost} loading={loading} />
+          <Tables
+            data={currentPost}
+            thead={launchtableHead}
+            loading={loading}
+          />
           <Pagination
             paginate={paginate}
             postsPerPage={postsPerPage}
