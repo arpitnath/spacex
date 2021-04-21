@@ -39,7 +39,14 @@ const Tables = ({ data, loading, thead }) => {
               <td>{launch.mission_name}</td>
               <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
               <td>{check(launch.launch_success)}</td>
-              <td>{launch.rocket.rocket_name}</td>
+              <td>
+                <span
+                  className='iconify'
+                  data-icon='noto:rocket'
+                  data-inline='false'
+                ></span>{' '}
+                {launch.rocket.rocket_name}
+              </td>
             </tr>
           ))}
         </tbody>
