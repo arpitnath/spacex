@@ -37,9 +37,10 @@
 .Footer {
   background-color: var(--footer-color);
   height: 10rem;
+  width: 100%;
   padding: var(--padding-1);
-  margin-top: -70px;
-  position: sticky;
+  position: relative;
+  margin-top: 65vh;
 }
 
 .Footer img {
