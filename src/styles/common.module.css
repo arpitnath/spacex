@@ -38,7 +38,7 @@
   background-color: var(--footer-color);
   height: 10rem;
   padding: var(--padding-1);
-  margin-top: auto;
+  margin-top: -70px;
   position: sticky;
 }
 
