@@ -118,7 +118,7 @@ const Modal = ({ setShowModal, data, statusprop }) => {
             }}
           >
             <h4>Launch Status : {statusprop(data.launch_success)}</h4>
-            {data.launch_success === 'false' && (
+            {data.launch_success === false && (
               <h4 style={{ marginTop: '-15px' }}>
                 Launch Failure Details : {data.launch_failure_details.reason}
               </h4>
