@@ -1,4 +1,6 @@
 import React, { useRef } from 'react'
+import { Icon } from '@iconify/react'
+import roundCloseFullscreen from '@iconify-icons/ic/round-close-fullscreen'
 import commonStyles from '../styles/common.module.css'
 import picture from '../assets/Logo.svg'
 
@@ -18,12 +20,11 @@ const Modal = ({ setShowModal, data }) => {
           <div className={commonStyles.ModalContent}>
             <h1>headling</h1>
             {data ? <p>{data.mission_name}</p> : 'No Data'}
-            <button
+            <Icon
+              icon={roundCloseFullscreen}
               className={commonStyles.ModalCloseBtn}
               onClick={() => setShowModal(prev => !prev)}
-            >
-              x
-            </button>
+            />
           </div>
         </div>
       </div>
