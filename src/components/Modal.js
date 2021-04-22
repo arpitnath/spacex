@@ -93,7 +93,9 @@ const Modal = ({ setShowModal, data, statusprop }) => {
             <h4 style={{ marginTop: '-15px' }}>
               Launched : {getDate(data.launch_date_utc)}
             </h4>
-            <h4 style={{ marginTop: '-15px' }}>Manufacturer : United States</h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Manufacturer : {data.rocket.second_stage.payloads[0].manufacturer}
+            </h4>
             <h4 style={{ marginTop: '-15px' }}>
               Type : {data.rocket.rocket_type}
             </h4>
