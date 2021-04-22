@@ -5,9 +5,14 @@ const Footer = ({ logo }) => {
   return (
     <div className={commonStyles.Footer}>
       <div>
-        <img alt='spaceX logo' src={logo} />
         <p>
-          2021 - All rights reserved. Made with ❤ by{' '}
+          2021 - All rights reserved. Build with{' '}
+          <span
+            className='iconify'
+            data-icon='vscode-icons:file-type-reactjs'
+            data-inline='false'
+          ></span>{' '}
+          by{' '}
           <a
             href='https://github.com/arpitnath'
             target='_blank'
@@ -17,6 +22,7 @@ const Footer = ({ logo }) => {
             <span>Arpit</span>
           </a>
         </p>
+        <img alt='spaceX logo' src={logo} />
       </div>
     </div>
   )
