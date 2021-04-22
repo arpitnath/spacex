@@ -2,9 +2,10 @@ import React, { useRef } from 'react'
 import { Icon } from '@iconify/react'
 import roundCloseFullscreen from '@iconify-icons/ic/round-close-fullscreen'
 import commonStyles from '../styles/common.module.css'
-import picture from '../assets/Logo.svg'
+import { getDate } from '../utils'
 
-const Modal = ({ setShowModal, data }) => {
+const Modal = ({ setShowModal, data, statusprop }) => {
+  // console.log(data)
   const modRef = useRef()
   const closeModel = e => {
     if (modRef.current === e.target) {
@@ -24,12 +25,19 @@ const Modal = ({ setShowModal, data }) => {
           />
 
           <div className={commonStyles.ModalContent}>
-            <h2>Mission : Falcon</h2>
-            <h4 style={{ marginTop: '-15px' }}>Flight Number : 9</h4>
-            <p style={{ marginTop: '-13px', padding: '5px' }}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Accusamus maxime voluptas temporibus.
-            </p>
+            <h2>Mission : {data.mission_name}</h2>
+            <h4 style={{ marginTop: '-15px' }}>
+              Flight Number : {data.flight_number}
+            </h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Launch Site: {data.launch_site.site_name_long}
+            </h4>
+            {data.details && (
+              <p style={{ marginTop: '-13px', padding: '5px' }}>
+                {' '}
+                <span>Breif :</span> {data.details}
+              </p>
+            )}
           </div>
           <div
             className={commonStyles.ModalContent}
@@ -39,19 +47,28 @@ const Modal = ({ setShowModal, data }) => {
             }}
           >
             <img
-              src='https://images2.imgbox.com/4f/e3/I0lkuJ2e_o.png'
+              src={data.links.mission_patch_small}
               className={commonStyles.ModalImg}
               alt='react'
             />
 
-            <h4>Rocket : {data ? <> {data.mission_name} </> : 'error'} </h4>
+            <h4>Rocket : {data.rocket.rocket_name} </h4>
             <h4 style={{ marginTop: '-15px' }}>
-              Launched : 24-03-2006 at 22.30
+              Launched : {getDate(data.launch_date_utc)}
             </h4>
             <h4 style={{ marginTop: '-15px' }}>Manufacturer : United States</h4>
-            <h4 style={{ marginTop: '-15px' }}>Type : Malcom II</h4>
-            <h4 style={{ marginTop: '-15px' }}>Payload : G-4 II</h4>
-            <h4 style={{ marginTop: '-15px' }}>Orbit : Leo</h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Type : {data.rocket.rocket_type}
+            </h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Payload : {data.rocket.second_stage.payloads[0].payload_id}
+            </h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Payload type : {data.rocket.second_stage.payloads[0].payload_type}
+            </h4>
+            <h4 style={{ marginTop: '-15px' }}>
+              Orbit : {data.rocket.second_stage.payloads[0].orbit}
+            </h4>
           </div>
           <div className={commonStyles.ModalContent}>
             <h4 style={{ paddingTop: '30px' }}>Links</h4>
@@ -68,11 +85,12 @@ const Modal = ({ setShowModal, data }) => {
               color: '#fff'
             }}
           >
-            <h4>Launch Status : Fail</h4>
-            <h4 style={{ marginTop: '-15px' }}>Launch Failure Details :</h4>
-            <p style={{ marginTop: '-13px', padding: '5px' }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.{' '}
-            </p>
+            <h4>Launch Status : {statusprop(data.launch_success)}</h4>
+            {data.launch_success === 'false' && (
+              <h4 style={{ marginTop: '-15px' }}>
+                Launch Failure Details : {data.launch_failure_details.reason}
+              </h4>
+            )}
           </div>
         </div>
       </div>

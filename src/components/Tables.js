@@ -30,7 +30,11 @@ const Tables = ({ data, loading, thead }) => {
   return (
     <>
       {showModal ? (
-        <Modal setShowModal={setShowModal} data={modalData} />
+        <Modal
+          setShowModal={setShowModal}
+          data={modalData}
+          statusprop={check}
+        />
       ) : null}
       <ScrollLock>
         <table className={screenStyles.Table}>
