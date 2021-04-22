@@ -151,12 +151,7 @@
   border-radius: 10px;
 }
 
-.ModalSocialLinkWrapper {
-  margin-top: -15px;
-  display: grid;
-  grid-template-columns: 1fr ;
-  position: relative;
-}
+
 
 .ModalImg {
   width: 150px;
@@ -186,6 +181,20 @@
   color: #fff;
 }
 
+.ModalSocialLinkWrapper {
+  margin-top: -15px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  position: relative;
+}
+
+.Iconify {
+  height: 35px;
+  width: 35px;
+ 
+}
 /*media queries*/
 /* @media only screen and (max-width: 768px) {
   body {

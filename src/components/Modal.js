@@ -32,6 +32,34 @@ const Modal = ({ setShowModal, data, statusprop }) => {
             <h4 style={{ marginTop: '-15px' }}>
               Launch Site: {data.launch_site.site_name_long}
             </h4>
+
+            <div className={commonStyles.ModalSocialLinkWrapper}>
+              <a
+                href={data.links.article_link}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <span
+                  className={`${commonStyles.Iconify} iconify`}
+                  data-icon='ph:article-medium-light'
+                  data-inline='false'
+                ></span>
+              </a>
+              <a href={data.links.wikipedia} target='_blank' rel='noreferrer'>
+                <span
+                  className={`${commonStyles.Iconify} iconify`}
+                  data-icon='flat-color-icons:wikipedia'
+                  data-inline='false'
+                ></span>
+              </a>
+              <a href={data.links.video_link} target='_blank' rel='noreferrer'>
+                <span
+                  className={`${commonStyles.Iconify} iconify`}
+                  data-icon='logos:youtube-icon'
+                  data-inline='false'
+                ></span>
+              </a>
+            </div>
             {data.details && (
               <p style={{ marginTop: '-13px', padding: '5px' }}>
                 {' '}
@@ -70,14 +98,7 @@ const Modal = ({ setShowModal, data, statusprop }) => {
               Orbit : {data.rocket.second_stage.payloads[0].orbit}
             </h4>
           </div>
-          <div className={commonStyles.ModalContent}>
-            <h4 style={{ paddingTop: '30px' }}>Links</h4>
-            <div className={commonStyles.ModalSocialLinkWrapper}>
-              <p>article link</p>
-              <p>wikipedia link</p>
-              <p>youtube link</p>
-            </div>
-          </div>
+          <div className={commonStyles.ModalContent}></div>
           <div
             className={commonStyles.ModalContent}
             style={{
