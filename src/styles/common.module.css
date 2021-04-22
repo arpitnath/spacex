@@ -123,6 +123,78 @@
   margin-right: auto;
 }
 
+.ModalBg {
+  width: 100vw;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000000;
+
+}
+
+
+
+.ModalWrapper {
+  width: 900px;
+  height: 700px;
+  margin-top: -250px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  z-index: 10000000;
+  border-radius: 10px;
+}
+
+
+
+.ModalImg {
+  width: 150px;
+  height: 150px;
+  background: #000;
+  padding: 20px;
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+}
+
+.ModalCloseBtn {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 32px;
+  padding: 0;
+  z-index: 100000001;
+  color: #fff;
+}
+
+.ModalSocialLinkWrapper {
+  margin-top: -15px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  position: relative;
+}
+
+.Iconify {
+  height: 35px;
+  width: 35px;
+ 
+}
 /*media queries*/
 /* @media only screen and (max-width: 768px) {
   body {
