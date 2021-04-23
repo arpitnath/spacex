@@ -8,6 +8,7 @@ import HomeScreen from './screens/HomeScreen'
 import LaunchScreen from './screens/LaunchScreen'
 import CapsuleScreen from './screens/CapsuleScreen'
 import ShipsScreen from './screens/ShipsScreen'
+import EventScreen from './screens/Events'
 import NotFound from './components/NotFound'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/launch' component={LaunchScreen} />
           <Route path='/capsule' component={CapsuleScreen} />
           <Route path='/ships' component={ShipsScreen} />
+          <Route path='/events' component={EventScreen} />
           <Route component={NotFound} />
         </Switch>
         <Footer logo={Logo} />
