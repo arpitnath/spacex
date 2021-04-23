@@ -17,6 +17,41 @@ body {
   /* background: url('../assets/rocket.svg') no-repeat  center; */
 }
 
+.NFpage {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NFpage::before {    
+      content: "";
+      background-image: url('../assets/404.svg');
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.75;
+}
+
+.NFpage  h3 {
+  position: relative;
+  color: #fff;  
+  font-size: 3rem;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.nfRoute {
+  border-bottom: 4px dotted var(--fail);
+  padding: 1rem;
+  color: var(--secondary-background-color);
+}
+
 a {
     color: #007bff;
     text-decoration: none;

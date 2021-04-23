@@ -9,7 +9,7 @@ import LaunchScreen from './screens/LaunchScreen'
 import CapsuleScreen from './screens/CapsuleScreen'
 import ShipsScreen from './screens/ShipsScreen'
 import EventScreen from './screens/Events'
-import NotFound from './components/NotFound'
+import NotFound from './screens/404'
 
 function App() {
   // console.log(History)
@@ -19,7 +19,7 @@ function App() {
         <Navbar logo={Logo} />
         <Switch>
           <Route path='/' component={HomeScreen} exact />
-          <Route path='/launch' component={LaunchScreen} />
+          <Route path='/launch' component={LaunchScreen}></Route>
           <Route path='/capsule' component={CapsuleScreen} />
           <Route path='/ships' component={ShipsScreen} />
           <Route path='/events' component={EventScreen} />
