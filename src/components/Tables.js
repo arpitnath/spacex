@@ -5,7 +5,7 @@ import { getDate } from '../utils'
 import Modal from './Modal'
 import Status from './Status'
 
-const Tables = ({ data, loading, thead }) => {
+const Tables = ({ data, thead }) => {
   const [showModal, setShowModal] = useState(false)
   const [modalData, setModalData] = useState(null)
 
@@ -14,9 +14,9 @@ const Tables = ({ data, loading, thead }) => {
     setShowModal(prev => !prev)
   }
 
-  if (!loading) {
-    return <h2>Loading...</h2>
-  }
+  // if (!loading) {
+  //   return <h2>Loading...</h2>
+  // }
   const check = data => {
     if (data === null) {
       return <Status status='upcoming' />
