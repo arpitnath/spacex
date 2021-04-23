@@ -29,6 +29,63 @@ export const getLaunchData = (_res, arr) => {
   return arr
 }
 
+export const getCapsuleData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      serial_number: data.capsule_serial,
+      capsule_id: data.capsule_id,
+      date: data.original_launch ? getDate(data.original_launch) : 'N/A',
+      mission: data.missions,
+      status: data.status,
+      landings: data.landings,
+      type: data.type,
+      description: data.details,
+      reuse: data.reuse_count
+    })
+    return data
+  })
+  return arr
+}
+
+export const getEventsData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      id: data.id,
+      title: data.title,
+      date: data.event_date_utc ? getDate(data.event_date_utc) : 'N/A',
+      flight_no: data.flight_number,
+      description: data.details,
+      article_link: data.links.article,
+      wikipedia_link: data.links.wikipedia,
+      reddit_link: data.links.reddit
+    })
+    return data
+  })
+  return arr
+}
+
+export const getShipData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      ship_id: data.ship_id,
+      ship_name: data.ship_name,
+      ship_type: data.ship_type,
+      roles: data.roles,
+      built: data.year_built,
+      home_port: data.home_port,
+      weight: data.weight_kg ? data.weight_kg : 'N/A',
+      weight_lbs: data.weight_lbs ? data.weight_lbs : 'N/A',
+      missions: data.missions,
+      landings: data.landings,
+      url: data.url,
+      image: data.image
+    })
+    return data
+  })
+  // console.log(arr)
+  return arr
+}
+
 export const getDate = utc => {
   var date = utc?.split('T')[0]
   var time = utc?.split('T')[1]

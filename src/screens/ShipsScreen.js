@@ -3,15 +3,14 @@ import { useFetch, usePaginate } from '../Hooks'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
-import { launchtableHead } from '../data'
-import { getLaunchData } from '../utils'
+import { shiptableHead } from '../data'
+import { getShipData } from '../utils'
 
-const LaunchScreen = () => {
+const ShipsScreen = () => {
   const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/launches',
-    getLaunchData
+    'https://api.spacexdata.com/v3/ships',
+    getShipData
   )
-
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search
@@ -26,9 +25,9 @@ const LaunchScreen = () => {
         <>
           <Tables
             data={currentPost}
-            thead={launchtableHead}
+            thead={shiptableHead}
             loading={loading}
-            name='launch'
+            name='ship'
           />
           <Pagination
             paginate={paginate}
@@ -36,7 +35,7 @@ const LaunchScreen = () => {
             totalPosts={data.length}
             currentPage={currentPage}
             query={query}
-            route='launch'
+            route='ships'
           />
         </>
       )}
@@ -44,4 +43,4 @@ const LaunchScreen = () => {
   )
 }
 
-export default LaunchScreen
+export default ShipsScreen

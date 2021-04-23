@@ -66,7 +66,7 @@
 
 .PaginateContainer {
   display: inline-flex;
-  width: 50%;
+  width: 100%;
 }
 
 .Pagination {
@@ -75,7 +75,8 @@
   padding-left: 0;
   list-style: none;
   border-radius: .25rem;
-  margin-left: -100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .PaginateBtn {
@@ -114,7 +115,7 @@
 
 .Status {
   /* border: 2px solid white; */
-  width: 90px;
+  width: auto;
   padding: var(--distance-3);
   border-radius: var(--btn-radius-2);
   text-align: center;
@@ -168,6 +169,7 @@
   align-items: center;
   line-height: 1.8;
   color: #141414;
+  
 }
 
 .ModalCloseBtn {
@@ -189,6 +191,40 @@
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 30px;
   position: relative;
+}
+
+.MissionsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  position: relative;
+}
+
+.missions {
+  background: #efefef;
+  padding: var(--distance-2);
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.Button {
+  cursor: pointer;
+  margin: 0px 10px;
+  width: 150px;
+  height: 40px;
+  background-color: var(--btn-bg);
+  color: var(--font-color-1);
+  font-weight: bold;
+  font-size: 14px;
+  border: none !important;
+  border-radius: var(--btn-radius);
+}
+
+.Button:hover {
+  background: var(--secondary-background-color);
 }
 
 .Iconify {

@@ -7,7 +7,8 @@ const Pagination = ({
   totalPosts,
   paginate,
   currentPage,
-  query
+  query,
+  route
 }) => {
   const [urlPg, setUrlPg] = useState(() => (query ? query : 1))
 
@@ -31,8 +32,8 @@ const Pagination = ({
   useEffect(() => {
     let page = currentPage
     if (page != null) {
-      if (History.location.pathname === '/launch') {
-        History.push('/launch?q=page' + currentPage)
+      if (History.location.pathname === `/${route}`) {
+        History.push(`/${route}?q=page` + currentPage)
         // console.log(page)
       }
     }
@@ -40,7 +41,7 @@ const Pagination = ({
     return () => {
       page = null
     }
-  }, [currentPage])
+  }, [currentPage, route])
 
   useEffect(() => {
     paginate(urlPg)
