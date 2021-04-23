@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ScrollLock from 'react-scrolllock'
 import screenStyles from '../styles/screens.module.css'
-import { getDate } from '../utils'
 import Modal from './Modal'
 import Status from './Status'
 
@@ -47,20 +46,20 @@ const Tables = ({ data, loading, thead }) => {
           </thead>
           <tbody>
             {data?.map(launch => (
-              <tr key={launch.flight_number} onClick={() => openModal(launch)}>
-                <td>{launch.flight_number}</td>
-                <td>{getDate(launch.launch_date_utc)}</td>
-                <td>{launch.launch_site.site_name}</td>
-                <td>{launch.mission_name}</td>
-                <td>{launch.rocket.second_stage.payloads[0].orbit}</td>
-                <td>{check(launch.launch_success)}</td>
+              <tr key={launch.serial_number} onClick={() => openModal(launch)}>
+                <td>{launch.serial_number}</td>
+                <td>{launch.date}</td>
+                <td>{launch.location}</td>
+                <td>{launch.mission}</td>
+                <td>{launch.orbit}</td>
+                <td>{check(launch.status)}</td>
                 <td>
                   <span
                     className='iconify'
                     data-icon='noto:rocket'
                     data-inline='false'
                   ></span>{' '}
-                  {launch.rocket.rocket_name}
+                  {launch.rocket}
                 </td>
               </tr>
             ))}
