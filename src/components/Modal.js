@@ -5,6 +5,7 @@ import commonStyles from '../styles/common.module.css'
 import LaunchModal from './LaunchModal'
 import CapsuleModal from './CapsuleModal'
 import ShipModal from './ShipModal'
+import EventModal from './EventModal'
 
 const Modal = ({ setShowModal, data, statusprop, name }) => {
   const modRef = useRef()
@@ -30,6 +31,7 @@ const Modal = ({ setShowModal, data, statusprop, name }) => {
             <CapsuleModal data={data} statusprop={statusprop} />
           )}
           {name === 'ship' && <ShipModal data={data} />}
+          {name === 'event' && <EventModal data={data} />}
         </div>
       </div>
     </>

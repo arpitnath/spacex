@@ -53,9 +53,11 @@ export const getEventsData = (_res, arr) => {
       id: data.id,
       title: data.title,
       date: data.event_date_utc ? getDate(data.event_date_utc) : 'N/A',
-      flight_no: data.flight_no,
+      flight_no: data.flight_number,
       description: data.details,
-      links: data.links
+      article_link: data.links.article,
+      wikipedia_link: data.links.wikipedia,
+      reddit_link: data.links.reddit
     })
     return data
   })
