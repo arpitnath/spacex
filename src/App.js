@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import HomeScreen from './screens/HomeScreen'
 import LaunchScreen from './screens/LaunchScreen'
 import CapsuleScreen from './screens/CapsuleScreen'
+import ShipsScreen from './screens/ShipsScreen'
 import NotFound from './components/NotFound'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' component={HomeScreen} exact />
           <Route path='/launch' component={LaunchScreen} />
           <Route path='/capsule' component={CapsuleScreen} />
+          <Route path='/ships' component={ShipsScreen} />
           <Route component={NotFound} />
         </Switch>
         <Footer logo={Logo} />
