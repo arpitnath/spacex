@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import HomeScreen from './screens/HomeScreen'
 import LaunchScreen from './screens/LaunchScreen'
+import NotFound from './components/NotFound'
 
 function App() {
   // console.log(History)
@@ -14,8 +15,9 @@ function App() {
       <div className='main'>
         <Navbar logo={Logo} />
         <Switch>
-          <Route path='/launch' component={LaunchScreen} />
           <Route path='/' component={HomeScreen} exact />
+          <Route path='/launch' component={LaunchScreen} />
+          <Route component={NotFound} />
         </Switch>
         <Footer logo={Logo} />
       </div>
