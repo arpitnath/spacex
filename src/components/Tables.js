@@ -61,8 +61,8 @@ const Tables = ({ data, loading, thead, name }) => {
           <tbody>
             {name === 'launch' && (
               <>
-                {data?.map(item => (
-                  <tr key={item.serial_number} onClick={() => openModal(item)}>
+                {data?.map((item, idx) => (
+                  <tr key={idx} onClick={() => openModal(item)}>
                     <td>{item.serial_number}</td>
                     <td>{item.date}</td>
                     <td>{item.location}</td>
