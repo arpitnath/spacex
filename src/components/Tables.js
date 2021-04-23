@@ -16,7 +16,7 @@ const Tables = ({ data, loading, thead, name }) => {
   if (!loading) {
     return <h2>Loading...</h2>
   }
-  const check = data => {
+  const checkStatus = data => {
     if (data === null) {
       return <Status status='upcoming' />
     }
@@ -33,7 +33,7 @@ const Tables = ({ data, loading, thead, name }) => {
         <Modal
           setShowModal={setShowModal}
           data={modalData}
-          statusprop={check}
+          statusprop={checkStatus}
           name={name}
         />
       ) : null}
@@ -56,7 +56,7 @@ const Tables = ({ data, loading, thead, name }) => {
                     <td>{item.location}</td>
                     <td>{item.mission}</td>
                     <td>{item.orbit}</td>
-                    <td>{check(item.status)}</td>
+                    <td>{checkStatus(item.status)}</td>
                     <td>
                       <span
                         className='iconify'
