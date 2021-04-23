@@ -62,3 +62,18 @@ export const shiptableHead = [
     title: 'Built'
   }
 ]
+
+export const eventtableHead = [
+  {
+    id: 0,
+    title: 'Id:'
+  },
+  {
+    id: 1,
+    title: 'Title'
+  },
+  {
+    id: 2,
+    title: 'Date'
+  }
+]

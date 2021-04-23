@@ -106,6 +106,18 @@ const Tables = ({ data, loading, thead, name }) => {
                 ))}
               </>
             )}
+
+            {name === 'event' && (
+              <>
+                {data?.map((item, idx) => (
+                  <tr key={idx} onClick={() => openModal(item)}>
+                    <td>{item.id}</td>
+                    <td>{item.title}</td>
+                    <td>{item.date}</td>
+                  </tr>
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </ScrollLock>

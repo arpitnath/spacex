@@ -47,6 +47,21 @@ export const getCapsuleData = (_res, arr) => {
   return arr
 }
 
+export const getEventsData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      id: data.id,
+      title: data.title,
+      date: data.event_date_utc ? getDate(data.event_date_utc) : 'N/A',
+      flight_no: data.flight_no,
+      description: data.details,
+      links: data.links
+    })
+    return data
+  })
+  return arr
+}
+
 export const getShipData = (_res, arr) => {
   _res?.map(data => {
     arr.push({
