@@ -3,15 +3,14 @@ import { useFetch, usePaginate } from '../Hooks'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
-import { launchtableHead } from '../data'
-import { getLaunchData } from '../utils'
+import { capsuletableHead } from '../data'
+import { getCapsuleData } from '../utils'
 
-const LaunchScreen = () => {
+const CapsuleScreen = () => {
   const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/launches',
-    getLaunchData
+    'https://api.spacexdata.com/v3/capsules',
+    getCapsuleData
   )
-
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search
@@ -26,9 +25,9 @@ const LaunchScreen = () => {
         <>
           <Tables
             data={currentPost}
-            thead={launchtableHead}
+            thead={capsuletableHead}
             loading={loading}
-            name='launch'
+            name='capsule'
           />
           <Pagination
             paginate={paginate}
@@ -36,7 +35,7 @@ const LaunchScreen = () => {
             totalPosts={data.length}
             currentPage={currentPage}
             query={query}
-            route='launch'
+            route='capsule'
           />
         </>
       )}
@@ -44,4 +43,4 @@ const LaunchScreen = () => {
   )
 }
 
-export default LaunchScreen
+export default CapsuleScreen

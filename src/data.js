@@ -28,3 +28,18 @@ export const launchtableHead = [
     title: 'Rocket'
   }
 ]
+
+export const capsuletableHead = [
+  {
+    id: 0,
+    title: 'Capsule No:'
+  },
+  {
+    id: 1,
+    title: 'Launch (UTC)'
+  },
+  {
+    id: 2,
+    title: 'Status'
+  }
+]

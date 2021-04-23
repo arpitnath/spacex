@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import HomeScreen from './screens/HomeScreen'
 import LaunchScreen from './screens/LaunchScreen'
+import CapsuleScreen from './screens/CapsuleScreen'
 import NotFound from './components/NotFound'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route path='/' component={HomeScreen} exact />
           <Route path='/launch' component={LaunchScreen} />
+          <Route path='/capsule' component={CapsuleScreen} />
           <Route component={NotFound} />
         </Switch>
         <Footer logo={Logo} />

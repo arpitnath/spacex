@@ -29,6 +29,25 @@ export const getLaunchData = (_res, arr) => {
   return arr
 }
 
+export const getCapsuleData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      serial_number: data.capsule_serial,
+      capsule_id: data.capsule_id,
+      date: getDate(data.original_launch),
+      mission: data.missions,
+      status: data.status,
+      landings: data.landings,
+      type: data.type,
+      description: data.details,
+      reuse: data.reuse_count
+    })
+    return data
+  })
+  // console.log(arr)
+  return arr
+}
+
 export const getDate = utc => {
   var date = utc?.split('T')[0]
   var time = utc?.split('T')[1]

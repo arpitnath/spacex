@@ -4,7 +4,7 @@ import screenStyles from '../styles/screens.module.css'
 import Modal from './Modal'
 import Status from './Status'
 
-const Tables = ({ data, loading, thead }) => {
+const Tables = ({ data, loading, thead, name }) => {
   const [showModal, setShowModal] = useState(false)
   const [modalData, setModalData] = useState(null)
 
@@ -26,6 +26,7 @@ const Tables = ({ data, loading, thead }) => {
       return <Status status='failed' />
     }
   }
+
   return (
     <>
       {showModal ? (
@@ -45,24 +46,39 @@ const Tables = ({ data, loading, thead }) => {
             </tr>
           </thead>
           <tbody>
-            {data?.map(launch => (
-              <tr key={launch.serial_number} onClick={() => openModal(launch)}>
-                <td>{launch.serial_number}</td>
-                <td>{launch.date}</td>
-                <td>{launch.location}</td>
-                <td>{launch.mission}</td>
-                <td>{launch.orbit}</td>
-                <td>{check(launch.status)}</td>
-                <td>
-                  <span
-                    className='iconify'
-                    data-icon='noto:rocket'
-                    data-inline='false'
-                  ></span>{' '}
-                  {launch.rocket}
-                </td>
-              </tr>
-            ))}
+            {name === 'launch' && (
+              <>
+                {data?.map(item => (
+                  <tr key={item.serial_number} onClick={() => openModal(item)}>
+                    <td>{item.serial_number}</td>
+                    <td>{item.date}</td>
+                    <td>{item.location}</td>
+                    <td>{item.mission}</td>
+                    <td>{item.orbit}</td>
+                    <td>{check(item.status)}</td>
+                    <td>
+                      <span
+                        className='iconify'
+                        data-icon='noto:rocket'
+                        data-inline='false'
+                      ></span>{' '}
+                      {item.rocket}
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
+            {name === 'capsule' && (
+              <>
+                {data?.map((item, idx) => (
+                  <tr key={idx} onClick={() => openModal(item)}>
+                    <td>{item.serial_number}</td>
+                    <td>{item.date}</td>
+                    <td>{item.status}</td>
+                  </tr>
+                ))}
+              </>
+            )}
           </tbody>
         </table>
       </ScrollLock>
