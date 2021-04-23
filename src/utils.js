@@ -44,6 +44,26 @@ export const getCapsuleData = (_res, arr) => {
     })
     return data
   })
+  return arr
+}
+
+export const getShipData = (_res, arr) => {
+  _res?.map(data => {
+    arr.push({
+      ship_id: data.ship_id,
+      ship_name: data.ship_name,
+      ship_type: data.ship_type,
+      roles: data.roles,
+      built: data.year_built,
+      home_port: data.home_port,
+      weight: data.weight_kg ? data.weight_kg : 'N/A',
+      missions: data.missions,
+      landings: data.landings,
+      url: data.url,
+      image: data.image
+    })
+    return data
+  })
   // console.log(arr)
   return arr
 }

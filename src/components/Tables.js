@@ -81,6 +81,7 @@ const Tables = ({ data, loading, thead, name }) => {
                 ))}
               </>
             )}
+
             {name === 'capsule' && (
               <>
                 {data?.map((item, idx) => (
@@ -88,6 +89,19 @@ const Tables = ({ data, loading, thead, name }) => {
                     <td>{item.serial_number}</td>
                     <td>{item.date}</td>
                     <td>{checkStatus(item.status)}</td>
+                  </tr>
+                ))}
+              </>
+            )}
+
+            {name === 'ship' && (
+              <>
+                {data?.map((item, idx) => (
+                  <tr key={idx} onClick={() => openModal(item)}>
+                    <td>{item.ship_id}</td>
+                    <td>{item.ship_name}</td>
+                    <td>{item.weight}</td>
+                    <td>{item.built}</td>
                   </tr>
                 ))}
               </>

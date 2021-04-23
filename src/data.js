@@ -43,3 +43,22 @@ export const capsuletableHead = [
     title: 'Status'
   }
 ]
+
+export const shiptableHead = [
+  {
+    id: 0,
+    title: 'ID'
+  },
+  {
+    id: 1,
+    title: 'Name'
+  },
+  {
+    id: 2,
+    title: 'Weight(kg)'
+  },
+  {
+    id: 3,
+    title: 'Built'
+  }
+]
