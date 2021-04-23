@@ -1,14 +1,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-export const useFetch = url => {
+export const useFetch = (url, data_function) => {
   const source = axios.CancelToken.source()
   const [state, setState] = useState({ data: null, loading: false })
 
   useEffect(() => {
     const fetchPost = async () => {
       const res = await axios.get(url)
-      setState({ data: res.data, loading: true })
+      var data_arr = []
+      data_function(res.data, data_arr)
+      setState({ data: data_arr, loading: true })
     }
     fetchPost()
 

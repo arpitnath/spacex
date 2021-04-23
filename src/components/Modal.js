@@ -2,10 +2,8 @@ import React, { useRef } from 'react'
 import { Icon } from '@iconify/react'
 import roundCloseFullscreen from '@iconify-icons/ic/round-close-fullscreen'
 import commonStyles from '../styles/common.module.css'
-import { getDate } from '../utils'
 
 const Modal = ({ setShowModal, data, statusprop }) => {
-  // console.log(data)
   const modRef = useRef()
   const closeModel = e => {
     if (modRef.current === e.target) {
@@ -24,21 +22,17 @@ const Modal = ({ setShowModal, data, statusprop }) => {
           />
 
           <div className={commonStyles.ModalContent}>
-            <h2>Mission : {data.mission_name}</h2>
+            <h2>Mission : {data.mission}</h2>
             <h4 style={{ marginTop: '-15px' }}>
-              Flight Number : {data.flight_number}
+              Flight Number : {data.serial_number}
             </h4>
             <h4 style={{ marginTop: '-15px' }}>
-              Launch Site: {data.launch_site.site_name_long}
+              Launch Site: {data.full_location}
             </h4>
 
             <div className={commonStyles.ModalSocialLinkWrapper}>
-              {data.links.article_link && (
-                <a
-                  href={data.links.article_link}
-                  target='_blank'
-                  rel='noreferrer'
-                >
+              {data.article_link && (
+                <a href={data.article_link} target='_blank' rel='noreferrer'>
                   <span
                     className={`${commonStyles.Iconify} iconify`}
                     data-icon='ph:article-medium-light'
@@ -46,8 +40,8 @@ const Modal = ({ setShowModal, data, statusprop }) => {
                   ></span>
                 </a>
               )}
-              {data.links.wikipedia && (
-                <a href={data.links.wikipedia} target='_blank' rel='noreferrer'>
+              {data.wikipedia_link && (
+                <a href={data.wikipedia_link} target='_blank' rel='noreferrer'>
                   <span
                     className={`${commonStyles.Iconify} iconify`}
                     data-icon='flat-color-icons:wikipedia'
@@ -55,12 +49,8 @@ const Modal = ({ setShowModal, data, statusprop }) => {
                   ></span>
                 </a>
               )}
-              {data.links.wikipedia && (
-                <a
-                  href={data.links.video_link}
-                  target='_blank'
-                  rel='noreferrer'
-                >
+              {data.video_link && (
+                <a href={data.video_link} target='_blank' rel='noreferrer'>
                   <span
                     className={`${commonStyles.Iconify} iconify`}
                     data-icon='logos:youtube-icon'
@@ -69,10 +59,10 @@ const Modal = ({ setShowModal, data, statusprop }) => {
                 </a>
               )}
             </div>
-            {data.details && (
+            {data.description && (
               <p style={{ marginTop: '-13px', padding: '5px' }}>
                 {' '}
-                <span>Breif :</span> {data.details}
+                <span>Breif :</span> {data.description}
               </p>
             )}
           </div>
@@ -84,30 +74,22 @@ const Modal = ({ setShowModal, data, statusprop }) => {
             }}
           >
             <img
-              src={data.links.mission_patch_small}
+              src={data.img}
               className={commonStyles.ModalImg}
-              alt={`${data.rocket.rocket_name}`}
+              alt={`${data.rocket}`}
             />
 
-            <h4>Rocket : {data.rocket.rocket_name} </h4>
+            <h4>Rocket : {data.rocket} </h4>
+            <h4 style={{ marginTop: '-15px' }}>Launched : {data.date}</h4>
             <h4 style={{ marginTop: '-15px' }}>
-              Launched : {getDate(data.launch_date_utc)}
+              Manufacturer : {data.manufacturer}
             </h4>
+            <h4 style={{ marginTop: '-15px' }}>Type : {data.rocket_type}</h4>
+            <h4 style={{ marginTop: '-15px' }}>Payload : {data.payload}</h4>
             <h4 style={{ marginTop: '-15px' }}>
-              Manufacturer : {data.rocket.second_stage.payloads[0].manufacturer}
+              Payload type : {data.payload_type}
             </h4>
-            <h4 style={{ marginTop: '-15px' }}>
-              Type : {data.rocket.rocket_type}
-            </h4>
-            <h4 style={{ marginTop: '-15px' }}>
-              Payload : {data.rocket.second_stage.payloads[0].payload_id}
-            </h4>
-            <h4 style={{ marginTop: '-15px' }}>
-              Payload type : {data.rocket.second_stage.payloads[0].payload_type}
-            </h4>
-            <h4 style={{ marginTop: '-15px' }}>
-              Orbit : {data.rocket.second_stage.payloads[0].orbit}
-            </h4>
+            <h4 style={{ marginTop: '-15px' }}>Orbit : {data.orbit}</h4>
           </div>
           <div className={commonStyles.ModalContent}></div>
           <div
@@ -117,10 +99,10 @@ const Modal = ({ setShowModal, data, statusprop }) => {
               color: '#fff'
             }}
           >
-            <h4>Launch Status : {statusprop(data.launch_success)}</h4>
-            {data.launch_success === false && (
+            <h4>Launch Status : {statusprop(data.status)}</h4>
+            {data.status === false && (
               <h4 style={{ marginTop: '-15px' }}>
-                Launch Failure Details : {data.launch_failure_details.reason}
+                Launch Failure Details : {data.failed_details}
               </h4>
             )}
           </div>
