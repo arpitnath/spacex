@@ -34,7 +34,7 @@ export const getCapsuleData = (_res, arr) => {
     arr.push({
       serial_number: data.capsule_serial,
       capsule_id: data.capsule_id,
-      date: getDate(data.original_launch),
+      date: data.original_launch ? getDate(data.original_launch) : 'N/A',
       mission: data.missions,
       status: data.status,
       landings: data.landings,
