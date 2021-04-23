@@ -57,6 +57,7 @@ export const getShipData = (_res, arr) => {
       built: data.year_built,
       home_port: data.home_port,
       weight: data.weight_kg ? data.weight_kg : 'N/A',
+      weight_lbs: data.weight_lbs ? data.weight_lbs : 'N/A',
       missions: data.missions,
       landings: data.landings,
       url: data.url,

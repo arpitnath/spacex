@@ -4,6 +4,7 @@ import roundCloseFullscreen from '@iconify-icons/ic/round-close-fullscreen'
 import commonStyles from '../styles/common.module.css'
 import LaunchModal from './LaunchModal'
 import CapsuleModal from './CapsuleModal'
+import ShipModal from './ShipModal'
 
 const Modal = ({ setShowModal, data, statusprop, name }) => {
   const modRef = useRef()
@@ -28,6 +29,7 @@ const Modal = ({ setShowModal, data, statusprop, name }) => {
           {name === 'capsule' && (
             <CapsuleModal data={data} statusprop={statusprop} />
           )}
+          {name === 'ship' && <ShipModal data={data} />}
         </div>
       </div>
     </>
