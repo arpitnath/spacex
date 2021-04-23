@@ -17,6 +17,18 @@ const Tables = ({ data, loading, thead, name }) => {
     return <h2>Loading...</h2>
   }
   const checkStatus = data => {
+    if (data === 'retired') {
+      return <Status status='retired' />
+    }
+    if (data === 'active') {
+      return <Status status='Active' />
+    }
+    if (data === 'destroyed') {
+      return <Status status='destroyed' />
+    }
+    if (data === 'unknown') {
+      return <Status status='unknown' />
+    }
     if (data === null) {
       return <Status status='upcoming' />
     }
@@ -75,7 +87,7 @@ const Tables = ({ data, loading, thead, name }) => {
                   <tr key={idx} onClick={() => openModal(item)}>
                     <td>{item.serial_number}</td>
                     <td>{item.date}</td>
-                    <td>{item.status}</td>
+                    <td>{checkStatus(item.status)}</td>
                   </tr>
                 ))}
               </>

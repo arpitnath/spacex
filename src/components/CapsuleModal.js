@@ -2,7 +2,7 @@ import React from 'react'
 import commonStyles from '../styles/common.module.css'
 import image from '../assets/space-shuttle.svg'
 
-const CapsuleModal = ({ data }) => {
+const CapsuleModal = ({ data, statusprop }) => {
   return (
     <>
       <div
@@ -29,11 +29,13 @@ const CapsuleModal = ({ data }) => {
         }}
       >
         <img src={image} className={commonStyles.ModalImg} alt='demo' />
-        <h2>Status: {data.status.toUpperCase()} </h2>
+        <h2>Status: {statusprop(data.status)} </h2>
         <h2>Landings: {data.landings} </h2>
-        <h2>
-          Brief: <span style={{ fontSize: '80%' }}>{data.description}</span>
-        </h2>
+        {data.description && (
+          <h2>
+            Brief: <span style={{ fontSize: '80%' }}>{data.description}</span>
+          </h2>
+        )}
       </div>
     </>
   )

@@ -49,3 +49,16 @@ li {
 .upcoming {
   background: var(--upcoming);
 }
+
+.retired {
+  background: cornflowerblue;
+}
+.Active {
+  background: var(--success);
+}
+.destroyed {
+  background: var(--fail);
+}
+.unknown {
+  background: var(--upcoming);
+}

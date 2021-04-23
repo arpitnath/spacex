@@ -115,7 +115,7 @@
 
 .Status {
   /* border: 2px solid white; */
-  width: 90px;
+  width: auto;
   padding: var(--distance-3);
   border-radius: var(--btn-radius-2);
   text-align: center;
