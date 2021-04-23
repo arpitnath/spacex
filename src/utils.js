@@ -71,7 +71,7 @@ export const getShipData = (_res, arr) => {
       ship_name: data.ship_name,
       ship_type: data.ship_type,
       roles: data.roles,
-      built: data.year_built,
+      built: data.year_built ? data.year_built : 'N/A',
       home_port: data.home_port,
       weight: data.weight_kg ? data.weight_kg : 'N/A',
       weight_lbs: data.weight_lbs ? data.weight_lbs : 'N/A',
