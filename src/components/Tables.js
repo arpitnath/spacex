@@ -34,6 +34,7 @@ const Tables = ({ data, loading, thead, name }) => {
           setShowModal={setShowModal}
           data={modalData}
           statusprop={check}
+          name={name}
         />
       ) : null}
       <ScrollLock>
