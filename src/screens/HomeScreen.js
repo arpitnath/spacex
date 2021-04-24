@@ -27,7 +27,7 @@ const HomeScreen = () => {
       ) : (
         <>
           <div className={styles.Home}>
-            <img src={Logo} className={styles.Logo} />
+            <img src={Logo} alt='spacex_logo' className={styles.Logo} />
             <h1>{data.summary.split('The')[0]}</h1>
             <div className={styles.Counters}>
               <Counter
