@@ -34,6 +34,28 @@
   border-style: none;
 }
 
+.NavLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: absolute;
+  right: 0;
+}
+
+.NavLinks > a {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-left: 5rem;
+  margin-right: 1.4rem;
+  color: var(--secondary-background-color);
+}
+
+.NavLinks > a:hover {
+  color: var(--font-color-1);
+}
+
 .Footer {
   background-color: var(--footer-color);
   height: 10rem;
@@ -209,6 +231,13 @@
   font-weight: bold;
 }
 
+.Button2 {
+  background-color: var(--secondary-background-color)  !important;
+}
+
+.Button2:hover {
+  background: var(--btn-bg) !important;
+}
 
 .Button {
   cursor: pointer;

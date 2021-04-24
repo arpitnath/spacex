@@ -86,6 +86,15 @@ export const getShipData = (_res, arr) => {
   return arr
 }
 
+export const urls = {
+  info: 'https://api.spacexdata.com/v3/info',
+  launch: 'https://api.spacexdata.com/v3/launches',
+  ships: 'https://api.spacexdata.com/v3/ships',
+  capsules: 'https://api.spacexdata.com/v3/capsules?limit=0',
+  events: 'https://api.spacexdata.com/v3/history',
+  spaceX: 'https://www.spacex.com/'
+}
+
 export const getDate = utc => {
   var date = utc?.split('T')[0]
   var time = utc?.split('T')[1]

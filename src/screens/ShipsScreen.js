@@ -4,13 +4,10 @@ import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
 import { shiptableHead } from '../data'
-import { getShipData } from '../utils'
+import { getShipData, urls } from '../utils'
 
 const ShipsScreen = () => {
-  const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/ships',
-    getShipData
-  )
+  const { data, loading } = useFetch(urls.ships, getShipData)
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search
