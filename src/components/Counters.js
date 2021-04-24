@@ -2,7 +2,7 @@ import React from 'react'
 import CountUp from 'react-countup'
 import headerStyles from '../styles/screens.module.css'
 
-const Counters = ({ t, icon, number, title, link }) => {
+const Counters = ({ icon, number, title, link }) => {
   return (
     <a
       href={link}
