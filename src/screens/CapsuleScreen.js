@@ -4,13 +4,10 @@ import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
 import { capsuletableHead } from '../data'
-import { getCapsuleData } from '../utils'
+import { getCapsuleData, urls } from '../utils'
 
 const CapsuleScreen = () => {
-  const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/capsules',
-    getCapsuleData
-  )
+  const { data, loading } = useFetch(urls.capsules, getCapsuleData)
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search

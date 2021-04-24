@@ -8,7 +8,7 @@ import HomeScreen from './screens/HomeScreen'
 import LaunchScreen from './screens/LaunchScreen'
 import CapsuleScreen from './screens/CapsuleScreen'
 import ShipsScreen from './screens/ShipsScreen'
-import EventScreen from './screens/Events'
+import EventScreen from './screens/EventScreen'
 import NotFound from './screens/404'
 
 function App() {

@@ -4,7 +4,7 @@
     border: var(--border-type-2);
     height: 100%;
     width: 100%;
-    color: var(--font-color-1); /*Do something for the color*/
+    color: var(--font-color-1); 
     margin-bottom: var(--distance-1);
     border-collapse: collapse;
     display: table;

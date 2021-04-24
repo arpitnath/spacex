@@ -4,13 +4,10 @@ import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
 import { eventtableHead } from '../data'
-import { getEventsData } from '../utils'
+import { getEventsData, urls } from '../utils'
 
 const Events = () => {
-  const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/history',
-    getEventsData
-  )
+  const { data, loading } = useFetch(urls.events, getEventsData)
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
   let params = History.location.search

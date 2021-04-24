@@ -3,22 +3,15 @@ import Logo from '../assets/Logo.svg'
 import Counter from '../components/Counters'
 import { useFetch, useCounters } from '../Hooks'
 import styles from '../styles/screens.module.css'
+import { urls } from '../utils'
 
 const HomeScreen = () => {
-  const { data, loading } = useFetch('https://api.spacexdata.com/v3/info')
+  const { data, loading } = useFetch(urls.info)
 
-  const { data: counter1 } = useCounters(
-    'https://api.spacexdata.com/v3/launches?limit=0'
-  )
-  const { data: counter2 } = useCounters(
-    'https://api.spacexdata.com/v3/capsules?limit=0'
-  )
-  const { data: counter3 } = useCounters(
-    'https://api.spacexdata.com/v3/history?limit=0'
-  )
-  const { data: counter4 } = useCounters(
-    'https://api.spacexdata.com/v3/ships?limit=0'
-  )
+  const { data: counter1 } = useCounters(`${urls.launch}?limit=0`)
+  const { data: counter2 } = useCounters(`${urls.capsules}?limit=0`)
+  const { data: counter3 } = useCounters(`${urls.events}?limit=0`)
+  const { data: counter4 } = useCounters(`${urls.ships}?limit=0`)
 
   return (
     <>

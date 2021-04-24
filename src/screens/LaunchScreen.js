@@ -4,13 +4,10 @@ import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
 import History from '../components/History'
 import { launchtableHead } from '../data'
-import { getLaunchData } from '../utils'
+import { getLaunchData, urls } from '../utils'
 
 const LaunchScreen = () => {
-  const { data, loading } = useFetch(
-    'https://api.spacexdata.com/v3/launches',
-    getLaunchData
-  )
+  const { data, loading } = useFetch(urls.launch, getLaunchData)
 
   const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(data)
 
