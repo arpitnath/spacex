@@ -18,6 +18,7 @@ const LaunchScreen = () => {
     setState({ data: data_arr, loading: true })
   }
   const [state, setState] = useState({ data: null, loading: false })
+  const [filter, setFilter] = useState([])
 
   let params = History.location.search
   let q = params.split('=page')[1]
@@ -47,17 +48,29 @@ const LaunchScreen = () => {
 
     // setState(newData)
     setState({ data: newData, loading: true })
+    setFilter([...filter, 'fail'])
   }
-  function filterSuccess() {
-    var newData = state.data.filter(x => x.status === true)
 
-    // setState(newData)
-    setState({ data: newData, loading: true })
+  function removeFilter() {
+    fetchPost(urls.launch)
+
+    setFilter([])
   }
+
+  useEffect(() => {
+    console.log(filter)
+  }, [filter])
+  // function filterSuccess() {
+  //   var newData = state.data.filter(x => x.status === true)
+
+  //   // setState(newData)
+  //   setState({ data: newData, loading: true })
+  // }
 
   return (
     <div className='Wrapper'>
-      <button onClick={filterSuccess}>Success</button>
+      <button onClick={filterFail}>Success</button>
+      <button onClick={removeFilter}>No filter</button>
 
       {!state.data ? (
         'loading...'
