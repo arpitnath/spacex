@@ -91,7 +91,8 @@ export const urls = {
   launch: 'https://api.spacexdata.com/v3/launches',
   ships: 'https://api.spacexdata.com/v3/ships',
   capsules: 'https://api.spacexdata.com/v3/capsules?limit=0',
-  events: 'https://api.spacexdata.com/v3/history'
+  events: 'https://api.spacexdata.com/v3/history',
+  spaceX: 'https://www.spacex.com/'
 }
 
 export const getDate = utc => {

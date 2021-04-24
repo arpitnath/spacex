@@ -66,14 +66,15 @@ export const usePaginate = data => {
   return state
 }
 
-export const useCounters = url => {
+export const useCounters = (url, type) => {
   const source = axios.CancelToken.source()
   const [state, setState] = useState({ data: null })
 
   useEffect(() => {
     const fetchPost = async () => {
       const res = await axios.get(url)
-      const counter = await res.headers['spacex-api-count']
+      const counter = await res.headers[`${type}`]
+
       setState({ data: counter })
     }
     fetchPost()
@@ -81,6 +82,7 @@ export const useCounters = url => {
     return () => {
       source.cancel()
     }
+    // eslint-disable-next-line
   }, [url])
 
   return state

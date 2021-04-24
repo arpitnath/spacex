@@ -222,4 +222,90 @@ th {
   letter-spacing: 0.05rem;
 }
 
+.InfoCard {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: var(--border-type-1);
+    border-radius: .25rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    height: auto;
+    margin-bottom: -50vh;
+}
+
+.InfoHeader {
+    padding: .75rem 1.25rem;
+    margin-bottom: -20px;
+}
+
+.InfoBody {
+   -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    margin-top: -15px;
+}
+
+
+
+.InfoBody .Paragraph {
+   display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    line-height: 2rem;
+}
+
+.InfoFooter {
+  color: #6c757d!important;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.InfoListWrapper {
+    display: flex;
+    text-align: left;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+}
+
+.InfoList {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--font-color-1);
+}
+
+.InfoList > span {
+  color: #fff;
+}
+
+.InfoLinks {
+  margin-top: -15px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 3rem;
+  position: relative;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 

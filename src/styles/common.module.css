@@ -231,6 +231,13 @@
   font-weight: bold;
 }
 
+.Button2 {
+  background-color: var(--secondary-background-color)  !important;
+}
+
+.Button2:hover {
+  background: var(--btn-bg) !important;
+}
 
 .Button {
   cursor: pointer;
