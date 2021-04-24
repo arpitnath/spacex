@@ -1,6 +1,6 @@
 import React from 'react'
 import commonStyles from '../styles/common.module.css'
-import image from '../assets/space-shuttle.svg'
+import image from '../assets/bg.png'
 
 const CapsuleModal = ({ data, statusprop }) => {
   return (
