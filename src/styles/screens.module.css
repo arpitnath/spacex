@@ -64,6 +64,7 @@ th {
 .Home > h1 {
     z-index: 1;
     font-size: var(--h1-size);
+    color: var(--font-color-2);
 }
 
 .Home::before {    
@@ -96,7 +97,7 @@ th {
  
 .Counters a {
   align-items: center;
-  color: #fff;
+  color: var(--font-color-2);
   display: flex;
   justify-content: center;
   position: relative;
@@ -105,15 +106,15 @@ th {
   border-radius: 50%;
   content: '';
   height: 150px;
-  box-shadow: 0 0 50px 0 rgba(#3ab396, 0.4);
+  box-shadow: 0 0 50px 0 rgba(var(--colors-1), 0.4); /*#3ab396*/
   opacity: 0;
   position: absolute;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
   width: 150px;
 }
 .Counters a:hover:after {
   opacity: 1;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 
 .Counters .CounterContent {
@@ -135,7 +136,7 @@ th {
   transform: translate(-50%, -50%) rotate(-70deg);
 }
 .CounterCircle .Circle {
-  stroke: #3ab396;
+  stroke: var(--colors-1);
   stroke-width: 2px;
   fill: transparent;
   stroke-dasharray: 1000;
@@ -148,8 +149,8 @@ th {
     fill: transparent;
   }
   100% {
-    fill: rgba(22, 26, 64, 0.7);
-    opacity: 1;
+    fill: 	rgb(70,130,180);
+    opacity: 0.6;
     stroke-dashoffset: 580;
   }
 }
@@ -194,12 +195,18 @@ th {
 }
 .CounterNumber {
   font-size: 2rem;
+  font-weight: var(--font-weight-1);
   line-height: 3rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--font-color-1);
 }
+
+.CounterLabel {
+    color: var(--font-color-2);
+    font-weight: var(--font-weight-4);
+}
+
 .CounterLabel, .CounterNumber {
   z-index: 10;
-  font-weight: 300;
   letter-spacing: 0.05rem;
 }
 

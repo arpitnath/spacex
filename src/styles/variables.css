@@ -4,10 +4,17 @@
   --footer-color: #303846;
   --primary-background-color: #18191a;
   --font-color-1: #e3e5e9;
+  --font-color-2: #fff;
   --secondary-background-color: #37698A;
   --success: #3CB371;
   --fail: #FF4500;
   --upcoming: #CD853F;
+  --colors-1: #E6E6FA;
+
+  --font-weight-1: 300;
+  --font-weight-2: 600;
+  --font-weight-3: 700;
+  --font-weight-4: 900;
   
 
   --distance-1: 1rem;
@@ -23,4 +30,6 @@
   --btn-radius: 5px;
   --btn-radius-2: 50px;
   --btn-bg: var(--nav-color);
+
+  --transition: all 0.3s ease-in-out;
 }
