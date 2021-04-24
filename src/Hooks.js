@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-export const useFetch = (url, data_function) => {
+export const useFetch = (url, data_function = null) => {
   const source = axios.CancelToken.source()
   const [state, setState] = useState({ data: null, loading: false })
 
@@ -9,8 +9,12 @@ export const useFetch = (url, data_function) => {
     const fetchPost = async () => {
       const res = await axios.get(url)
       var data_arr = []
-      data_function(res.data, data_arr)
-      setState({ data: data_arr, loading: true })
+      if (data_function !== null) {
+        data_function(res.data, data_arr)
+        setState({ data: data_arr, loading: true })
+      } else {
+        setState({ data: res.data, loading: true })
+      }
     }
     fetchPost()
 
