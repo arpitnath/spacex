@@ -54,16 +54,21 @@ th {
 
 .Home {
     position: relative; 
-    height: 60vh;
+    height: 95vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.Home > h1 {
+    z-index: 1;
+    font-size: var(--h1-size);
+}
+
 .Home::before {    
     content: "";
-    /* background-image: url('../assets/404.svg'); */
+    background-image: url('../assets/nasa.jpg');
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -81,7 +86,6 @@ th {
   left: 0;
   margin: auto;
   max-width: 1200px;
-  max-width: auto;
   position: absolute;
   right: 0;
   width: 100%;
