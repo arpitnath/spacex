@@ -1,81 +1,75 @@
 import React, { useEffect, useState } from 'react'
 import Pagination from '../components/Pagination'
 import Tables from '../components/Tables'
+import { useFetch, usePaginate } from '../Hooks'
 import History from '../components/History'
 import { launchtableHead } from '../data'
-import { getLaunchData, urls } from '../utils'
 import axios from 'axios'
 
 const LaunchScreen = () => {
+  const base_url = 'https://api.spacexdata.com/v3/launches'
   const source = axios.CancelToken.source()
-  let path = History.location.pathname + History.location.search
 
   const fetchPost = async url => {
     const res = await axios.get(url)
-    var data_arr = []
-    getLaunchData(res.data, data_arr)
-
-    setState({ data: data_arr, loading: true })
+    setState(res.data)
   }
-  const [state, setState] = useState({ data: null, loading: false })
+
+  const [state, setState] = useState([])
 
   let params = History.location.search
   let q = params.split('=page')[1]
   let query = parseInt(q)
-
+  //<------||----->
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(10)
 
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstpage = indexOfLastPost - postsPerPage
-  const currentPost = state.data?.slice(indexOfFirstpage, indexOfLastPost)
+  const currentPost = state?.slice(indexOfFirstpage, indexOfLastPost)
 
   const paginate = pageNumber => setCurrentPage(pageNumber)
+  //<------||----->
+
+  function filter() {
+    var newData = state.filter(x => x.launch_success === false)
+
+    setState(newData)
+  }
+  function filterYear() {
+    var newData = state.filter(x => x.launch_year === '2008')
+
+    setState(newData)
+  }
+
+  function launchYear() {
+    fetchPost(`${base_url}?launch_year=2018`)
+  }
 
   useEffect(() => {
-    fetchPost(urls.launch)
+    fetchPost(base_url)
 
     return () => {
       source.cancel()
     }
-    // eslint-disable-next-line
   }, [])
-
-  //<---||--->
-  function filterFail() {
-    var newData = state.data.filter(x => x.status === false)
-
-    // setState(newData)
-    setState({ data: newData, loading: true })
-  }
-  function filterSuccess() {
-    var newData = state.data.filter(x => x.status === true)
-
-    // setState(newData)
-    setState({ data: newData, loading: true })
-  }
 
   return (
     <div className='Wrapper'>
-      <button onClick={filterSuccess}>Success</button>
-
-      {!state.data ? (
+      {!state ? (
         'loading...'
       ) : (
         <>
-          <Tables
-            data={currentPost}
-            thead={launchtableHead}
-            loading={state.loading}
-            name='launch'
-          />
+          <button onClick={filter}>Filter</button>
+          <button onClick={launchYear}>2018</button>
+          <button onClick={filterYear}>2008</button>
+          <Tables data={currentPost} thead={launchtableHead} />
           <Pagination
             paginate={paginate}
             postsPerPage={postsPerPage}
-            totalPosts={state.data.length}
+            totalPosts={state.length}
             currentPage={currentPage}
             query={query}
-            route='launch'
           />
         </>
       )}
