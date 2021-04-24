@@ -56,7 +56,7 @@ th {
     position: relative; 
     height: 95vh;
     width: 100%;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
@@ -65,7 +65,19 @@ th {
     z-index: 1;
     font-size: var(--h1-size);
     color: var(--font-color-2);
+    margin-top: -50vh;
 }
+
+.Logo {
+  width: 1500px;
+  height: 150px;
+  position: inherit;
+  z-index: -1;
+  margin-left: auto;
+  margin-right: auto;
+  left: 10vw;
+}
+
 
 .Home::before {    
     content: "";
@@ -211,4 +223,3 @@ th {
 }
 
 
-  
