@@ -1,16 +1,40 @@
 import React from 'react'
+import Counter from '../components/Counters'
+import styles from '../styles/screens.module.css'
 
 const HomeScreen = () => {
   return (
     <div className='Wrapper'>
       <h1>HomeScreen</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum molestias
-        quasi, voluptatum doloribus voluptatem sed odit, unde vitae aliquid
-        minima consequatur natus quae non repellendus, eum fugit earum!
-        Inventore sequi excepturi aspernatur deserunt recusandae minima ab
-        animi, natus iusto magnam?
-      </p>
+      <div className={styles.Home}>
+        <div className={styles.Counters}>
+          <Counter
+            link='/users'
+            icon='😅'
+            title='title'
+            number={parseInt('448')}
+          />
+          <Counter
+            link='/institutions/companies'
+            icon='💙'
+            title='title'
+            number={parseInt('556')}
+          />
+          <Counter
+            link='/institutions/startups'
+            icon='🔐'
+            title='title'
+            number={parseInt('112')}
+          />
+          <Counter
+            link='/requests'
+            icon='🛠'
+            title='title'
+            number={parseInt('22')}
+          />
+        </div>
+      </div>
+      <div>something</div>
     </div>
   )
 }

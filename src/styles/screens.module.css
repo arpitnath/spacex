@@ -51,3 +51,153 @@ th {
     vertical-align: inherit;
     font-weight: bold;
 }
+
+.Home {
+    position: relative; 
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Home::before {    
+    content: "";
+    /* background-image: url('../assets/404.svg'); */
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+
+.Counters {
+  bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  left: 0;
+  margin: auto;
+  max-width: 1200px;
+  max-width: auto;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 99999;
+  
+}
+
+ 
+.Counters a {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.Counters a:after {
+  border-radius: 50%;
+  content: '';
+  height: 150px;
+  box-shadow: 0 0 50px 0 rgba(#3ab396, 0.4);
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  width: 150px;
+}
+.Counters a:hover:after {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.Counters .CounterContent {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+.CounterCircle svg {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-70deg);
+}
+.CounterCircle .Circle {
+  stroke: #3ab396;
+  stroke-width: 2px;
+  fill: transparent;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0;
+  animation: circle 2s ease-in-out 0.3s forwards;
+}
+@keyframes circle {
+  50% {
+    fill: transparent;
+  }
+  100% {
+    fill: rgba(22, 26, 64, 0.7);
+    opacity: 1;
+    stroke-dashoffset: 580;
+  }
+}
+
+.CounterIcon {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotate 2s ease-in-out 0.3s alternate 1 none running;
+}
+.CounterIcon span {
+  transform: rotate(-360deg);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateIcon 2s ease-in-out 0.3s alternate 1 none running;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+.CounterNumber {
+  font-size: 2rem;
+  line-height: 3rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.CounterLabel, .CounterNumber {
+  z-index: 10;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+
+  
