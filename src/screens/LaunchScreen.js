@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const LaunchScreen = () => {
   const source = axios.CancelToken.source()
-  let path = History.location.pathname + History.location.search
+  let path = History.location.pathname.split('/')[1]
 
   const fetchPost = async url => {
     const res = await axios.get(url)
@@ -19,6 +19,8 @@ const LaunchScreen = () => {
   }
   const [state, setState] = useState({ data: null, loading: false })
   const [filter, setFilter] = useState([])
+
+  const [urlPath, setUrlPath] = useState(path)
 
   let params = History.location.search
   let q = params.split('=page')[1]
@@ -33,6 +35,7 @@ const LaunchScreen = () => {
 
   const paginate = pageNumber => setCurrentPage(pageNumber)
 
+  const applyFailFilter = state.data?.filter(x => x.status === true)
   useEffect(() => {
     fetchPost(urls.launch)
 
@@ -42,34 +45,90 @@ const LaunchScreen = () => {
     // eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    let x = History.location.search
+    let partX = x.split('?q')[0]
+
+    console.log(x)
+    console.log('partX: ', partX)
+    if (partX) {
+      let finalQ = partX.split('?')[1]
+      console.log('finalQ: ', finalQ)
+      let fData = state.data?.filter(x => x.status === true)
+      setState({ data: fData, loading: true })
+    }
+  }, [])
+
   //<---||--->
   function filterFail() {
-    var newData = state.data.filter(x => x.status === false)
+    var newData = applyFailFilter
 
     // setState(newData)
     setState({ data: newData, loading: true })
-    setFilter([...filter, 'fail'])
+    setCurrentPage(1)
+
+    var findFilter = filter.find(x => x === 'success')
+
+    if (!findFilter) {
+      setFilter([...filter, 'success'])
+    }
+  }
+
+  function testCheck() {
+    var x = path
+    var y = filter.join('&')
+    var z = x + '?' + y
+    // console.log('filtershouldupdate: ', filter)
+    // console.log('z: ', z)
+
+    setUrlPath(z)
+  }
+
+  function checkFilter() {
+    // var failed = filter.find(x => x === 'fail')
+    // if (failed) {
+    //   console.log('found a failed filter: ', failed)
+    //   var filteredData = applyFailFilter
+    //   setState({ data: filteredData, loading: true })
+    // }
   }
 
   function removeFilter() {
     fetchPost(urls.launch)
 
     setFilter([])
+    setUrlPath(path)
+
+    console.log(urlPath)
   }
 
   useEffect(() => {
-    console.log(filter)
-  }, [filter])
-  // function filterSuccess() {
-  //   var newData = state.data.filter(x => x.status === true)
+    console.log('<----------------->')
+    // console.log('state got changed: -', state.data?.length)
+    // checkFilter()
+    let x = History.location.search
+    let partX = x.split('?q')[0]
 
-  //   // setState(newData)
-  //   setState({ data: newData, loading: true })
-  // }
+    console.log(x)
+    console.log('partX: ', partX)
+    if (partX) {
+      let finalQ = partX.split('?')[1]
+      console.log('finalQ: ', finalQ)
+      filterFail()
+    }
+  }, [History.location])
+
+  useEffect(() => {
+    if (filter.length !== 0) {
+      testCheck()
+    }
+
+    // checkFilter()
+  }, [filter])
 
   return (
     <div className='Wrapper'>
-      <button onClick={filterFail}>Success</button>
+      <button onClick={filterFail}>Filter</button>
       <button onClick={removeFilter}>No filter</button>
 
       {!state.data ? (
@@ -88,7 +147,7 @@ const LaunchScreen = () => {
             totalPosts={state.data.length}
             currentPage={currentPage}
             query={query}
-            route='launch'
+            route={urlPath}
           />
         </>
       )}

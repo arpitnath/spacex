@@ -30,12 +30,19 @@ const Pagination = ({
   }
 
   useEffect(() => {
+    // console.log('<----------->')
+    // console.log('urlPath', urlPath)
+    // console.log('route: ', route)
+    // console.log('Pagination Loaction: ', History.location.pathname)
     let page = currentPage
     if (page != null) {
-      if (History.location.pathname === `/${route}`) {
-        History.push(`/${route}?q=page` + currentPage)
-        // console.log(page)
-      }
+      // if (History.location.pathname === `/${route}`) {
+      //   History.push(`/${route}?q=page` + currentPage)
+      //   // console.log(page)
+      // } else {
+      //   History.push(`/${route}?q=page` + currentPage)
+      // }
+      History.push(`/${route}?q=page` + currentPage)
     }
 
     return () => {
