@@ -63,9 +63,8 @@ const LaunchScreen = () => {
   function filterFail() {
     var newData = applyFailFilter
 
-    // setState(newData)
     setState({ data: newData, loading: true })
-    setCurrentPage(1)
+    // setCurrentPage(1)
 
     var findFilter = filter.find(x => x === 'success')
 
@@ -78,19 +77,8 @@ const LaunchScreen = () => {
     var x = path
     var y = filter.join('&')
     var z = x + '?' + y
-    // console.log('filtershouldupdate: ', filter)
-    // console.log('z: ', z)
 
     setUrlPath(z)
-  }
-
-  function checkFilter() {
-    // var failed = filter.find(x => x === 'fail')
-    // if (failed) {
-    //   console.log('found a failed filter: ', failed)
-    //   var filteredData = applyFailFilter
-    //   setState({ data: filteredData, loading: true })
-    // }
   }
 
   function removeFilter() {
@@ -103,34 +91,27 @@ const LaunchScreen = () => {
   }
 
   useEffect(() => {
-    console.log('<----------------->')
-    // console.log('state got changed: -', state.data?.length)
-    // checkFilter()
     let x = History.location.search
     let partX = x.split('?q')[0]
 
-    console.log(x)
-    console.log('partX: ', partX)
     if (partX) {
       let finalQ = partX.split('?')[1]
       console.log('finalQ: ', finalQ)
       filterFail()
     }
-  }, [History.location])
+  }, [History.location, query])
 
   useEffect(() => {
     if (filter.length !== 0) {
       testCheck()
     }
-
-    // checkFilter()
   }, [filter])
 
   return (
     <div className='Wrapper'>
       <button onClick={filterFail}>Filter</button>
       <button onClick={removeFilter}>No filter</button>
-
+      {filter ? filter.map(item => <h4>{item}</h4>) : ''}
       {!state.data ? (
         'loading...'
       ) : (

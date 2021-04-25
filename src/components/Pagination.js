@@ -30,10 +30,7 @@ const Pagination = ({
   }
 
   useEffect(() => {
-    // console.log('<----------->')
-    // console.log('urlPath', urlPath)
-    // console.log('route: ', route)
-    // console.log('Pagination Loaction: ', History.location.pathname)
+    console.log(currentPage)
     let page = currentPage
     if (page != null) {
       // if (History.location.pathname === `/${route}`) {
