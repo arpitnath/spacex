@@ -94,6 +94,7 @@ const LaunchScreen = () => {
     if (filter.length !== 0) {
       updateUrl()
     }
+    // eslint-disable-next-line
   }, [History.location, filter])
 
   return (

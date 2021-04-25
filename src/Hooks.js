@@ -21,6 +21,7 @@ export const useFetch = (url, data_function = null) => {
     return () => {
       source.cancel()
     }
+    // eslint-disable-next-line
   }, [])
 
   return state
