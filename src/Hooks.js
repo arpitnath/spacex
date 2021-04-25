@@ -21,7 +21,7 @@ export const useFetch = (url, data_function = null) => {
     return () => {
       source.cancel()
     }
-  })
+  }, [])
 
   return state
 }

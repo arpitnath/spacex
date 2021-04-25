@@ -5,6 +5,7 @@ import History from '../components/History'
 import { launchtableHead } from '../data'
 import { getLaunchData, urls } from '../utils'
 import axios from 'axios'
+import FilterBtns from '../components/FilterBtns'
 
 const LaunchScreen = () => {
   const source = axios.CancelToken.source()
@@ -35,7 +36,49 @@ const LaunchScreen = () => {
 
   const paginate = pageNumber => setCurrentPage(pageNumber)
 
-  const applyFailFilter = state.data?.filter(x => x.status === true)
+  const applyFailFilter = state.data?.filter(x => x.status === false)
+  const applySuccessFilter = state.data?.filter(x => x.status === true)
+
+  function filterWithStatus(status) {
+    let findFilter = filter.find(x => x === status)
+    if (!findFilter) {
+      if (status === 'success') {
+        let newData = applySuccessFilter
+        setState({ data: newData, loading: true })
+        setFilter([status])
+        setCurrentPage(1)
+      }
+      if (status === 'fail') {
+        let newData = applyFailFilter
+        setState({ data: newData, loading: true })
+        setFilter([status])
+        setCurrentPage(1)
+      }
+    }
+  }
+
+  function getUrl() {
+    var Path = path
+    var options = filter.join('&')
+    var urlQuery = Path + '?filter=' + options
+
+    return urlQuery
+  }
+
+  function updateUrl() {
+    const urlQuery = getUrl()
+
+    setUrlPath(urlQuery)
+  }
+
+  function removeFilter() {
+    fetchPost(urls.launch)
+
+    setFilter([])
+    setUrlPath(path)
+    setCurrentPage(1)
+  }
+
   useEffect(() => {
     fetchPost(urls.launch)
 
@@ -46,71 +89,18 @@ const LaunchScreen = () => {
   }, [])
 
   useEffect(() => {
-    let x = History.location.search
-    let partX = x.split('?q')[0]
+    // const x = History.location.pathname.split('/')[1] + History.location.search
 
-    console.log(x)
-    console.log('partX: ', partX)
-    if (partX) {
-      let finalQ = partX.split('?')[1]
-      console.log('finalQ: ', finalQ)
-      let fData = state.data?.filter(x => x.status === true)
-      setState({ data: fData, loading: true })
-    }
-  }, [])
-
-  //<---||--->
-  function filterFail() {
-    var newData = applyFailFilter
-
-    setState({ data: newData, loading: true })
-    // setCurrentPage(1)
-
-    var findFilter = filter.find(x => x === 'success')
-
-    if (!findFilter) {
-      setFilter([...filter, 'success'])
-    }
-  }
-
-  function testCheck() {
-    var x = path
-    var y = filter.join('&')
-    var z = x + '?' + y
-
-    setUrlPath(z)
-  }
-
-  function removeFilter() {
-    fetchPost(urls.launch)
-
-    setFilter([])
-    setUrlPath(path)
-
-    console.log(urlPath)
-  }
-
-  useEffect(() => {
-    let x = History.location.search
-    let partX = x.split('?q')[0]
-
-    if (partX) {
-      let finalQ = partX.split('?')[1]
-      console.log('finalQ: ', finalQ)
-      filterFail()
-    }
-  }, [History.location, query])
-
-  useEffect(() => {
     if (filter.length !== 0) {
-      testCheck()
+      updateUrl()
     }
-  }, [filter])
+  }, [History.location, filter])
 
   return (
     <div className='Wrapper'>
-      <button onClick={filterFail}>Filter</button>
+      <FilterBtns filter={filterWithStatus} Props={filter} />
       <button onClick={removeFilter}>No filter</button>
+
       {filter ? filter.map((item, idx) => <h4 key={idx}>{item}</h4>) : ''}
       {!state.data ? (
         'loading...'

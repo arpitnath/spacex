@@ -30,15 +30,8 @@ const Pagination = ({
   }
 
   useEffect(() => {
-    console.log(currentPage)
     let page = currentPage
     if (page != null) {
-      // if (History.location.pathname === `/${route}`) {
-      //   History.push(`/${route}?q=page` + currentPage)
-      //   // console.log(page)
-      // } else {
-      //   History.push(`/${route}?q=page` + currentPage)
-      // }
       History.push(`/${route}?q=page` + currentPage)
     }
 
