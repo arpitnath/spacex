@@ -73,6 +73,39 @@ li {
   margin: 5rem;
 }
 
+.filtersWrapper {
+  max-width: 20%;
+  height: 50px;
+  margin-top: -15px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr  ;
+  column-gap: 10px;
+  position: relative;
+  
+}
+
+.filterBtn {
+  background: #336585;
+  padding: var(--distance-2);
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none !important;
+}
+
+.applied {
+  background-color: var(--success);
+}
+
+.remove {
+  background-color: var(--colors-1);
+}
+
+
+
 .success {
   background: var(--success);
 }

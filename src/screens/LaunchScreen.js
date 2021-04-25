@@ -96,13 +96,20 @@ const LaunchScreen = () => {
     }
     // eslint-disable-next-line
   }, [History.location, filter])
+  // {
+  //   filter ? filter.map((item, idx) => <h4 key={idx}>{item}</h4>) : ''
+  // }
 
   return (
     <div className='Wrapper'>
-      <FilterBtns filter={filterWithStatus} Props={filter} />
-      <button onClick={removeFilter}>No filter</button>
+      <div className='filtersWrapper'>
+        <FilterBtns
+          filter={filterWithStatus}
+          Props={filter}
+          removeFilter={removeFilter}
+        />
+      </div>
 
-      {filter ? filter.map((item, idx) => <h4 key={idx}>{item}</h4>) : ''}
       {!state.data ? (
         'loading...'
       ) : (
