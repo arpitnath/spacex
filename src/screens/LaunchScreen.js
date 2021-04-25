@@ -111,7 +111,7 @@ const LaunchScreen = () => {
     <div className='Wrapper'>
       <button onClick={filterFail}>Filter</button>
       <button onClick={removeFilter}>No filter</button>
-      {filter ? filter.map(item => <h4>{item}</h4>) : ''}
+      {filter ? filter.map((item, idx) => <h4 key={idx}>{item}</h4>) : ''}
       {!state.data ? (
         'loading...'
       ) : (
