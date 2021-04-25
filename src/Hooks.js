@@ -22,7 +22,7 @@ export const useFetch = (url, data_function = null) => {
       source.cancel()
     }
     // eslint-disable-next-line
-  }, [])
+  }, [state])
 
   return state
 }
