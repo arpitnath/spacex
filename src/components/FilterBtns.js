@@ -23,9 +23,9 @@ const FilterBtns = ({ filter, Props, removeFilter }) => {
       {Props.find(filter => filter === 'success') && (
         <>
           <button className='filterBtn' disabled>
-            ❌ FilterFail
+            ❌ Failed Launches
           </button>
-          <button className='filterBtn applied'>✓ FilterSuccess</button>
+          <button className='filterBtn applied'>✓ Successful Launches</button>
           <button className='filterBtn remove' onClick={removeFilter}>
             <span
               className='iconify'
@@ -40,10 +40,10 @@ const FilterBtns = ({ filter, Props, removeFilter }) => {
       {Props.length === 0 && (
         <>
           <button className='filterBtn' onClick={() => filter('fail')}>
-            FilterFail
+            Failed Launches
           </button>
           <button className='filterBtn' onClick={() => filter('success')}>
-            FilterSuccess
+            Successful Launches
           </button>
         </>
       )}
