@@ -5,6 +5,7 @@
     height: 100%;
     width: 100%;
     color: var(--font-color-1); 
+    margin-top: 2rem;
     margin-bottom: var(--distance-1);
     border-collapse: collapse;
     display: table;
