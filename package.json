@@ -17,11 +17,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start & sass src/styles/scss:src/styles/css --watch --no-source-map",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "sass": "sass src/styles/scss:src/styles/css --watch --no-source-map"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
