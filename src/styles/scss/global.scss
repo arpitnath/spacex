@@ -1,5 +1,16 @@
+@use 'variables';
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 body {
-  background: red;
-  color: black;
-  font-size: 1.3rem;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: variables.$background-color;
+  color: #000;
 }
