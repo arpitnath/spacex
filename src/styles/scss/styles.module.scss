@@ -1,1 +1,12 @@
+@use './variables' as var;
 @import 'components/navbar.module.scss';
+@import 'components/table.module.scss';
+@import 'pages/launch.module.scss';
+
+// common styles
+.Container {
+  height: auto;
+  width: inherit;
+  margin: var.$d2;
+  padding: 0;
+}

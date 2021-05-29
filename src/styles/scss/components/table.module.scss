@@ -1,0 +1,18 @@
+@use '../variables' as var;
+
+.Table {
+  border: var.$border-only;
+  box-shadow: var.$box-shadow;
+  position: absolute;
+  width: 1200px;
+  height: 676px;
+  color: var.$tertiary-font-color;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: var.$d10 + var.$d5;
+  border-collapse: collapse;
+  display: table;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  font-weight: var.$font-weight-regular;
+}

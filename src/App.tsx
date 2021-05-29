@@ -21,7 +21,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <Router history={History}>
-        <div className='Container'>
+        <div className='Global-Container'>
           <Navbar src={logo} alt='logo' />
           <Switch>
             <Route path={'/launch'} component={Launch} />

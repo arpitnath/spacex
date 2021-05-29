@@ -1,4 +1,4 @@
-@use 'variables';
+@use 'variables' as var;
 
 *,
 ::after,
@@ -11,11 +11,11 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: variables.$background-color;
+  background-color: var.$background-color;
   color: #000;
 }
 
-.Container {
+.Global-Container {
   text-align: center;
-  width: variables.$content-width;
+  width: var.$content-width;
 }
