@@ -10,7 +10,7 @@ import { delData } from '../del'
 import { useFetch } from '../helpers/Hooks'
 
 const Launch: React.FC = () => {
-  const { data, setData } = useFetch(launchApi)
+  const { data, setData, error } = useFetch(launchApi)
 
   const update = () => {
     setData(() => ({ state: delData, loading: false }))
@@ -18,23 +18,29 @@ const Launch: React.FC = () => {
     console.log(data)
   }
 
-  // console.log(data)
+  console.log(error.message)
   return (
     <>
       {/* Loading state => `spinner` */}
       <div className={styles.LaunchWrapper}>
         {/* Filters */}
-        <div className={styles.Container}>
-          {/* Filter wrapper */}
-          {/* buttons */}
-          {/* calender modal */}
-          {/* accordion */}
-        </div>
-        <button onClick={update}>update</button>
-        <div className={styles.Container}>
-          <Table thead={launchHead} data={data.state} />
-          {/* Pagination */}
-        </div>
+        {error.status !== 200 ? (
+          <>{error.message}</>
+        ) : (
+          <>
+            <div className={styles.Container}>
+              {/* Filter wrapper */}
+              {/* buttons */}
+              {/* calender modal */}
+              {/* accordion */}
+            </div>
+            <button onClick={update}>update</button>
+            <div className={styles.Container}>
+              <Table thead={launchHead} data={data.state} />
+              {/* Pagination */}
+            </div>
+          </>
+        )}
       </div>
     </>
   )

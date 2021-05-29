@@ -8,6 +8,11 @@ export type StateData = {
   loading: boolean
 }
 
+export type Error = {
+  status: number
+  message: string
+}
+
 export interface launchDataRes {
   id: string
   serial_number: string

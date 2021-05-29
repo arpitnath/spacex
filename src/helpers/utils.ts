@@ -8,9 +8,9 @@ export const launchApi = process.env.REACT_APP_SPACEX_BASE_API + 'launches'
 
 export const fetchData = async (url: string) => {
   try {
-    const { data } = await axios.get(url)
-    return { data }
-    // return obj({ state: data, laoding: true })
+    const { data, status } = await axios.get(url)
+    return { data, status }
+
     return data
   } catch (error) {
     if (axios.isAxiosError(error)) {
