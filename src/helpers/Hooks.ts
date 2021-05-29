@@ -39,3 +39,59 @@ export const useFetch = (url: string) => {
 
   return { data, setData, error }
 }
+
+type PaginateState = {
+  currentPage: number | null
+  postsPerPage: number | null
+  currentPost: launchDataRes[] | null
+  paginate: (pageNumber: number) => void
+}
+
+export const usePaginate = (data: launchDataRes[] | null) => {
+  const [state, setState] = useState<PaginateState>({
+    currentPage: null,
+    postsPerPage: null,
+    currentPost: [],
+    paginate: function () {
+      return
+    }
+  })
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(10)
+
+  const [loading, setLoading] = useState(false)
+
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfFirstpage = indexOfLastPost - postsPerPage
+  const currentPost = data
+    ? data.slice(indexOfFirstpage, indexOfLastPost)
+    : null
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber)
+    setLoading(true)
+  }
+
+  useEffect(() => {
+    setState({
+      currentPage: currentPage,
+      postsPerPage: postsPerPage,
+      currentPost: currentPost,
+      paginate: paginate
+    })
+    return () => {
+      setState({
+        currentPage: null,
+        postsPerPage: null,
+        currentPost: [],
+        paginate: function () {
+          return
+        }
+      })
+      setLoading(false)
+    }
+  }, [loading])
+
+  return state
+}

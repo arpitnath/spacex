@@ -5,12 +5,18 @@ import { launchApi } from '../helpers/utils'
 import styles from '../styles/scss/styles.module.scss'
 
 import { launchHead } from '../helpers/tableheadData'
-
-import { delData } from '../del'
-import { useFetch } from '../helpers/Hooks'
+import History from '../helpers/History'
+// import { delData } from '../del'
+import { useFetch, usePaginate } from '../helpers/Hooks'
 
 const Launch: React.FC = () => {
   const { data, setData, error } = useFetch(launchApi)
+  const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(
+    data.state
+  )
+  const params = History.location.search
+  const q = params.split('=page')[1]
+  const query = parseInt(q)
 
   return (
     <>
