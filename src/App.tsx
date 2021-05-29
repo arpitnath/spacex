@@ -5,6 +5,7 @@ import History from './utils/History'
 //pages OR components
 import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
+import Launch from './pages/Launch'
 
 const TestErr = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
     <ErrorBoundary>
       <Router history={History}>
         <Switch>
+          <Route path={'/launch'} component={Launch} />
           <Route path={'/'} component={Home} exact />
           <Route component={TestErr} />
         </Switch>
