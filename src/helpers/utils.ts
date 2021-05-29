@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import moment from 'moment'
 import { v4 as uuidv4 } from 'uuid'
 import { apiData, launchDataRes } from './types'
@@ -10,12 +10,12 @@ export const fetchData = async (url: string) => {
   try {
     const { data, status } = await axios.get(url)
     return { data, status }
-
-    return data
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log(error)
-      //   handleAxiosError(error)
+      //handle AxiosError
+      const err = handleError(error)
+      console.log(err)
+      return err
     } else {
       //   handleUnexpectedError(error)
       console.log(error)
@@ -23,6 +23,23 @@ export const fetchData = async (url: string) => {
   }
 }
 
+export const handleError = (error: AxiosError) => {
+  console.log(error.config)
+  if (error.response) {
+    console.log(error.response.data)
+    console.log(error.response.status)
+    console.log(error.response.headers)
+    return { status: error.response.status, msg: error.response.data }
+  } else if (error.request) {
+    console.log(error.request)
+    return { status: 400, msg: 'Bad Request' }
+  } else {
+    console.log('Error', error.message)
+    return { status: 400, msg: 'Bad Request' }
+  }
+}
+
+//Parsing required data
 export const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
   _res?.map((data: apiData) => {
     arr.push({
