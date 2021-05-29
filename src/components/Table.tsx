@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/scss/styles.module.scss'
 import { Thead } from '../helpers/tableheadData'
 import { launchDataRes } from '../helpers/types'
+import Status from './Status'
 
 interface IProps {
   thead: Thead[]
@@ -10,6 +11,16 @@ interface IProps {
 
 const Table: React.FC<IProps> = ({ thead, data }) => {
   // console.log(data)
+  const checkStatus = (data: boolean | null) => {
+    if (data === null) {
+      return <Status status='Upcoming' />
+    }
+    if (data) {
+      return <Status status='Success' />
+    } else {
+      return <Status status='Failed' />
+    }
+  }
   return (
     <>
       {/* Modal */}
@@ -30,7 +41,7 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
               <td>{item.location}</td>
               <td>{item.mission}</td>
               <td>{item.orbit}</td>
-              <td>{item.status}</td>
+              <td>{checkStatus(item.status)}</td>
               <td>{item.rocket}</td>
             </tr>
           ))}

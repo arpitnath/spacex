@@ -12,13 +12,6 @@ import { useFetch } from '../helpers/Hooks'
 const Launch: React.FC = () => {
   const { data, setData, error } = useFetch(launchApi)
 
-  const update = () => {
-    setData(() => ({ state: delData, loading: false }))
-
-    console.log(data)
-  }
-
-  console.log(error.message)
   return (
     <>
       {/* Loading state => `spinner` */}
@@ -34,7 +27,7 @@ const Launch: React.FC = () => {
               {/* calender modal */}
               {/* accordion */}
             </div>
-            <button onClick={update}>update</button>
+
             <div className={styles.Container}>
               <Table thead={launchHead} data={data.state} />
               {/* Pagination */}

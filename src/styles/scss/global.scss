@@ -19,3 +19,18 @@ body {
   text-align: center;
   width: var.$content-width;
 }
+
+.Success {
+  background: var.$success-bg;
+  color: var.$success-color;
+}
+
+.Failed {
+  background: var.$fail-bg;
+  color: var.$fail-color;
+}
+
+.Upcoming {
+  background: var.$upcoming-bg;
+  color: var.$upcoming-color;
+}
