@@ -14,3 +14,8 @@ body {
   background-color: variables.$background-color;
   color: #000;
 }
+
+.Container {
+  text-align: center;
+  width: variables.$content-width;
+}

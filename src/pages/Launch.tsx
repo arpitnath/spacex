@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Launch = () => {
+const Launch: React.FC = () => {
   return (
-    <div>
+    <div style={{ marginTop: '100px' }}>
       <h1>Launch Page</h1>
     </div>
   )
