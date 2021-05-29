@@ -4,8 +4,7 @@ import { launchDataRes, StateData, Error } from './types'
 import { parseLaunchData, handleError } from './utils'
 
 export const useFetch = (url: string) => {
-  const CancelToken = axios.CancelToken
-  const source = CancelToken.source()
+  const source = axios.CancelToken.source()
   const [data, setData] = useState<StateData>({ state: null, loading: false })
   const [error, setError] = useState<Error>({
     status: 102,
@@ -33,24 +32,25 @@ export const useFetch = (url: string) => {
       }
     })()
     return () => {
-      source.token
+      source.cancel()
     }
+    // eslint-disable-next-line
   }, [url])
 
   return { data, setData, error }
 }
 
-type PaginateState = {
-  currentPage: number | null
-  postsPerPage: number | null
+export interface IPaginateState {
+  currentPage: number
+  postsPerPage: number
   currentPost: launchDataRes[] | null
   paginate: (pageNumber: number) => void
 }
 
 export const usePaginate = (data: launchDataRes[] | null) => {
-  const [state, setState] = useState<PaginateState>({
-    currentPage: null,
-    postsPerPage: null,
+  const [pgState, setPgState] = useState<IPaginateState>({
+    currentPage: 0,
+    postsPerPage: 10,
     currentPost: [],
     paginate: function () {
       return
@@ -74,16 +74,16 @@ export const usePaginate = (data: launchDataRes[] | null) => {
   }
 
   useEffect(() => {
-    setState({
+    setPgState({
       currentPage: currentPage,
       postsPerPage: postsPerPage,
       currentPost: currentPost,
       paginate: paginate
     })
     return () => {
-      setState({
-        currentPage: null,
-        postsPerPage: null,
+      setPgState({
+        currentPage: 0,
+        postsPerPage: 10,
         currentPost: [],
         paginate: function () {
           return
@@ -91,7 +91,8 @@ export const usePaginate = (data: launchDataRes[] | null) => {
       })
       setLoading(false)
     }
+    // eslint-disable-next-line
   }, [loading])
 
-  return state
+  return { pgState, setPgState }
 }
