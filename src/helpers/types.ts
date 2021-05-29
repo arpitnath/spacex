@@ -3,7 +3,13 @@ export type Image = {
   alt: string
 }
 
+export type StateData = {
+  state: launchDataRes[] | null
+  loading: boolean
+}
+
 export interface launchDataRes {
+  id: string
   serial_number: string
   date: string
   location: string

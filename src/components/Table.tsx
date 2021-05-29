@@ -3,13 +3,13 @@ import styles from '../styles/scss/styles.module.scss'
 import { Thead } from '../helpers/tableheadData'
 import { launchDataRes } from '../helpers/types'
 
-interface Props {
+interface IProps {
   thead: Thead[]
   data: launchDataRes[] | null
 }
 
-const Table: React.FC<Props> = ({ thead, data }) => {
-  console.log(data)
+const Table: React.FC<IProps> = ({ thead, data }) => {
+  // console.log(data)
   return (
     <>
       {/* Modal */}

@@ -1,41 +1,15 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import moment from 'moment'
+import { v4 as uuidv4 } from 'uuid'
 import { apiData, launchDataRes } from './types'
 
 //api end-points
 export const launchApi = process.env.REACT_APP_SPACEX_BASE_API + 'launches'
-const CancelToken = axios.CancelToken
-const source = CancelToken.source()
-
-export interface StateData {
-  state: launchDataRes[] | null
-  loading: boolean
-}
-
-export const useFetch = (url: string) => {
-  const [data, setData] = useState<StateData>({ state: null, loading: false })
-
-  useEffect(() => {
-    ;(async function () {
-      const { data } = await axios.get(url)
-      const dataArr: launchDataRes[] = []
-      parseLaunchData(data, dataArr)
-
-      setData({ state: dataArr, loading: true })
-    })()
-    return () => {
-      source.token
-      //   setData({ state: null, laoding: false })
-    }
-  }, [url])
-
-  return { data, setData }
-}
 
 export const fetchData = async (url: string) => {
   try {
     const { data } = await axios.get(url)
-
+    return { data }
     // return obj({ state: data, laoding: true })
     return data
   } catch (error) {
@@ -49,13 +23,12 @@ export const fetchData = async (url: string) => {
   }
 }
 
-const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
+export const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
   _res?.map((data: apiData) => {
     arr.push({
-      //   id: uuidv4(),
+      id: uuidv4(),
       serial_number: data.flight_number,
-      //   date: parseDate(`${data.launch_date_utc}`),
-      date: data.launch_date_utc,
+      date: parseDate(`${data.launch_date_utc}`),
       location: data.launch_site.site_name,
       full_location: data.launch_site.site_name_long,
       mission: data.mission_name,
@@ -81,4 +54,8 @@ const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
     // return data
   })
   return arr
+}
+
+const parseDate = (utc: string) => {
+  return moment(utc).format('DD-MM-YYYY HH:mm')
 }
