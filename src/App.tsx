@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
-import History from './utils/History'
+import History from './helpers/History'
 
 //pages OR components
 import logo from './assets/Logo.svg'

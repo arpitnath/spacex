@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from '../utils/types'
+import { Image } from '../helpers/types'
 import styles from '../styles/scss/styles.module.scss'
 
 const Navbar: React.FC<Image> = ({ src, alt }) => {
