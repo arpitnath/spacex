@@ -9,6 +9,7 @@ import { useFetch, usePaginate } from '../helpers/Hooks'
 import Pagination from '../components/Pagination'
 import Icon from '@iconify/react'
 import { calender, downIcon } from '../helpers/icons'
+import Accordion from '../components/Accordion'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -54,7 +55,7 @@ const Launch: React.FC = () => {
                   <button className={styles.Button}>reset</button>
                 </div>
                 {/* calender modal */}
-                <div>accordion</div>
+                <Accordion Title='All launches'>{<p>accordion</p>}</Accordion>
                 {/* accordion */}
               </div>
             </div>
