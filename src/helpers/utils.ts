@@ -6,21 +6,21 @@ import { apiData, launchDataRes } from './types'
 //api end-points
 export const launchApi = process.env.REACT_APP_SPACEX_BASE_API + 'launches'
 
-export const fetchData = async (url: string) => {
-  try {
-    const { data, status } = await axios.get(url)
-    return { data, status }
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      //handle AxiosError
-      const err = handleError(error)
-      console.log(err)
-      return err
-    } else {
-      //   handleUnexpectedError(error)
-      console.log(error)
-    }
+export const fetchData = async (url: string, upcoming = false) => {
+  // const source = axios.CancelToken.source()
+
+  const { data, status } = await axios.get(url)
+
+  if (status === 200) {
+    const dataArr: launchDataRes[] = []
+    parseLaunchData(data, dataArr)
+
+    return dataArr
+  } else {
+    return null
   }
+
+  // return () => source.cancel()
 }
 
 export const handleError = (error: AxiosError) => {

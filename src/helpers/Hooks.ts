@@ -18,9 +18,8 @@ export const useFetch = (url: string) => {
 
         const dataArr: launchDataRes[] = []
         parseLaunchData(data, dataArr)
-
+        console.log(status)
         setData({ state: dataArr, loading: true })
-        setError({ status: status, message: status === 200 ? 'OK' : '' })
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const err = handleError(error)
@@ -31,11 +30,12 @@ export const useFetch = (url: string) => {
         }
       }
     })()
+
     return () => {
       source.cancel()
     }
     // eslint-disable-next-line
-  }, [url])
+  }, [])
 
   return { data, setData, error }
 }

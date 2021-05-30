@@ -4,8 +4,8 @@ import styles from '../styles/scss/styles.module.scss'
 
 type Props = {
   filterFunctions: (x: string) => void
-  removeFilter: (x: string) => void
-  filterUpcoming: (x: string) => void
+  removeFilter: () => void
+  filterUpcoming: () => void
 }
 
 type BtnState = {
@@ -37,14 +37,6 @@ const FilterButtons: React.FC<Props> = ({
     state: true
   })
 
-  const urlFail = () => {
-    filterFunctions('fail')
-    setFailedBtn({ active: true, state: true })
-    setRemoveBtn({ active: false, state: false })
-    setUpcomingBtn({ active: false, state: true })
-    setSuccesBtn({ active: false, state: true })
-  }
-
   const success = () => {
     filterFunctions('success')
     urlSuccess()
@@ -55,8 +47,16 @@ const FilterButtons: React.FC<Props> = ({
   }
 
   const upcoming = () => {
-    filterUpcoming('x')
+    filterUpcoming()
     urlUpcoming()
+  }
+
+  const urlFail = () => {
+    // filterFunctions('fail')
+    setFailedBtn({ active: true, state: true })
+    setRemoveBtn({ active: false, state: false })
+    setUpcomingBtn({ active: false, state: true })
+    setSuccesBtn({ active: false, state: true })
   }
 
   const urlSuccess = () => {
@@ -74,7 +74,7 @@ const FilterButtons: React.FC<Props> = ({
   }
 
   const remove = () => {
-    removeFilter('x')
+    removeFilter()
     setSuccesBtn({ active: false, state: false })
     setFailedBtn(intialState)
     setRemoveBtn({ active: false, state: true })
@@ -151,12 +151,10 @@ const FilterButtons: React.FC<Props> = ({
           className={`${styles.Button} ${styles.filterBtn} ${btn.status}`}
           onClick={btn.filterFunction}
           disabled={btn.disable}>
-          <span>
-            {btn.title === 'fail' && 'Failed'}
-            {btn.title === 'success' && 'Successful'}
-            {btn.title === 'upcoming' && 'Upcoming'}
-            {btn.title === 'remove' && '❌ Remove filters'}
-          </span>
+          {btn.title === 'success' && 'Successful'}
+          {btn.title === 'fail' && 'Failed'}
+          {btn.title === 'upcoming' && 'Upcoming'}
+          {btn.title === 'remove' && '❌ Remove filters'}
         </button>
       ))}
     </div>
