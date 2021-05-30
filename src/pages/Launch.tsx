@@ -10,6 +10,7 @@ import Pagination from '../components/Pagination'
 import Icon from '@iconify/react'
 import { calender, downIcon } from '../helpers/icons'
 import Accordion from '../components/Accordion'
+import FilterBtn from '../components/FilterBtn'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -59,19 +60,11 @@ const Launch: React.FC = () => {
 
               <Accordion Title='All launches'>
                 {
-                  <>
-                    <p>success</p>
-                    <p>fail</p>
-                    <p>upcoming</p>
-                    <p
-                      style={{
-                        // height: '24px',
-                        // width: '54px'
-                        backgroundColor: 'red'
-                      }}>
-                      reset
-                    </p>
-                  </>
+                  <FilterBtn
+                    filterFunctions={(x) => console.log('filterFunctions', x)}
+                    removeFilter={(x) => console.log('remove', x)}
+                    filterUpcoming={(x) => console.log('upcioming', x)}
+                  />
                 }
               </Accordion>
             </div>

@@ -26,3 +26,29 @@
     text-align: center;
   }
 }
+
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 173px;
+  height: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  background-color: var.$secondary-color;
+  position: relative;
+  border: 1px solid #f4f5f7;
+}
+
+.filterBtn {
+  padding: 1rem 0;
+  background: transparent !important;
+}
+
+.filterBtn:hover {
+  cursor: pointer;
+}
+
+.filterBtn:disabled {
+  cursor: not-allowed;
+}

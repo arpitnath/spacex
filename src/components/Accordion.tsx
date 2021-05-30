@@ -19,7 +19,6 @@ const Accordion: React.FC<IAccordion> = ({ children, Title }) => {
   function toggleAccordion() {
     setActiveState(setActive === '' ? 'accordion_active' : '')
     if (content && content.current) {
-      console.log(content.current.scrollHeight)
       setHeightState(
         setActive === 'accordion_active'
           ? '0px'

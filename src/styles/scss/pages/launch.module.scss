@@ -17,6 +17,7 @@
   margin-right: auto;
   align-items: center;
   position: fixed;
+  z-index: 999;
 }
 
 .FilterBtnContainer {
@@ -35,6 +36,7 @@
   font-size: var.$font-size;
   line-height: var.$line-height;
   border: none;
+  cursor: pointer;
 
   span {
     margin: 0 10px;

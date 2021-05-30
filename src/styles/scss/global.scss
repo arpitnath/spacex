@@ -44,5 +44,17 @@ body {
 }
 
 .accordion_active {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid #f4f5f7;
+}
+
+.filterapplied {
+  background-color: var.$button-bg !important;
+  color: var.$button-color !important;
+  width: 150px;
+  height: 45px;
+  border: none;
+  border-radius: var.$border-radius;
+  font-weight: var.$font-weight-medium !important;
+  font-size: var.$font-size;
+  line-height: var.$line-height;
 }
