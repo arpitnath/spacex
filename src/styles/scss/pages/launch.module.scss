@@ -16,6 +16,7 @@
   margin-left: auto;
   margin-right: auto;
   align-items: center;
+  position: fixed;
 }
 
 .FilterBtnContainer {
@@ -25,7 +26,6 @@
   grid-template-rows: repeat(2, 1fr);
   row-gap: var.$d1;
   position: relative;
-  margin: auto;
 }
 
 .Button {

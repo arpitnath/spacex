@@ -19,6 +19,7 @@ const Accordion: React.FC<IAccordion> = ({ children, Title }) => {
   function toggleAccordion() {
     setActiveState(setActive === '' ? 'accordion_active' : '')
     if (content && content.current) {
+      console.log(content.current.scrollHeight)
       setHeightState(
         setActive === 'accordion_active'
           ? '0px'
@@ -51,7 +52,7 @@ const Accordion: React.FC<IAccordion> = ({ children, Title }) => {
       <div
         className={`${styles.Accordion} ${setActive}`}
         onClick={toggleAccordion}>
-        <button style={{ width: '153px' }} className='Button'>
+        <button style={{ width: '153px' }} className={styles.Button}>
           <Icon icon={filterIcon} /> {title}{' '}
           <Icon className='react-icons' icon={downIcon} />
         </button>

@@ -43,21 +43,37 @@ const Launch: React.FC = () => {
           <>{error.message}</>
         ) : (
           <>
-            <div className={styles.Container}>
-              <div className={styles.FilterWrapper}>
-                <div className={styles.FilterBtnContainer}>
-                  <button className={styles.Button}>
-                    <Icon className='react-icons' icon={calender} />
-                    <span>{'datePicker'}</span>
-                    <Icon className='react-icons' icon={downIcon} />
-                  </button>
-                  {/* if filters */}
-                  <button className={styles.Button}>reset</button>
-                </div>
-                {/* calender modal */}
-                <Accordion Title='All launches'>{<p>accordion</p>}</Accordion>
-                {/* accordion */}
+            <div className={styles.FilterWrapper}>
+              <div className={styles.FilterBtnContainer}>
+                <button className={styles.Button}>
+                  <Icon className='react-icons' icon={calender} />
+                  <span>{'datePicker'}</span>
+                  <Icon className='react-icons' icon={downIcon} />
+                </button>
+
+                {/* if filters */}
+                {/* <button className={styles.Button}>reset</button> */}
               </div>
+              {/* calender modal */}
+              {/* <div>accordion</div> */}
+
+              <Accordion Title='All launches'>
+                {
+                  <>
+                    <p>success</p>
+                    <p>fail</p>
+                    <p>upcoming</p>
+                    <p
+                      style={{
+                        // height: '24px',
+                        // width: '54px'
+                        backgroundColor: 'red'
+                      }}>
+                      reset
+                    </p>
+                  </>
+                }
+              </Accordion>
             </div>
 
             {data.state !== null && (
