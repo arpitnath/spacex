@@ -54,31 +54,31 @@ const FilterButtons: React.FC<Props> = ({
   const urlFail = () => {
     // filterFunctions('fail')
     setFailedBtn({ active: true, state: true })
-    setRemoveBtn({ active: false, state: false })
-    setUpcomingBtn({ active: false, state: true })
     setSuccesBtn({ active: false, state: true })
+    setUpcomingBtn({ active: false, state: true })
+    setRemoveBtn({ active: false, state: false })
   }
 
   const urlSuccess = () => {
     setSuccesBtn({ active: true, state: true })
-    setRemoveBtn({ active: false, state: false })
     setFailedBtn({ active: false, state: true })
     setUpcomingBtn({ active: false, state: true })
+    setRemoveBtn({ active: false, state: false })
   }
 
   const urlUpcoming = () => {
     setUpcomingBtn({ active: true, state: true })
     setSuccesBtn({ active: false, state: true })
-    setRemoveBtn({ active: false, state: false })
     setFailedBtn({ active: false, state: true })
+    setRemoveBtn({ active: false, state: false })
   }
 
   const remove = () => {
     removeFilter()
-    setSuccesBtn({ active: false, state: false })
+    setSuccesBtn(intialState)
     setFailedBtn(intialState)
+    setUpcomingBtn(intialState)
     setRemoveBtn({ active: false, state: true })
-    setUpcomingBtn({ active: false, state: false })
   }
 
   const btnProps: BtnProperties[] = [
@@ -120,29 +120,29 @@ const FilterButtons: React.FC<Props> = ({
     }
   ]
 
-  useEffect(() => {
-    const activeUrlFilter = History.location.search.includes('?filter')
-    const activeSuccess = History.location.search.includes('success')
-    const activeFail = History.location.search.includes('fail')
-    const activeUpcoming = History.location.search.includes('upcoming')
+  // useEffect(() => {
+  //   const activeUrlFilter = History.location.search.includes('?filter')
+  //   const activeSuccess = History.location.search.includes('success')
+  //   const activeFail = History.location.search.includes('fail')
+  //   const activeUpcoming = History.location.search.includes('upcoming')
 
-    if (!activeUrlFilter) {
-      setSuccesBtn({ active: false, state: false })
-      setFailedBtn(intialState)
-      setRemoveBtn({ active: false, state: true })
-      setUpcomingBtn({ active: false, state: false })
-    }
-    if (activeSuccess) {
-      urlSuccess()
-    }
-    if (activeFail) {
-      urlFail()
-    }
-    if (activeUpcoming) {
-      urlUpcoming()
-    }
-    // eslint-disable-next-line
-  }, [History.location.search])
+  //   if (!activeUrlFilter) {
+  //     setSuccesBtn({ active: false, state: false })
+  //     setFailedBtn(intialState)
+  //     setRemoveBtn({ active: false, state: true })
+  //     setUpcomingBtn({ active: false, state: false })
+  //   }
+  //   if (activeSuccess) {
+  //     urlSuccess()
+  //   }
+  //   if (activeFail) {
+  //     urlFail()
+  //   }
+  //   if (activeUpcoming) {
+  //     urlUpcoming()
+  //   }
+  //   // eslint-disable-next-line
+  // }, [History.location.search])
   return (
     <div className={styles.filterWrapper}>
       {btnProps.map((btn) => (

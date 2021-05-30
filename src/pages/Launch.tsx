@@ -144,7 +144,7 @@ const Launch: React.FC = () => {
                   <span>{'datePicker'}</span>
                   <Icon className='react-icons' icon={downIcon} />
                 </button>
-                <button onClick={() => filterFunctions('success')}>test</button>
+
                 {/* if filters */}
                 {/* <button className={styles.Button}>reset</button> */}
               </div>
