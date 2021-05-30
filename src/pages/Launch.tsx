@@ -7,6 +7,8 @@ import { launchHead } from '../helpers/tableheadData'
 import History from '../helpers/History'
 import { useFetch, usePaginate } from '../helpers/Hooks'
 import Pagination from '../components/Pagination'
+import Icon from '@iconify/react'
+import { calender, downIcon } from '../helpers/icons'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -41,10 +43,20 @@ const Launch: React.FC = () => {
         ) : (
           <>
             <div className={styles.Container}>
-              {/* Filter wrapper */}
-              {/* buttons */}
-              {/* calender modal */}
-              {/* accordion */}
+              <div className={styles.FilterWrapper}>
+                <div className={styles.FilterBtnContainer}>
+                  <button className={styles.Button}>
+                    <Icon className='react-icons' icon={calender} />
+                    <span>{'datePicker'}</span>
+                    <Icon className='react-icons' icon={downIcon} />
+                  </button>
+                  {/* if filters */}
+                  <button className={styles.Button}>reset</button>
+                </div>
+                {/* calender modal */}
+                <div>accordion</div>
+                {/* accordion */}
+              </div>
             </div>
 
             {data.state !== null && (

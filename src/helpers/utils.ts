@@ -68,7 +68,7 @@ export const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
           ? data.launch_failure_details.reason
           : null
     })
-    // return data
+    return data
   })
   return arr
 }
