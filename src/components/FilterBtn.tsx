@@ -8,16 +8,34 @@ type Props = {
   filterUpcoming: (x: string) => void
 }
 
+type BtnState = {
+  active: boolean
+  state: boolean
+}
+
+type BtnProperties = {
+  id: number
+  title: string
+  filterFunction: () => void
+  active: boolean
+  state: boolean
+  status: string | false
+  disable: boolean
+}
+
 const FilterButtons: React.FC<Props> = ({
   filterFunctions,
   removeFilter,
   filterUpcoming
 }) => {
   const intialState = { active: false, state: false }
-  const [succesBtn, setSuccesBtn] = useState(intialState)
-  const [failedBtn, setFailedBtn] = useState(intialState)
-  const [upcomingBtn, setUpcomingBtn] = useState(intialState)
-  const [removeBtn, setRemoveBtn] = useState({ active: false, state: true })
+  const [succesBtn, setSuccesBtn] = useState<BtnState>(intialState)
+  const [failedBtn, setFailedBtn] = useState<BtnState>(intialState)
+  const [upcomingBtn, setUpcomingBtn] = useState<BtnState>(intialState)
+  const [removeBtn, setRemoveBtn] = useState<BtnState>({
+    active: false,
+    state: true
+  })
 
   const urlFail = () => {
     filterFunctions('fail')
@@ -63,7 +81,7 @@ const FilterButtons: React.FC<Props> = ({
     setUpcomingBtn({ active: false, state: false })
   }
 
-  const btnProps = [
+  const btnProps: BtnProperties[] = [
     {
       id: 0,
       title: 'fail',
@@ -133,10 +151,12 @@ const FilterButtons: React.FC<Props> = ({
           className={`${styles.Button} ${styles.filterBtn} ${btn.status}`}
           onClick={btn.filterFunction}
           disabled={btn.disable}>
-          {btn.title === 'fail' && 'Failed'}
-          {btn.title === 'success' && 'Successful'}
-          {btn.title === 'upcoming' && 'Upcoming'}
-          {btn.title === 'remove' && '❌ Remove filters'}
+          <span>
+            {btn.title === 'fail' && 'Failed'}
+            {btn.title === 'success' && 'Successful'}
+            {btn.title === 'upcoming' && 'Upcoming'}
+            {btn.title === 'remove' && '❌ Remove filters'}
+          </span>
         </button>
       ))}
     </div>
