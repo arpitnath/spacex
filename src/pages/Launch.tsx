@@ -11,7 +11,7 @@ import Icon from '@iconify/react'
 import { calender, downIcon } from '../helpers/icons'
 import Accordion from '../components/Accordion'
 import FilterBtn from '../components/FilterBtn'
-import { Error, launchDataRes, StateData } from '../helpers/types'
+import { launchDataRes } from '../helpers/types'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -20,12 +20,7 @@ const Launch: React.FC = () => {
   const q = params.split('=page')[1]
   const query = parseInt(q)
 
-  // const { data, setData, error } = useFetch(launchApi)
-  const [data, setData] = useState<StateData>({ state: null, loading: false })
-  const [error, setError] = useState<Error>({
-    status: 102,
-    message: 'Processing'
-  })
+  const { data, setData, error } = useFetch(launchApi)
 
   const [filter, setFilter] = useState<string[]>([])
   const [urlPath, setUrlPath] = useState<string>(path)
@@ -125,8 +120,6 @@ const Launch: React.FC = () => {
   // =============================
   useEffect(() => {
     const _params = loc.split('?q')[0]
-    // const page = loc.split('page')[1]
-    // console.log(page)
 
     let _filterApplied = '?'
     if (_params.includes('filter')) {
@@ -144,27 +137,28 @@ const Launch: React.FC = () => {
         //upcoming
         if (check_upcoming) {
           const getData = await fetchData(launchApi, true)
-          console.log(getData)
+          // console.log(getData)
           setData({ state: getData, loading: true })
-          setFilter([...filter, 'upcoming'])
+          setFilter((f) => (f = [...filter, 'upcoming']))
         }
 
         //start & launch
 
         //launch
         if (check_launch) {
-          console.log('LAUNCH:  ', check_launch)
           const getData = await fetchData(`${launchApi}?${check_launch}`)
-          console.log(getData)
+          // console.log(getData)
           setData({ state: getData, loading: true })
-          setFilter([check_launch])
+          setFilter((f) => (f = [check_launch]))
         }
 
         //start
       })()
     }
 
-    return () => setFilter([])
+    return () => setFilter((f) => (f = []))
+
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -178,8 +172,9 @@ const Launch: React.FC = () => {
       {/* Loading state => `spinner` */}
       <div className={styles.LaunchWrapper}>
         {/* Filters */}
+        {error.status !== 100 && error.message}
         {!data.loading ? (
-          <>{'error'}</>
+          <>{'loading...'}</>
         ) : (
           <>
             <div className={styles.FilterWrapper}>

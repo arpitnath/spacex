@@ -2,30 +2,34 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { launchDataRes, StateData, Error } from './types'
 import { parseLaunchData, handleError } from './utils'
+import History from './History'
 
 export const useFetch = (url: string) => {
   const source = axios.CancelToken.source()
   const [data, setData] = useState<StateData>({ state: null, loading: false })
   const [error, setError] = useState<Error>({
-    status: 102,
-    message: 'Processing'
+    status: 100,
+    message: 'continue'
   })
 
   useEffect(() => {
+    const _locaton: string = History.location.search
     ;(async function () {
-      try {
-        const { data, status } = await axios.get(url)
+      if (_locaton.includes('filter') === false) {
+        try {
+          const { data, status } = await axios.get(url)
 
-        const dataArr: launchDataRes[] = []
-        parseLaunchData(data, dataArr)
-        console.log(status)
-        setData({ state: dataArr, loading: true })
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const err = handleError(error)
-          console.log(err)
-          if (err) {
-            setError({ status: err?.status, message: err?.msg })
+          const dataArr: launchDataRes[] = []
+          parseLaunchData(data, dataArr)
+          console.log(status === 200 && 'OK!')
+          setData({ state: dataArr, loading: true })
+        } catch (error) {
+          if (axios.isAxiosError(error)) {
+            const err = handleError(error)
+            console.log(err)
+            if (err) {
+              setError({ status: err?.status, message: err?.msg })
+            }
           }
         }
       }
