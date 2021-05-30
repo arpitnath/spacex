@@ -24,8 +24,6 @@ export const fetchData = async (url: string, upcoming = false) => {
   } else {
     return null
   }
-
-  // return () => source.cancel()
 }
 
 export const handleError = (error: AxiosError) => {

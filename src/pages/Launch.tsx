@@ -11,7 +11,7 @@ import Icon from '@iconify/react'
 import { calender, downIcon } from '../helpers/icons'
 import Accordion from '../components/Accordion'
 import FilterBtn from '../components/FilterBtn'
-import { launchDataRes } from '../helpers/types'
+import { Error, launchDataRes, StateData } from '../helpers/types'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -20,7 +20,12 @@ const Launch: React.FC = () => {
   const q = params.split('=page')[1]
   const query = parseInt(q)
 
-  const { data, setData, error } = useFetch(launchApi)
+  // const { data, setData, error } = useFetch(launchApi)
+  const [data, setData] = useState<StateData>({ state: null, loading: false })
+  const [error, setError] = useState<Error>({
+    status: 102,
+    message: 'Processing'
+  })
 
   const [filter, setFilter] = useState<string[]>([])
   const [urlPath, setUrlPath] = useState<string>(path)
@@ -174,7 +179,7 @@ const Launch: React.FC = () => {
       <div className={styles.LaunchWrapper}>
         {/* Filters */}
         {!data.loading ? (
-          <>{error.message}</>
+          <>{'error'}</>
         ) : (
           <>
             <div className={styles.FilterWrapper}>

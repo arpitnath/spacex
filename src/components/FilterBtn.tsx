@@ -120,29 +120,31 @@ const FilterButtons: React.FC<Props> = ({
     }
   ]
 
-  // useEffect(() => {
-  //   const activeUrlFilter = History.location.search.includes('?filter')
-  //   const activeSuccess = History.location.search.includes('success')
-  //   const activeFail = History.location.search.includes('fail')
-  //   const activeUpcoming = History.location.search.includes('upcoming')
+  useEffect(() => {
+    const activeUrlFilter = History.location.search.includes('?filter')
+    const activeSuccess = History.location.search.includes(
+      'launch_success=true'
+    )
+    const activeFail = History.location.search.includes('launch_success=false')
+    const activeUpcoming = History.location.search.includes('upcoming')
 
-  //   if (!activeUrlFilter) {
-  //     setSuccesBtn({ active: false, state: false })
-  //     setFailedBtn(intialState)
-  //     setRemoveBtn({ active: false, state: true })
-  //     setUpcomingBtn({ active: false, state: false })
-  //   }
-  //   if (activeSuccess) {
-  //     urlSuccess()
-  //   }
-  //   if (activeFail) {
-  //     urlFail()
-  //   }
-  //   if (activeUpcoming) {
-  //     urlUpcoming()
-  //   }
-  //   // eslint-disable-next-line
-  // }, [History.location.search])
+    if (!activeUrlFilter) {
+      setSuccesBtn(intialState)
+      setFailedBtn(intialState)
+      setRemoveBtn({ active: false, state: true })
+      setUpcomingBtn(intialState)
+    }
+    if (activeSuccess) {
+      urlSuccess()
+    }
+    if (activeFail) {
+      urlFail()
+    }
+    if (activeUpcoming) {
+      urlUpcoming()
+    }
+    // eslint-disable-next-line
+  }, [History.location.search])
   return (
     <div className={styles.filterWrapper}>
       {btnProps.map((btn) => (
