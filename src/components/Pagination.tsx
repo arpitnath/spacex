@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/scss/styles.module.scss'
 import History from '../helpers/History'
+import Icon from '@iconify/react'
+import { left, right } from '../helpers/icons'
 
 interface IProps {
   currentPage: number
@@ -62,8 +64,7 @@ const Pagination: React.FC<IProps> = ({
     <div className={styles.PaginationContainer}>
       <div className={styles.Pagination}>
         <button className={styles.PaginationButton} onClick={prevPage}>
-          {/* <Icon icon={left} /> */}
-          Back
+          <Icon icon={left} />
         </button>
         <ul>
           {pageNumbers.map((number, idx) => (
@@ -80,8 +81,7 @@ const Pagination: React.FC<IProps> = ({
           ))}
         </ul>
         <button className={styles.PaginationButton} onClick={nextPage}>
-          {/* <Icon icon={right} /> */}
-          Next
+          <Icon icon={right} />
         </button>
       </div>
     </div>

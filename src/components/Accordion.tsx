@@ -10,9 +10,9 @@ interface IAccordion {
 }
 
 const Accordion: React.FC<IAccordion> = ({ children, Title }) => {
-  const [title, setTitle] = useState(() => Title)
-  const [setActive, setActiveState] = useState('')
-  const [setHeight, setHeightState] = useState('0px')
+  const [title, setTitle] = useState<string>(() => Title)
+  const [setActive, setActiveState] = useState<string>('')
+  const [setHeight, setHeightState] = useState<string>('0px')
 
   const content = useRef<HTMLInputElement>(null)
 
