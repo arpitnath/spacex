@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Table from '../components/Table'
-import { launchApi, fetchData } from '../helpers/utils'
+import { launchApi, fetchData, categorize } from '../helpers/utils'
 
 import styles from '../styles/scss/styles.module.scss'
 import { launchHead } from '../helpers/tableheadData'
@@ -44,15 +44,12 @@ const Launch: React.FC = () => {
     const Path = path
     const options = filter.join('&')
     const urlQuery = Path + '?filter=' + options
-
+    console.log(urlQuery)
     setUrlPath(urlQuery)
   }, [filter, path])
 
   //Filter function
   const filterFunctions = async (status: string) => {
-    console.log('filter')
-    // console.log(status)
-
     const launchQuery: string =
       status === 'success' ? 'launch_success=true' : 'launch_success=false'
     const queryPath = urlPath
@@ -61,7 +58,6 @@ const Launch: React.FC = () => {
     if (queryPath.includes('filter')) {
       filter_params = queryPath.split('filter=')[1]
     }
-    console.log(filter_params)
 
     if (queryPath.includes('start')) {
       if (status === 'fail') {
@@ -87,7 +83,7 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        console.log(getData)
+        // console.log(getData)
       }
       if (status === 'fail') {
         const getData = await fetchData(
@@ -98,7 +94,6 @@ const Launch: React.FC = () => {
       }
 
       setFilter([launchQuery])
-      // setCurrentPage(1)
     }
     setCurrentPage(1)
   }
@@ -121,6 +116,51 @@ const Launch: React.FC = () => {
     setData({ state: getData, loading: true })
     // setDatePicker('Filter by date')
   }
+
+  // =============================
+  useEffect(() => {
+    const _params = loc.split('?q')[0]
+    // const page = loc.split('page')[1]
+    // console.log(page)
+
+    let _filterApplied = '?'
+    if (_params.includes('filter')) {
+      _filterApplied = _params.split('filter=')[1]
+
+      //check
+
+      // const check_start = categorize(loc, 'start', _filterApplied)
+      const check_launch = categorize(loc, 'launch', _filterApplied)
+      const check_upcoming = categorize(loc, 'upcoming', _filterApplied)
+
+      console.log(check_launch)
+      console.log(check_upcoming)
+      ;(async function () {
+        //upcoming
+        if (check_upcoming) {
+          const getData = await fetchData(launchApi, true)
+          console.log(getData)
+          setData({ state: getData, loading: true })
+          setFilter([...filter, 'upcoming'])
+        }
+
+        //start & launch
+
+        //launch
+        if (check_launch) {
+          console.log('LAUNCH:  ', check_launch)
+          const getData = await fetchData(`${launchApi}?${check_launch}`)
+          console.log(getData)
+          setData({ state: getData, loading: true })
+          setFilter([check_launch])
+        }
+
+        //start
+      })()
+    }
+
+    return () => setFilter([])
+  }, [])
 
   useEffect(() => {
     if (filter.length !== 0) {

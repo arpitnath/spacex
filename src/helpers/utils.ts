@@ -15,6 +15,11 @@ export const fetchData = async (url: string, upcoming = false) => {
     const dataArr: launchDataRes[] = []
     parseLaunchData(data, dataArr)
 
+    if (upcoming === true) {
+      const upcomingData = dataArr.filter((item) => item.upcoming === true)
+      return upcomingData
+    }
+
     return dataArr
   } else {
     return null
@@ -75,4 +80,12 @@ export const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
 
 const parseDate = (utc: string) => {
   return moment(utc).format('DD-MM-YYYY HH:mm')
+}
+
+export function categorize(str: string, cases: string, filters: string) {
+  if (str.includes(cases)) {
+    return filters
+  } else {
+    return false
+  }
 }
