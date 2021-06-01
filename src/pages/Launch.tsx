@@ -12,6 +12,7 @@ import { calender, downIcon } from '../helpers/icons'
 import Accordion from '../components/Accordion'
 import FilterBtn from '../components/FilterBtn'
 import { launchDataRes } from '../helpers/types'
+import Modal from '../components/Modal'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -167,6 +168,10 @@ const Launch: React.FC = () => {
     }
   }, [filter.length, updateUrl])
 
+  function test() {
+    console.log('testing modal')
+  }
+
   return (
     <>
       {/* Loading state => `spinner` */}
@@ -195,7 +200,9 @@ const Launch: React.FC = () => {
                 )}
               </div>
               {/* calender modal */}
-              {/* <div>accordion</div> */}
+              <Modal name='test' callBack={() => test()}>
+                <h4>Modal</h4>
+              </Modal>
 
               <Accordion Title='All launches'>
                 {
