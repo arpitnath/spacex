@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Icon, close } from '../helpers/icons'
 import styles from '../styles/scss/styles.module.scss'
 
@@ -51,7 +51,24 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
     }
   }
 
-  //useffect hook to set styles as there will be two modals one for datepicker and info
+  useEffect(() => {
+    if (name === 'datePicker') {
+      setModalStyles({
+        modalSize: {
+          width: '720px',
+          height: '383px'
+        },
+        modalBg: {
+          marginTop: '0px'
+        },
+        closeIcon: {
+          top: '8px',
+          left: '330px'
+        }
+      })
+    }
+  }, [name])
+
   return (
     <div
       style={modalStyles.modalBg}
@@ -63,7 +80,7 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
           style={modalStyles.closeIcon}
           icon={close}
           className={styles.ModalCloseIcon}
-          //onclick
+          //onclick to set the state of the modal from parent
         />
         <p>{name}</p>
         {children}
