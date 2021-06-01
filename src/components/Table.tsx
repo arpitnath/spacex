@@ -5,6 +5,7 @@ import { launchDataRes } from '../helpers/types'
 import Status from './Status'
 import Modal from './Modal'
 import LaunchModal from './LaunchModal'
+import NoData from './Nodata'
 
 interface IProps {
   thead: Thead[]
@@ -38,6 +39,15 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
           </tr>
         </thead>
         <tbody>
+          {data?.length === 0 && (
+            <>
+              <tr>
+                <td>
+                  <NoData />
+                </td>
+              </tr>
+            </>
+          )}
           {data?.map((item) => (
             <tr key={item.id} onClick={() => openModal(item)}>
               <td>{item.serial_number}</td>

@@ -85,6 +85,19 @@ body {
   opacity: 0.15;
 }
 
+.no_data {
+  width: 300px;
+  transform: translate(150%);
+  margin-top: -2.5%;
+  color: var.$quaternary-font-color;
+  font-weight: var.$font-weight-medium;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
 //Loader
 .loader {
   border: 12px solid #f3f3f3;
