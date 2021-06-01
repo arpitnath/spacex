@@ -187,7 +187,11 @@ const Launch: React.FC = () => {
 
                 {/* if filters */}
                 {loc.includes('filter') && (
-                  <button className={styles.ResetBtn}>Reset</button>
+                  <button
+                    className={styles.ResetBtn}
+                    onClick={() => removeFilter()}>
+                    Reset
+                  </button>
                 )}
               </div>
               {/* calender modal */}
