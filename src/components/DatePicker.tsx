@@ -55,7 +55,7 @@ const dateFilters = [
   }
 ]
 interface IProps {
-  getDateParams: (data: any | string, activeFilter: any) => void
+  getDateParams: (data: never | string, activeFilter: never | string) => void
 }
 
 const DatePickerModal: React.FC<IProps> = ({ getDateParams }) => {
@@ -65,14 +65,17 @@ const DatePickerModal: React.FC<IProps> = ({ getDateParams }) => {
   const end = moment(endDate).format('YYYY-MM-DD')
   const paramsDate = `?start=${start}&end=${end}`
 
-  const onStartChange = (date: any) => {
+  const onStartChange = (date: never) => {
     setStartDate(date)
   }
-  const onEndChange = (date: any) => {
+  const onEndChange = (date: never) => {
     setEndDate(date)
   }
 
-  const rangePicker = (params: any | string, activeFilter: any) => {
+  const rangePicker = (
+    params: never | string,
+    activeFilter: never | string
+  ) => {
     return getDateParams(params, activeFilter)
   }
   return (

@@ -40,15 +40,10 @@ const Launch: React.FC = () => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
-  //modal state
-
-  //** */
-
   const updateUrl = useCallback(() => {
     const Path = path
     const options = filter.join('&')
     const urlQuery = Path + '?filter=' + options
-    // console.log(urlQuery)
     setUrlPath(urlQuery)
   }, [filter, path])
 
@@ -69,7 +64,6 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        // console.log(getData)
         setFilter([...filter, launchQuery])
       }
       if (status === 'success') {
@@ -77,8 +71,6 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        console.log(getData)
-
         setFilter([...filter, launchQuery])
       }
     } else {
@@ -87,14 +79,12 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        // console.log(getData)
       }
       if (status === 'fail') {
         const getData = await fetchData(
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        // console.log(getData)
       }
 
       setFilter([launchQuery])
@@ -121,7 +111,7 @@ const Launch: React.FC = () => {
     setDatePicker('Filter by date')
   }
 
-  const dateFilter = async (params: any | string) => {
+  const dateFilter = async (params: never | string) => {
     const _params = loc.split('?q')[0]
     const _filterApplied = _params.split('filter=')[1]
 
@@ -137,7 +127,10 @@ const Launch: React.FC = () => {
     setCurrentPage(1)
   }
 
-  const getDateParams = (data: any | string, activeFilter: any) => {
+  const getDateParams = (
+    data: never | string,
+    activeFilter: never | string
+  ) => {
     setDatePicker(activeFilter)
     setShowModal((prev) => !prev)
     setUrlPath(`${urlPath}?${data}`)
@@ -149,7 +142,6 @@ const Launch: React.FC = () => {
     setShowModal((prev) => !prev)
   }
 
-  // =============================
   useEffect(() => {
     const _params = loc.split('?q')[0]
 
@@ -158,7 +150,6 @@ const Launch: React.FC = () => {
       _filterApplied = _params.split('filter=')[1]
 
       //check
-
       const check_start = categorize(loc, 'start', _filterApplied)
       const check_launch = categorize(loc, 'launch', _filterApplied)
       const check_upcoming = categorize(loc, 'upcoming', _filterApplied)
@@ -181,7 +172,7 @@ const Launch: React.FC = () => {
 
         //launch
         if (check_launch) {
-          const getData = await fetchData(`${launchApi}${check_launch}`)
+          const getData = await fetchData(`${launchApi}?${check_launch}`)
           setData({ state: getData, loading: true })
           setFilter((f) => (f = [check_launch]))
         }
@@ -211,7 +202,6 @@ const Launch: React.FC = () => {
     <>
       {/* Loading state => `spinner` */}
       <div className={styles.LaunchWrapper}>
-        {/* Filters */}
         {error.status !== 100 && error.message}
         {!data.loading ? (
           <>{'loading...'}</>
