@@ -154,7 +154,7 @@ const Launch: React.FC = () => {
 
       //check
 
-      // const check_start = categorize(loc, 'start', _filterApplied)
+      const check_start = categorize(loc, 'start', _filterApplied)
       const check_launch = categorize(loc, 'launch', _filterApplied)
       const check_upcoming = categorize(loc, 'upcoming', _filterApplied)
 
@@ -170,6 +170,13 @@ const Launch: React.FC = () => {
         }
 
         //start & launch
+        if (check_start && check_launch) {
+          const getData = await fetchData(`${launchApi}?${_filterApplied}`)
+          // console.log(getData)
+          setData({ state: getData, loading: true })
+          setFilter((f) => (f = [_filterApplied]))
+          setDatePicker('🟢 Filters')
+        }
 
         //launch
         if (check_launch) {
@@ -180,6 +187,13 @@ const Launch: React.FC = () => {
         }
 
         //start
+        if (check_start) {
+          const getData = await fetchData(`${launchApi}?${_filterApplied}`)
+          // console.log(getData)
+          setData({ state: getData, loading: true })
+          setFilter((f) => (f = [_filterApplied]))
+          setDatePicker('🟢 Filters')
+        }
       })()
     }
 
