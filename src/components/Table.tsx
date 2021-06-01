@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/scss/styles.module.scss'
 import { Thead } from '../helpers/tableheadData'
 import { launchDataRes } from '../helpers/types'
 import Status from './Status'
+import Modal from './Modal'
+import LaunchModal from './LaunchModal'
 
 interface IProps {
   thead: Thead[]
@@ -10,7 +12,9 @@ interface IProps {
 }
 
 const Table: React.FC<IProps> = ({ thead, data }) => {
-  // console.log(data)
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const [modalData, setModalData] = useState<launchDataRes | null>(null)
+
   const checkStatus = (data: boolean | null) => {
     if (data === null) {
       return <Status status='Upcoming' />
@@ -21,9 +25,21 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
       return <Status status='Failed' />
     }
   }
+
+  const openModal = (itemData: launchDataRes) => {
+    setModalData(itemData)
+    setShowModal((prev) => !prev)
+  }
   return (
     <>
       {/* Modal */}
+
+      {showModal && (
+        <Modal name={'dataModal'} callBack={setShowModal}>
+          {console.log(modalData)}
+          <LaunchModal data={'Launch Data'} />
+        </Modal>
+      )}
 
       <table className={styles.Table}>
         <thead>
@@ -34,8 +50,8 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data?.map((item, index) => (
-            <tr key={index}>
+          {data?.map((item) => (
+            <tr key={item.id} onClick={() => openModal(item)}>
               <td>{item.serial_number}</td>
               <td>{item.date}</td>
               <td>{item.location}</td>

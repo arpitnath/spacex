@@ -2,18 +2,10 @@
 
 @include modal;
 
-.ModalWrapper {
-  height: 100%;
-  width: 100%;
-  margin-top: -40vh;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
+.DateModalWrapper {
+  @include modal-wrapper;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  position: relative;
-  z-index: 10000000;
-  border-radius: 10px;
 }
 
 .DateModalContent {
@@ -86,4 +78,10 @@
     color: var.$quaternary-font-color;
     font-weight: var.$font-weight-bold;
   }
+}
+
+.DataWrapper {
+  @include modal-wrapper;
+  width: 544px;
+  height: 740px;
 }

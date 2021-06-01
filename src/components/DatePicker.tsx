@@ -79,7 +79,7 @@ const DatePickerModal: React.FC<IProps> = ({ getDateParams }) => {
     return getDateParams(params, activeFilter)
   }
   return (
-    <div className={styles.ModalWrapper}>
+    <div className={styles.DateModalWrapper}>
       <div className={styles.DateModalContent}>
         <div>
           {/* given date filters  */}
