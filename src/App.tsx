@@ -8,14 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import Launch from './pages/Launch'
 import Navbar from './components/Navbar'
-
-const TestErr = () => {
-  return (
-    <>
-      <h2>Error Page</h2>
-    </>
-  )
-}
+import PageNotFound from './pages/PageNotFound'
 
 const App: React.FC = () => {
   return (
@@ -26,7 +19,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path={'/launch'} component={Launch} />
             <Route path={'/'} component={Home} exact />
-            <Route component={TestErr} />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </Router>

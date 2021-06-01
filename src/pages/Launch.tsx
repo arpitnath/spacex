@@ -14,6 +14,8 @@ import FilterBtn from '../components/FilterBtn'
 import { launchDataRes } from '../helpers/types'
 import Modal from '../components/Modal'
 import DatePicker from '../components/DatePicker'
+import Loader from '../components/Loader'
+import Error from '../components/Error'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -200,11 +202,12 @@ const Launch: React.FC = () => {
 
   return (
     <>
-      {/* Loading state => `spinner` */}
       <div className={styles.LaunchWrapper}>
-        {error.status !== 100 && error.message}
-        {!data.loading ? (
-          <>{'loading...'}</>
+        {error.status !== 100 && (
+          <Error error={error.message} status={error.status.toString()} />
+        )}
+        {!data.loading && error.status === 100 ? (
+          <Loader />
         ) : (
           <>
             <div className={styles.FilterWrapper}>
