@@ -25,6 +25,7 @@ const Launch: React.FC = () => {
   const { data, setData, error } = useFetch(launchApi)
 
   const [filter, setFilter] = useState<string[]>([])
+  const [datePicker, setDatePicker] = useState(() => 'Filter by date')
   const [showModal, setShowModal] = useState<boolean>(true)
   const [urlPath, setUrlPath] = useState<string>(path)
   const [currentPage, setCurrentPage] = useState(1)
@@ -93,7 +94,7 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        console.log(getData)
+        // console.log(getData)
       }
 
       setFilter([launchQuery])
@@ -118,6 +119,29 @@ const Launch: React.FC = () => {
     const getData = await fetchData(launchApi)
     setData({ state: getData, loading: true })
     // setDatePicker('Filter by date')
+  }
+
+  const dateFilter = async (params: any | string) => {
+    const _params = loc.split('?q')[0]
+    const _filterApplied = _params.split('filter=')[1]
+
+    if (loc.includes('launch_success')) {
+      const getData = await fetchData(`${launchApi}${params}&${_filterApplied}`)
+      setData({ state: getData, loading: true })
+      setFilter([params, _filterApplied])
+    } else {
+      const getData = await fetchData(`${launchApi}${params}`)
+      setData({ state: getData, loading: true })
+      setFilter([params])
+    }
+    setCurrentPage(1)
+  }
+
+  const getDateParams = (data: any | string, activeFilter: any) => {
+    setDatePicker(activeFilter)
+    setShowModal((prev) => !prev)
+    setUrlPath(`${urlPath}?${data}`)
+    dateFilter(data)
   }
 
   // =============================
@@ -199,8 +223,8 @@ const Launch: React.FC = () => {
               </div>
               {/* calender modal */}
               {showModal && (
-                <Modal name='test' callBack={setShowModal}>
-                  <DatePicker str='Hello' />
+                <Modal name='datePicker' callBack={setShowModal}>
+                  <DatePicker getDateParams={getDateParams} />
                 </Modal>
               )}
 

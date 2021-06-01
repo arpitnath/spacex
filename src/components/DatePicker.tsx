@@ -1,39 +1,131 @@
 import React, { useState } from 'react'
+import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import styles from '../styles/scss/styles.module.scss'
 
-interface Props {
-  str: string
+const dateFilters = [
+  {
+    id: 0,
+    title: 'Past week',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(7, 'd').format('YYYY-MM-DD')
+    }
+  },
+  {
+    id: 1,
+    title: 'Past month',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(1, 'M').format('YYYY-MM-DD')
+    }
+  },
+  {
+    id: 2,
+    title: 'Past 3 month',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(3, 'M').format('YYYY-MM-DD')
+    }
+  },
+  {
+    id: 3,
+    title: 'Past 6 month',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(6, 'M').format('YYYY-MM-DD')
+    }
+  },
+  {
+    id: 4,
+    title: 'Past year',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(1, 'y').format('YYYY-MM-DD')
+    }
+  },
+  {
+    id: 5,
+    title: 'Past 2 year',
+    params: {
+      end: moment().format('YYYY-MM-DD'),
+      start: moment().subtract(2, 'y').format('YYYY-MM-DD')
+    }
+  }
+]
+interface IProps {
+  getDateParams: (data: any | string, activeFilter: any) => void
 }
 
-const DatePickerModal: React.FC<Props> = ({ str }) => {
-  const [startDate, setStartDate] = useState(new Date())
+const DatePickerModal: React.FC<IProps> = ({ getDateParams }) => {
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
+  const start = moment(startDate).format('YYYY-MM-DD')
+  const end = moment(endDate).format('YYYY-MM-DD')
+  const paramsDate = `?start=${start}&end=${end}`
+
+  const onStartChange = (date: any) => {
+    setStartDate(date)
+  }
+  const onEndChange = (date: any) => {
+    setEndDate(date)
+  }
+
+  const rangePicker = (params: any | string, activeFilter: any) => {
+    return getDateParams(params, activeFilter)
+  }
   return (
-    <div style={{ color: '#fff' }} className={styles.ModalWrapper}>
-      <div className={styles.DateModalContainer}>
+    <div className={styles.ModalWrapper}>
+      <div className={styles.DateModalContent}>
         <div>
-          <p>{str}</p>
           {/* given date filters  */}
+          {dateFilters.map((filter) => (
+            <p
+              onClick={() =>
+                rangePicker(
+                  `?start=${filter.params.start}&end=${filter.params.end}`,
+                  filter.title
+                )
+              }
+              style={{ cursor: 'pointer', lineHeight: '16px' }}
+              key={filter.id}>
+              {filter.title}
+            </p>
+          ))}
         </div>
-        {/* content */}
-        <div className={styles.ModalContent}>
-          <div className={styles.Finder}>
-            <div className={styles.DateValue}>
-              <span>
-                {/* display the start to end date range selected */}
-                {str} to {str}
-              </span>
-              <button>Search</button>
-            </div>
+      </div>
+      {/* content */}
+      <div className={styles.ModalContent}>
+        <div className={styles.Finder}>
+          <div className={styles.DateValue}>
+            <span>
+              {/* display the start to end date range selected */}
+              {start} <i>to</i> {end}
+            </span>
+            {/*  */}
+            <button
+              className={styles.SearchBtn}
+              onClick={() => rangePicker(paramsDate, `${start} to ${end}`)}>
+              Search
+            </button>
           </div>
         </div>
+
         {/* Calender */}
         <div className={styles.CalenderWrapper}>
           <DatePicker
             selected={startDate}
+            startDate={startDate}
+            endDate={endDate}
             inline
-            onChange={(date) => setStartDate(new Date())}
+            onChange={onStartChange}
+          />
+          <DatePicker
+            selected={endDate}
+            startDate={endDate}
+            inline
+            onChange={onEndChange}
           />
         </div>
       </div>

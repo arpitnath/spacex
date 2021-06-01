@@ -1,3 +1,89 @@
 @use '../variables' as var;
 
 @include modal;
+
+.ModalWrapper {
+  height: 100%;
+  width: 100%;
+  margin-top: -40vh;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  z-index: 10000000;
+  border-radius: 10px;
+}
+
+.DateModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+  width: 40%;
+  height: 300px;
+  margin-top: 50px;
+  text-align: start;
+  margin-left: 18px;
+  border-right: 1.5px solid var.$secondary-color;
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+}
+
+.Finder {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-left: -200px;
+  margin-top: -280px;
+
+  span {
+    i {
+      color: #494949;
+      font-weight: var.$font-weight-medium !important;
+    }
+  }
+
+  button {
+    margin-left: 60px;
+  }
+}
+
+.DateValue {
+  font-weight: 800;
+}
+
+.CalenderWrapper {
+  margin-left: -200px;
+  margin-top: 75px;
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  position: fixed;
+  z-index: 10000000;
+  border-radius: 10px;
+}
+
+.SearchBtn {
+  @include basic-button;
+  height: 40px;
+  line-height: 10px;
+  border-radius: var.$border-radius;
+
+  &:hover {
+    background: var.$button-bg;
+    color: var.$quaternary-font-color;
+    font-weight: var.$font-weight-bold;
+  }
+}

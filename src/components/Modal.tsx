@@ -80,7 +80,6 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
             className={styles.ModalCloseIcon}
           />
         </span>
-        <p>{name}</p>
         {children}
       </div>
     </div>

@@ -31,7 +31,7 @@
 @mixin modal {
   .ModalBg {
     width: 100vmax;
-    height: 100vh;
+    height: 100vmax;
     background: rgba(0, 0, 0, 0.8);
     position: absolute;
     display: flex;
@@ -46,12 +46,12 @@
   .ModalCloseIcon {
     cursor: pointer;
     position: relative;
+    top: -36vh !important;
     right: 0px;
-    top: 8px;
     width: 20px;
     height: 32px;
     padding: 0;
     z-index: 100000001;
-    color: #fff; // #000
+    color: #000;
   }
 }
