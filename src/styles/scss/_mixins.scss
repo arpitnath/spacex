@@ -65,3 +65,8 @@
   border-radius: 10px;
   margin-top: -40vh;
 }
+
+@mixin dimension($width, $height) {
+  width: $width;
+  height: $height;
+}

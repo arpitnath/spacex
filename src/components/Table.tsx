@@ -36,8 +36,7 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
 
       {showModal && (
         <Modal name={'dataModal'} callBack={setShowModal}>
-          {console.log(modalData)}
-          <LaunchModal data={'Launch Data'} />
+          <LaunchModal data={modalData} checkStatus={checkStatus} />
         </Modal>
       )}
 
