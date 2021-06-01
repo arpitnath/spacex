@@ -30,16 +30,20 @@
 }
 
 .Button {
-  background-color: #fff;
-  font-weight: var.$font-weight-medium;
-  color: var.$tertiary-font-color;
-  font-size: var.$font-size;
-  line-height: var.$line-height;
-  border: none;
-  cursor: pointer;
-  text-align: center;
+  @include btns(#fff, var.$tertiary-font-color);
 
   span {
     margin: 0 10px;
+  }
+}
+
+.ResetBtn {
+  @include btns(#b5dbf5, #025288);
+  font-weight: var.$font-weight-bold;
+  border-radius: var.$border-radius;
+
+  &:hover {
+    background-color: #025288 !important;
+    color: #b5dbf5 !important;
   }
 }

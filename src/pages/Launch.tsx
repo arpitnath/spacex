@@ -44,7 +44,7 @@ const Launch: React.FC = () => {
     const Path = path
     const options = filter.join('&')
     const urlQuery = Path + '?filter=' + options
-    console.log(urlQuery)
+    // console.log(urlQuery)
     setUrlPath(urlQuery)
   }, [filter, path])
 
@@ -65,7 +65,7 @@ const Launch: React.FC = () => {
           `${launchApi}${filter_params}&${launchQuery}`
         )
         setData({ state: getData, loading: true })
-        console.log(getData)
+        // console.log(getData)
         setFilter([...filter, launchQuery])
       }
       if (status === 'success') {
@@ -131,8 +131,8 @@ const Launch: React.FC = () => {
       const check_launch = categorize(loc, 'launch', _filterApplied)
       const check_upcoming = categorize(loc, 'upcoming', _filterApplied)
 
-      console.log(check_launch)
-      console.log(check_upcoming)
+      // console.log(check_launch)
+      // console.log(check_upcoming)
       ;(async function () {
         //upcoming
         if (check_upcoming) {
@@ -186,7 +186,9 @@ const Launch: React.FC = () => {
                 </button>
 
                 {/* if filters */}
-                {/* <button className={styles.Button}>reset</button> */}
+                {loc.includes('filter') && (
+                  <button className={styles.ResetBtn}>Reset</button>
+                )}
               </div>
               {/* calender modal */}
               {/* <div>accordion</div> */}

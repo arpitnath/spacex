@@ -5,6 +5,25 @@
   width: var.$wrapper-width;
   margin: auto;
   padding: 0 var.$d2;
+  text-align: center;
 }
 
 //btn
+@mixin basic-button {
+  height: 54px;
+  width: 154px;
+  padding: 16px 0;
+  font-weight: var.$font-weight-medium;
+  font-size: var.$font-size;
+  line-height: var.$line-height;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+//FilterBtns
+@mixin btns($bg, $color) {
+  @include basic-button;
+  background-color: $bg;
+  color: $color;
+}
