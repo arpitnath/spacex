@@ -13,6 +13,7 @@ import Accordion from '../components/Accordion'
 import FilterBtn from '../components/FilterBtn'
 import { launchDataRes } from '../helpers/types'
 import Modal from '../components/Modal'
+import DatePicker from '../components/DatePicker'
 
 const Launch: React.FC = () => {
   const path = History.location.pathname.split('/')[1]
@@ -24,6 +25,7 @@ const Launch: React.FC = () => {
   const { data, setData, error } = useFetch(launchApi)
 
   const [filter, setFilter] = useState<string[]>([])
+  const [showModal, setShowModal] = useState<boolean>(true)
   const [urlPath, setUrlPath] = useState<string>(path)
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(10)
@@ -168,10 +170,6 @@ const Launch: React.FC = () => {
     }
   }, [filter.length, updateUrl])
 
-  function test() {
-    console.log('testing modal')
-  }
-
   return (
     <>
       {/* Loading state => `spinner` */}
@@ -200,9 +198,11 @@ const Launch: React.FC = () => {
                 )}
               </div>
               {/* calender modal */}
-              <Modal name='test' callBack={() => test()}>
-                <h4>Modal</h4>
-              </Modal>
+              {showModal && (
+                <Modal name='test' callBack={setShowModal}>
+                  <DatePicker str='Hello' />
+                </Modal>
+              )}
 
               <Accordion Title='All launches'>
                 {

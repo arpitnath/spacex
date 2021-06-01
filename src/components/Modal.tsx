@@ -31,7 +31,7 @@ type ModalStyles = {
 }
 
 type Props = {
-  callBack: () => void
+  callBack: React.Dispatch<React.SetStateAction<boolean>>
   children: React.ReactNode
   name: string
 }
@@ -42,12 +42,9 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
   const modalRef = useRef<HTMLDivElement | null>(null)
 
   const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log('e: ', e.target)
-    console.log(modalRef.current)
-    //need to fix
     if (modalRef.current === e.target) {
       console.log('clicked close modal')
-      callBack()
+      callBack(false)
     }
   }
 
@@ -76,12 +73,13 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
       ref={modalRef}
       onClick={closeModal}>
       <div style={modalStyles.modalSize}>
-        <Icon
-          style={modalStyles.closeIcon}
-          icon={close}
-          className={styles.ModalCloseIcon}
-          //onclick to set the state of the modal from parent
-        />
+        <span onClick={() => callBack((prev) => !prev)}>
+          <Icon
+            style={modalStyles.closeIcon}
+            icon={close}
+            className={styles.ModalCloseIcon}
+          />
+        </span>
         <p>{name}</p>
         {children}
       </div>
