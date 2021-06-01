@@ -110,7 +110,7 @@
 }
 
 .HeadContent {
-  @include dimension(72px, 86px);
+  @include dimension(150px, 86px);
   margin-top: -18px;
   padding: 8px 0;
   line-height: var.$line-height-p;
@@ -118,14 +118,15 @@
   h3 {
     font-size: var.$font-size;
     font-weight: var.$font-weight-medium;
-    width: auto;
+    width: 150px;
+    line-height: 16px;
   }
 
   p {
     font-size: var.$font-size-sm;
     color: var.$quaternary-font-color;
     opacity: 0.7;
-    margin-top: -2px;
+    margin-top: -8px;
   }
 }
 
@@ -135,19 +136,66 @@
   align-items: flex-end;
   position: relative;
   margin-top: -65px;
-  margin-left: 110px;
+  margin-left: 165px;
 }
 
 .LinkWrapper {
   @include dimension(64px, 24px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 2px;
+  column-gap: 4px;
   margin-top: -6px;
+  margin-left: 2.5rem;
 }
 
 .Iconify {
   @include dimension(16px, 16px);
   color: #000;
   margin: 0;
+}
+
+.ModalDescription {
+  text-align: start;
+  font-size: var.$font-size-md;
+  width: 100%;
+  margin: 0;
+  margin-top: var.$d2;
+}
+
+.ModalMainInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  margin-top: 0;
+}
+
+.ContentBody {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: var.$d1;
+  padding-bottom: 8px;
+  gap: 70px;
+  border-bottom: 1.5px solid var.$secondary-color;
+
+  span {
+    width: 150px;
+    text-align: start;
+  }
+
+  .ItemData {
+    margin-left: 22px;
+  }
+}
+
+.noDescription {
+  @include dimension(100%, 85px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var.$fail-color;
+  background: var.$fail-bg;
+  border-radius: var.$border-radius;
 }

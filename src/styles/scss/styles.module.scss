@@ -15,12 +15,10 @@
 }
 
 .Status {
-  width: 82px;
-  height: 21px;
+  @include dimension(82px, 21px);
   border-radius: var.$border-radius-sm;
   font-size: inherit;
   line-height: inherit;
-  margin: auto;
 
   span {
     align-items: center;

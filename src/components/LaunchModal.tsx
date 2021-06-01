@@ -8,7 +8,53 @@ interface IProps {
 }
 
 const LaunchModal: React.FC<IProps> = ({ data, checkStatus }) => {
-  console.log(data)
+  const modalData = [
+    {
+      id: 0,
+      title: 'Flight Number',
+      data: data?.serial_number
+    },
+    {
+      id: 1,
+      title: 'Mission Name',
+      data: data?.mission
+    },
+    {
+      id: 2,
+      title: 'Rocket Name',
+      data: data?.rocket
+    },
+    {
+      id: 3,
+      title: 'Manufacturer',
+      data: data?.manufacturer
+    },
+    {
+      id: 4,
+      title: 'Nationality',
+      data: data?.nationality
+    },
+    {
+      id: 5,
+      title: 'Launch Date',
+      data: data?.date
+    },
+    {
+      id: 6,
+      title: 'Payload',
+      data: data?.payload
+    },
+    {
+      id: 7,
+      title: 'Orbit',
+      data: data?.orbit
+    },
+    {
+      id: 8,
+      title: 'Location Site',
+      data: data?.location
+    }
+  ]
 
   return (
     <div className={styles.DataWrapper}>
@@ -63,11 +109,30 @@ const LaunchModal: React.FC<IProps> = ({ data, checkStatus }) => {
 
         {/* content */}
         <div className={styles.ModalDescription}>
-          <p>decription wikipedia link</p>
+          <p>
+            {data?.description ? (
+              data.description
+            ) : (
+              <span className={styles.noDescription}>
+                * No Description Available *
+              </span>
+            )}
+            {data?.wikipedia_link && (
+              <a href={data.wikipedia_link} target='_blank' rel='noreferrer'>
+                Wikipedia
+              </a>
+            )}
+          </p>
         </div>
         {/* info */}
         <div className={styles.ModalMainInfo}>
           {/* everything for thr api */}
+          {modalData.map((item) => (
+            <div key={item.id} className={styles.ContentBody}>
+              <span>{item.title}</span>
+              <span className={styles.ItemData}>{item.data}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
