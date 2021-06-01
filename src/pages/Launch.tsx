@@ -26,7 +26,7 @@ const Launch: React.FC = () => {
 
   const [filter, setFilter] = useState<string[]>([])
   const [datePicker, setDatePicker] = useState(() => 'Filter by date')
-  const [showModal, setShowModal] = useState<boolean>(true)
+  const [showModal, setShowModal] = useState<boolean>(false)
   const [urlPath, setUrlPath] = useState<string>(path)
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(10)
@@ -118,7 +118,7 @@ const Launch: React.FC = () => {
     setUrlPath(path)
     const getData = await fetchData(launchApi)
     setData({ state: getData, loading: true })
-    // setDatePicker('Filter by date')
+    setDatePicker('Filter by date')
   }
 
   const dateFilter = async (params: any | string) => {
@@ -144,6 +144,11 @@ const Launch: React.FC = () => {
     dateFilter(data)
   }
 
+  //openDateModal
+  const openModal = () => {
+    setShowModal((prev) => !prev)
+  }
+
   // =============================
   useEffect(() => {
     const _params = loc.split('?q')[0]
@@ -158,21 +163,17 @@ const Launch: React.FC = () => {
       const check_launch = categorize(loc, 'launch', _filterApplied)
       const check_upcoming = categorize(loc, 'upcoming', _filterApplied)
 
-      // console.log(check_launch)
-      // console.log(check_upcoming)
       ;(async function () {
         //upcoming
         if (check_upcoming) {
           const getData = await fetchData(launchApi, true)
-          // console.log(getData)
           setData({ state: getData, loading: true })
           setFilter((f) => (f = [...filter, 'upcoming']))
         }
 
         //start & launch
         if (check_start && check_launch) {
-          const getData = await fetchData(`${launchApi}?${_filterApplied}`)
-          // console.log(getData)
+          const getData = await fetchData(`${launchApi}${_filterApplied}`)
           setData({ state: getData, loading: true })
           setFilter((f) => (f = [_filterApplied]))
           setDatePicker('🟢 Filters')
@@ -180,16 +181,14 @@ const Launch: React.FC = () => {
 
         //launch
         if (check_launch) {
-          const getData = await fetchData(`${launchApi}?${check_launch}`)
-          // console.log(getData)
+          const getData = await fetchData(`${launchApi}${check_launch}`)
           setData({ state: getData, loading: true })
           setFilter((f) => (f = [check_launch]))
         }
 
         //start
         if (check_start) {
-          const getData = await fetchData(`${launchApi}?${_filterApplied}`)
-          // console.log(getData)
+          const getData = await fetchData(`${launchApi}${_filterApplied}`)
           setData({ state: getData, loading: true })
           setFilter((f) => (f = [_filterApplied]))
           setDatePicker('🟢 Filters')
@@ -220,9 +219,9 @@ const Launch: React.FC = () => {
           <>
             <div className={styles.FilterWrapper}>
               <div className={styles.FilterBtnContainer}>
-                <button className={styles.Button}>
+                <button className={styles.Button} onClick={() => openModal()}>
                   <Icon className='react-icons' icon={calender} />
-                  <span>{'datePicker'}</span>
+                  <span>{datePicker}</span>
                   <Icon className='react-icons' icon={downIcon} />
                 </button>
 

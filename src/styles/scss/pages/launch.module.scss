@@ -31,7 +31,8 @@
 
 .Button {
   @include btns(#fff, var.$tertiary-font-color);
-
+  width: inherit;
+  margin-left: -24px;
   span {
     margin: 0 10px;
   }
