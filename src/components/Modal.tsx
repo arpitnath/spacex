@@ -43,7 +43,6 @@ const Modal: React.FC<Props> = ({ callBack, children, name }) => {
 
   const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === e.target) {
-      console.log('clicked close modal')
       callBack(false)
     }
   }

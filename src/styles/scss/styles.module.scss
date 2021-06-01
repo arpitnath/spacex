@@ -15,14 +15,14 @@
 }
 
 .Status {
-  @include dimension(82px, 21px);
+  @include dimension(104px, 24px);
   border-radius: var.$border-radius-sm;
   font-size: inherit;
   line-height: inherit;
-
+  left: 50%;
+  transform: translate(50%);
   span {
-    align-items: center;
-    text-align: center;
+    margin-top: 22px;
   }
 }
 

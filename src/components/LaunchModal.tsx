@@ -1,13 +1,13 @@
 import React from 'react'
 import { launchDataRes } from '../helpers/types'
 import styles from '../styles/scss/styles.module.scss'
+import Status from './Status'
 
 interface IProps {
   data: launchDataRes | null
-  checkStatus: (data: boolean | null) => JSX.Element
 }
 
-const LaunchModal: React.FC<IProps> = ({ data, checkStatus }) => {
+const LaunchModal: React.FC<IProps> = ({ data }) => {
   const modalData = [
     {
       id: 0,
@@ -101,7 +101,7 @@ const LaunchModal: React.FC<IProps> = ({ data, checkStatus }) => {
             </div>
             <div className={styles.ModalStatus}>
               {data?.status === undefined ? null : (
-                <>{checkStatus(data?.status)}</>
+                <Status status={data.status} from='modalStatus' />
               )}
             </div>
           </div>
@@ -119,6 +119,7 @@ const LaunchModal: React.FC<IProps> = ({ data, checkStatus }) => {
             )}
             {data?.wikipedia_link && (
               <a href={data.wikipedia_link} target='_blank' rel='noreferrer'>
+                {' '}
                 Wikipedia
               </a>
             )}

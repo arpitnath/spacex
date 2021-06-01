@@ -15,17 +15,6 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
   const [showModal, setShowModal] = useState<boolean>(false)
   const [modalData, setModalData] = useState<launchDataRes | null>(null)
 
-  const checkStatus = (data: boolean | null) => {
-    if (data === null) {
-      return <Status status='Upcoming' />
-    }
-    if (data) {
-      return <Status status='Success' />
-    } else {
-      return <Status status='Failed' />
-    }
-  }
-
   const openModal = (itemData: launchDataRes) => {
     setModalData(itemData)
     setShowModal((prev) => !prev)
@@ -36,7 +25,7 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
 
       {showModal && (
         <Modal name={'dataModal'} callBack={setShowModal}>
-          <LaunchModal data={modalData} checkStatus={checkStatus} />
+          <LaunchModal data={modalData} />
         </Modal>
       )}
 
@@ -56,7 +45,9 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
               <td>{item.location}</td>
               <td>{item.mission}</td>
               <td>{item.orbit}</td>
-              <td>{checkStatus(item.status)}</td>
+              <td>
+                <Status status={item.status} from='table' />
+              </td>
               <td>{item.rocket}</td>
             </tr>
           ))}
