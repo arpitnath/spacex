@@ -15,6 +15,10 @@ export type InfoData = Loading & {
   state: responseInfo | null
 }
 
+export type CapsuleData = Loading & {
+  state: responseInfo | null
+}
+
 export type Error = {
   status: number
   message: string
@@ -100,4 +104,22 @@ export interface responseInfo {
     elon_twitter: string
   }
   summary: string
+}
+
+export interface capsuleDataRes {
+  capsule_serial: string
+  capsule_id: string
+  status: string
+  original_launch: string
+  original_launch_unix: number
+  missions: [
+    {
+      name: string
+      flight: number
+    }
+  ]
+  landings: number
+  type: string
+  details: string
+  reuse_count: number
 }

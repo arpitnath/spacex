@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { launchDataRes, StateData, Error, InfoData } from './types'
+import { launchDataRes, StateData, Error, InfoData, CapsuleData } from './types'
 import { parseLaunchData, handleError } from './utils'
 import History from './History'
 
@@ -8,6 +8,10 @@ const source = axios.CancelToken.source()
 export const useFetch = (url: string, api: string) => {
   const [data, setData] = useState<StateData>({ state: null, loading: false })
   const [info, setInfo] = useState<InfoData>({ state: null, loading: false })
+  const [capsule, setCapsule] = useState<CapsuleData>({
+    state: null,
+    loading: false
+  })
   const [error, setError] = useState<Error>({
     status: 100,
     message: 'continue'
@@ -26,8 +30,12 @@ export const useFetch = (url: string, api: string) => {
             setData({ state: dataArr, loading: true })
           }
 
-          if (api === 'info') {
+          if (api === 'info' || api === 'capsule') {
             setInfo({ state: data, loading: true })
+          }
+
+          if (api === 'capsule') {
+            setCapsule({ state: data, loading: true })
           }
 
           console.log(status === 200 && 'OK!')
@@ -49,7 +57,7 @@ export const useFetch = (url: string, api: string) => {
     // eslint-disable-next-line
   }, [])
 
-  return { data, setData, error, info }
+  return { data, setData, error, info, capsule }
 }
 
 export interface IPaginateState {

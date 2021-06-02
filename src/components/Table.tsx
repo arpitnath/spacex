@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import styles from '../styles/scss/styles.module.scss'
 import { Thead } from '../helpers/tableheadData'
 import { launchDataRes } from '../helpers/types'
-import Status from './Status'
 import Modal from './Modal'
 import LaunchModal from './LaunchModal'
 import NoData from './Nodata'
+import TableBody from './TableBody'
 
 interface IProps {
   thead: Thead[]
@@ -39,7 +39,7 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data?.length === 0 && (
+          {data?.length === 0 || data === null ? (
             <>
               <tr>
                 <td>
@@ -47,20 +47,9 @@ const Table: React.FC<IProps> = ({ thead, data }) => {
                 </td>
               </tr>
             </>
+          ) : (
+            <TableBody data={data} openModal={openModal} />
           )}
-          {data?.map((item) => (
-            <tr key={item.id} onClick={() => openModal(item)}>
-              <td>{item.serial_number}</td>
-              <td>{item.date}</td>
-              <td>{item.location}</td>
-              <td>{item.mission}</td>
-              <td>{item.orbit}</td>
-              <td>
-                <Status status={item.status} from='table' />
-              </td>
-              <td>{item.rocket}</td>
-            </tr>
-          ))}
         </tbody>
       </table>
     </>

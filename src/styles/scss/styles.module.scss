@@ -1,12 +1,13 @@
 @use './variables' as var;
 @import 'pages/launch.module.scss';
 @import 'pages/home.module.scss';
+@import 'pages/Errors.module.scss';
+@import 'pages/capsule.module.scss';
 @import 'components/navbar.module.scss';
 @import 'components/table.module.scss';
 @import 'components/pagination.module.scss';
 @import 'components/accordion.module.scss';
 @import 'components/modal.module.scss';
-@import 'pages/Errors.module.scss';
 
 // common styles
 .Container {
@@ -60,8 +61,8 @@
   height: 8rem;
   width: 100%;
   padding: var.$d4;
-  position: absolute;
-  margin-top: 42%;
+  position: relative;
+  margin-top: 90vh;
 
   img {
     height: 20px;

@@ -7,8 +7,9 @@ import logo from './assets/Logo.svg'
 import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import Launch from './pages/Launch'
-import Navbar from './components/Navbar'
+import Capsule from './pages/Capsules'
 import PageNotFound from './pages/PageNotFound'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <div className='Global-Container'>
           <Navbar src={logo} alt='logo' />
           <Switch>
+            <Route path={'/capsule'} component={Capsule} />
             <Route path={'/launch'} component={Launch} />
             <Route path={'/'} component={Home} exact />
             <Route component={PageNotFound} />

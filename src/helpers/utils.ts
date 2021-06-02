@@ -76,7 +76,7 @@ export const parseLaunchData = (_res: never[], arr: launchDataRes[]) => {
   return arr
 }
 
-const parseDate = (utc: string) => {
+export const parseDate = (utc: string) => {
   return moment(utc).format('DD-MM-YYYY HH:mm')
 }
 
