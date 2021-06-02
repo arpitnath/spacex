@@ -28,6 +28,36 @@ export const launchHead = [
     title: 'Rocket'
   }
 ]
+export const capsuleHead = [
+  {
+    id: '0',
+    title: 'Capsule No:'
+  },
+  {
+    id: '1',
+    title: 'Launch (UTC)'
+  },
+  {
+    id: '2',
+    title: 'Status'
+  },
+  // {
+  //   id: '3',
+  //   title: 'mission'
+  // },
+  // {
+  //   id: '4',
+  //   title: 'flights'
+  // },
+  {
+    id: '5',
+    title: 'landings'
+  },
+  {
+    id: '6',
+    title: 'Details'
+  }
+]
 
 export type Thead = {
   id: string

@@ -1,11 +1,13 @@
 import React, { useCallback } from 'react'
-import { launchDataRes } from '../helpers/types'
+import { capsuleDataRes, launchDataRes } from '../helpers/types'
 import History from '../helpers/History'
 import LaunchTableBody from './LaunchTableBody'
 import NoData from './Nodata'
+import CapsuleTableBody from './CapsuleTableBody'
 
 interface IProps {
-  data: launchDataRes[]
+  // eslint-disable-next-line
+  data: any[]
   openModal: (itemData: launchDataRes) => void
 }
 
@@ -22,7 +24,13 @@ const TableBody: React.FC<IProps> = ({ data, openModal }) => {
   const tableContent = useCallback(
     (loc: string) => {
       if (loc.includes(_paths.LAUNCH)) {
-        return <LaunchTableBody data={data} openModal={openModal} />
+        const info: launchDataRes[] = data
+        return <LaunchTableBody data={info} openModal={openModal} />
+      }
+
+      if (loc.includes(_paths.CAPSULE)) {
+        const info: capsuleDataRes[] = data
+        return <CapsuleTableBody data={info} />
       } else {
         return (
           <tr>

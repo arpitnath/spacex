@@ -1,18 +1,26 @@
 import React from 'react'
 import Error from '../components/Error'
 import Loader from '../components/Loader'
-import { useFetch } from '../helpers/Hooks'
+import Table from '../components/Table'
+import { useFetch, usePaginate } from '../helpers/Hooks'
 import { uri } from '../helpers/utils'
+import { capsuleHead } from '../helpers/tableheadData'
+import History from '../helpers/History'
+
 import styles from '../styles/scss/styles.module.scss'
+import Pagination from '../components/Pagination'
 
 const Capsules = () => {
   const apiUrl = process.env.REACT_APP_SPACEX_BASE_API + uri.CAPSULES
 
   const { capsule, error } = useFetch(apiUrl, 'capsule')
+  const { currentPage, postsPerPage, paginate, currentPost } = usePaginate(
+    capsule.state
+  )
 
-  if (capsule) {
-    console.log(capsule)
-  }
+  const params = History.location.search
+  const q = params.split('=page')[1]
+  const query = parseInt(q)
 
   return (
     <div className={styles.CapsuleWrapper}>
@@ -24,9 +32,17 @@ const Capsules = () => {
         <Loader />
       ) : (
         <div className={styles.Container}>
-          <h2>Capsule Page</h2>
-          {/* Table */}
-          {/* Pagination */}
+          <Table data={currentPost} thead={capsuleHead} />
+          {capsule.state !== null && (
+            <Pagination
+              paginate={paginate}
+              postsPerPage={postsPerPage}
+              totalPosts={capsule.state.length}
+              currentPage={currentPage}
+              query={query}
+              route='capsule'
+            />
+          )}
         </div>
       )}
     </div>

@@ -16,7 +16,7 @@ export type InfoData = Loading & {
 }
 
 export type CapsuleData = Loading & {
-  state: responseInfo | null
+  state: capsuleDataRes[] | null
 }
 
 export type Error = {

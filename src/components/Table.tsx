@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/scss/styles.module.scss'
 import { Thead } from '../helpers/tableheadData'
-import { launchDataRes } from '../helpers/types'
+import { capsuleDataRes, launchDataRes } from '../helpers/types'
 import Modal from './Modal'
 import LaunchModal from './LaunchModal'
 import NoData from './Nodata'
@@ -9,7 +9,7 @@ import TableBody from './TableBody'
 
 interface IProps {
   thead: Thead[]
-  data: launchDataRes[] | null
+  data: launchDataRes[] | capsuleDataRes[] | null
 }
 
 const Table: React.FC<IProps> = ({ thead, data }) => {

@@ -1,6 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { launchDataRes, StateData, Error, InfoData, CapsuleData } from './types'
+import {
+  launchDataRes,
+  StateData,
+  Error,
+  InfoData,
+  CapsuleData,
+  capsuleDataRes
+} from './types'
 import { parseLaunchData, handleError } from './utils'
 import History from './History'
 
@@ -63,11 +70,11 @@ export const useFetch = (url: string, api: string) => {
 export interface IPaginateState {
   currentPage: number
   postsPerPage: number
-  currentPost: launchDataRes[] | null
+  currentPost: capsuleDataRes[] | null
   paginate: (pageNumber: number) => void
 }
 
-export const usePaginate = (data: launchDataRes[] | null) => {
+export const usePaginate = (data: capsuleDataRes[] | null) => {
   const [pgState, setPgState] = useState<IPaginateState>({
     currentPage: 0,
     postsPerPage: 10,
@@ -114,7 +121,7 @@ export const usePaginate = (data: launchDataRes[] | null) => {
     // eslint-disable-next-line
   }, [loading])
 
-  return { pgState, setPgState }
+  return pgState
 }
 
 interface ICounter {
