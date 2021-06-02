@@ -51,7 +51,6 @@ const Home: React.FC = () => {
           <img src={Logo} alt='spaceX_logo' />
           <h1>{info.state?.summary.split('The')[0]}</h1>
           <div className={styles.Counters}>
-            {/* 4 counters */}
             <Counters
               link='/launch'
               icon='🚀'
@@ -77,9 +76,7 @@ const Home: React.FC = () => {
               number={Number(counter4)}
             />
           </div>
-          <div className={styles.content}>
-            {/* card navigation to various page */}
-            {/* info */}
+          <div className={styles.Content}>
             <div className={styles.InfoHeader}>
               <h2>{info.state?.name}</h2>
             </div>
@@ -89,9 +86,7 @@ const Home: React.FC = () => {
                 href={'https://www.spacex.com/'}
                 target='_blank'
                 rel='noreferrer'>
-                <button className={`${styles.Button2} ${styles.Button}`}>
-                  Learn More
-                </button>
+                <button className={styles.Btn}>Learn More</button>
               </a>
               <div className={styles.InfoListWrapper}>
                 <div className={styles.InfoList}>
@@ -160,7 +155,7 @@ const Home: React.FC = () => {
             </div>
             <div className={styles.InfoFooter}>
               {/* counter hook */}
-              API response time: {'updated'}
+              API response time: {updated}
             </div>
           </div>
         </>

@@ -15,9 +15,7 @@ const Counters: React.FC<IProps> = ({ icon, number, title, link }) => {
       <a
         style={{ textDecoration: 'none' }}
         href={link}
-        className={styles.CounterContent}
-        target='_blank'
-        rel='noreferrer'>
+        className={styles.CounterContent}>
         <div className={styles.CounterCircle}>
           <svg>
             <circle className={styles.Circle} cx='100' cy='100' r='75' />

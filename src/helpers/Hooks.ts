@@ -118,11 +118,19 @@ export const useCounter = (url: string, type: string) => {
 
   useEffect(() => {
     ;(async function () {
-      const res = await axios.get(url)
-      const counter = await res.headers[`${type}`]
-      console.log(typeof counter)
-
-      setState({ data: counter })
+      try {
+        const res = await axios.get(url)
+        const counter = await res.headers[`${type}`]
+        setState({ data: counter })
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          const err = handleError(error)
+          console.log(err)
+          if (err) {
+            console.error(err.status, err.msg)
+          }
+        }
+      }
     })()
 
     return () => {
