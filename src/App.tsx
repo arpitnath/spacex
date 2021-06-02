@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Home from './pages/Home'
 import Launch from './pages/Launch'
 import Capsule from './pages/Capsules'
+import Ships from './pages/Ships'
 import PageNotFound from './pages/PageNotFound'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <div className='Global-Container'>
           <Navbar src={logo} alt='logo' />
           <Switch>
+            <Route path={'/ships'} component={Ships} />
             <Route path={'/capsule'} component={Capsule} />
             <Route path={'/launch'} component={Launch} />
             <Route path={'/'} component={Home} exact />
