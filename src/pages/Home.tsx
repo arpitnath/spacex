@@ -154,13 +154,11 @@ const Home: React.FC = () => {
               </a>
             </div>
             <div className={styles.InfoFooter}>
-              {/* counter hook */}
               API response time: {updated}
             </div>
           </div>
         </>
       )}
-      {/* footer */}
     </div>
   )
 }

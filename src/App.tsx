@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Launch from './pages/Launch'
 import Navbar from './components/Navbar'
 import PageNotFound from './pages/PageNotFound'
+import Footer from './components/Footer'
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
             <Route path={'/'} component={Home} exact />
             <Route component={PageNotFound} />
           </Switch>
+          <Footer src={logo} alt={'logo'} />
         </div>
       </Router>
     </ErrorBoundary>
