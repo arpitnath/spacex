@@ -87,3 +87,11 @@ export function categorize(str: string, cases: string, filters: string) {
     return false
   }
 }
+
+export enum uri {
+  EVENTS = 'history',
+  CAPSULES = 'capsules',
+  INFO = 'info',
+  LAUNCH = 'launches',
+  SHIPS = 'ships'
+}

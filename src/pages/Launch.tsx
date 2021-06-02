@@ -24,7 +24,7 @@ const Launch: React.FC = () => {
   const q = params.split('=page')[1]
   const query = parseInt(q)
 
-  const { data, setData, error } = useFetch(launchApi)
+  const { data, setData, error } = useFetch(launchApi, 'launch')
 
   const [filter, setFilter] = useState<string[]>([])
   const [datePicker, setDatePicker] = useState(() => 'Filter by date')

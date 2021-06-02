@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { launchDataRes, StateData, Error } from './types'
+import { launchDataRes, StateData, Error, InfoData } from './types'
 import { parseLaunchData, handleError } from './utils'
 import History from './History'
 
-export const useFetch = (url: string) => {
-  const source = axios.CancelToken.source()
+const source = axios.CancelToken.source()
+export const useFetch = (url: string, api: string) => {
   const [data, setData] = useState<StateData>({ state: null, loading: false })
+  const [info, setInfo] = useState<InfoData>({ state: null, loading: false })
   const [error, setError] = useState<Error>({
     status: 100,
     message: 'continue'
@@ -19,10 +20,17 @@ export const useFetch = (url: string) => {
         try {
           const { data, status } = await axios.get(url)
 
-          const dataArr: launchDataRes[] = []
-          parseLaunchData(data, dataArr)
+          if (api === 'launch') {
+            const dataArr: launchDataRes[] = []
+            parseLaunchData(data, dataArr)
+            setData({ state: dataArr, loading: true })
+          }
+
+          if (api === 'info') {
+            setInfo({ state: data, loading: true })
+          }
+
           console.log(status === 200 && 'OK!')
-          setData({ state: dataArr, loading: true })
         } catch (error) {
           if (axios.isAxiosError(error)) {
             const err = handleError(error)
@@ -41,7 +49,7 @@ export const useFetch = (url: string) => {
     // eslint-disable-next-line
   }, [])
 
-  return { data, setData, error }
+  return { data, setData, error, info }
 }
 
 export interface IPaginateState {
@@ -99,4 +107,28 @@ export const usePaginate = (data: launchDataRes[] | null) => {
   }, [loading])
 
   return { pgState, setPgState }
+}
+
+interface ICounter {
+  data: string
+}
+
+export const useCounter = (url: string, type: string) => {
+  const [state, setState] = useState<ICounter>({ data: '0' })
+
+  useEffect(() => {
+    ;(async function () {
+      const res = await axios.get(url)
+      const counter = await res.headers[`${type}`]
+      console.log(typeof counter)
+
+      setState({ data: counter })
+    })()
+
+    return () => {
+      source.cancel()
+    }
+  }, [url, type])
+
+  return state
 }

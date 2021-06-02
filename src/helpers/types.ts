@@ -3,9 +3,16 @@ export type Image = {
   alt: string
 }
 
-export type StateData = {
-  state: launchDataRes[] | null
+interface Loading {
   loading: boolean
+}
+
+export type StateData = Loading & {
+  state: launchDataRes[] | null
+}
+
+export type InfoData = Loading & {
+  state: responseInfo | null
 }
 
 export type Error = {
@@ -66,4 +73,31 @@ export interface apiData {
   }
   details: string
   launch_failure_details: { reason: string }
+}
+
+export interface responseInfo {
+  name: string
+  founder: string
+  founded: number
+  employees: number
+  vehicles: number
+  launch_sites: number
+  test_sites: number
+  ceo: string
+  cto: string
+  coo: string
+  cto_propulsion: string
+  valuation: number
+  headquarters: {
+    address: string
+    city: string
+    state: string
+  }
+  links: {
+    website: string
+    flickr: string
+    twitter: string
+    elon_twitter: string
+  }
+  summary: string
 }
