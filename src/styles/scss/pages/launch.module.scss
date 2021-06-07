@@ -42,6 +42,7 @@
   @include btns(#b5dbf5, #025288);
   font-weight: var.$font-weight-bold;
   border-radius: var.$border-radius;
+  margin-left: 25px;
 
   &:hover {
     background-color: #025288 !important;
