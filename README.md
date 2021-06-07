@@ -2,7 +2,7 @@
   <img src='https://projectspacex.netlify.app/static/media/Logo.6f4942a5.svg' width='200' >
 </p>
 
-<h1 align="center">SpaceX Dash< 🚀</h1>
+<h1 align="center">SpaceX Dash🚀</h1>
 
 ### About
 
