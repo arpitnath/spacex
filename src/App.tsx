@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Router, Switch, Route } from 'react-router-dom'
+import History from './helpers/History'
 
-function App() {
+//pages OR components
+import logo from './assets/Logo.svg'
+import ErrorBoundary from './components/ErrorBoundary'
+import Home from './pages/Home'
+import Launch from './pages/Launch'
+import Capsule from './pages/Capsules'
+import Ships from './pages/Ships'
+import Events from './pages/Events'
+import PageNotFound from './pages/PageNotFound'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ErrorBoundary>
+      <Router history={History}>
+        <div className='Global-Container'>
+          <Navbar src={logo} alt='logo' />
+          <Switch>
+            <Route path={'/events'} component={Events} />
+            <Route path={'/ships'} component={Ships} />
+            <Route path={'/capsule'} component={Capsule} />
+            <Route path={'/launch'} component={Launch} />
+            <Route path={'/'} component={Home} exact />
+            <Route component={PageNotFound} />
+          </Switch>
+          <Footer src={logo} alt={'logo'} />
+        </div>
+      </Router>
+    </ErrorBoundary>
+  )
 }
 
-export default App;
+export default App

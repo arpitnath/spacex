@@ -1,0 +1,63 @@
+@use '../variables' as var;
+
+.Table {
+  border: var.$border-only;
+  box-shadow: var.$box-shadow;
+  position: absolute;
+  width: 1200px;
+  height: 676px;
+  color: var.$tertiary-font-color;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: var.$d10;
+  border-collapse: collapse;
+  display: table;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  font-weight: var.$font-weight-regular;
+
+  thead {
+    display: table-header-group;
+    vertical-align: middle;
+    box-shadow: var.$box-shadow;
+    background-color: var.$secondary-color;
+
+    th {
+      vertical-align: bottom;
+    }
+  }
+
+  td,
+  th {
+    padding: var.$d1;
+  }
+
+  td {
+    font-size: var.$font-size-sm;
+    line-height: var.$line-height;
+    font-weight: var.$font-weight-medium;
+    width: var.$d5;
+  }
+
+  th {
+    text-align: inherit;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: var.$font-weight-bold;
+  }
+
+  tr {
+    text-align: inherit;
+    display: table-row;
+    vertical-align: inherit;
+  }
+
+  tbody {
+    display: table-row-group;
+    vertical-align: middle;
+
+    tr {
+      cursor: pointer;
+    }
+  }
+}

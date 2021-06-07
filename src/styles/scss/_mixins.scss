@@ -1,0 +1,98 @@
+@use './variables' as var;
+
+@mixin wrapper {
+  height: 100%;
+  width: var.$wrapper-width;
+  margin: auto;
+  padding: 0 var.$d2;
+  text-align: center;
+}
+
+//btn
+@mixin basic-button {
+  height: 54px;
+  width: 154px;
+  padding: 16px 0;
+  font-weight: var.$font-weight-medium;
+  font-size: var.$font-size;
+  line-height: var.$line-height;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+//FilterBtns
+@mixin btns($bg, $color) {
+  @include basic-button;
+  background-color: $bg;
+  color: $color;
+}
+
+@mixin modal {
+  .ModalBg {
+    width: 100vmax;
+    height: 100vmax;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%);
+    justify-content: center;
+    align-items: center;
+    top: -130px;
+    z-index: 10000000;
+  }
+
+  .ModalCloseIcon {
+    cursor: pointer;
+    position: relative;
+    top: -36vh !important;
+    right: 0px;
+    width: 20px;
+    height: 32px;
+    padding: 0;
+    z-index: 100000001;
+    color: #000;
+  }
+}
+
+@mixin modal-wrapper {
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  position: relative;
+  z-index: 10000000;
+  border-radius: 10px;
+  margin-top: -40vh;
+}
+
+@mixin dimension($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin layer {
+  width: 100vmax;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  z-index: 10000000;
+}
+
+@mixin background-layer($imgUrl) {
+  content: '';
+  background: url($imgUrl) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}

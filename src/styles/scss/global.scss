@@ -1,0 +1,122 @@
+@use 'variables' as var;
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var.$background-color;
+  color: #000;
+}
+
+.Global-Container {
+  text-align: center;
+  width: var.$content-width;
+}
+
+.Success {
+  background: var.$success-bg;
+  color: var.$success-color;
+}
+
+.Failed {
+  background: var.$fail-bg;
+  color: var.$fail-color;
+}
+
+.Upcoming {
+  background: var.$upcoming-bg;
+  color: var.$upcoming-color;
+}
+
+.pgActive {
+  background-color: var.$secondary-color;
+}
+
+.react-icons {
+  padding-top: 2px;
+}
+
+.accordion_active {
+  border-bottom: 1px solid #f4f5f7;
+}
+
+.filterapplied {
+  background-color: var.$button-bg !important;
+  color: var.$button-color !important;
+  width: 145px;
+  border-radius: var.$border-radius;
+  font-weight: var.$font-weight-bold !important;
+  font-size: var.$font-size;
+  line-height: var.$line-height;
+}
+
+.modalStatus {
+  padding-top: var.$d4;
+}
+
+.nfe :before {
+  content: '';
+  background: url('../../assets/404.jpg') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}
+
+.badrequest :before {
+  content: '';
+  background: url('../../assets/400.jpg') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}
+
+.no_data {
+  width: 300px;
+  transform: translate(150%);
+  margin-top: -2.5%;
+  color: var.$quaternary-font-color;
+  font-weight: var.$font-weight-medium;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+//Loader
+.loader {
+  border: 12px solid #f3f3f3;
+  border-top: 12px solid #025288;
+  border-radius: 50%;
+  margin-top: 40vh;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

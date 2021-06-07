@@ -1,0 +1,17 @@
+@use '../variables' as var;
+
+.Navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var.$d2 * 2;
+  background-color: var.$background-color;
+  box-shadow: var.$box-shadow;
+
+  img {
+    padding: var.$d1;
+  }
+}
