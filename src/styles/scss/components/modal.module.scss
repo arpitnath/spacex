@@ -1,0 +1,202 @@
+@use '../variables' as var;
+
+@include modal;
+
+.DateModalWrapper {
+  @include modal-wrapper;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.DateModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+  width: 40%;
+  height: 300px;
+  margin-top: 50px;
+  text-align: start;
+  margin-left: 18px;
+  border-right: 1.5px solid var.$secondary-color;
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.8;
+  color: #141414;
+}
+
+.Finder {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-left: -200px;
+  margin-top: -280px;
+
+  span {
+    i {
+      color: #494949;
+      font-weight: var.$font-weight-medium !important;
+    }
+  }
+
+  button {
+    margin-left: 60px;
+  }
+}
+
+.DateValue {
+  font-weight: 800;
+}
+
+.CalenderWrapper {
+  margin-left: -200px;
+  margin-top: 75px;
+  color: #000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  position: fixed;
+  z-index: 10000000;
+  border-radius: 10px;
+}
+
+.SearchBtn {
+  @include basic-button;
+  height: 40px;
+  line-height: 10px;
+  border-radius: var.$border-radius;
+
+  &:hover {
+    background: var.$button-bg;
+    color: var.$quaternary-font-color;
+    font-weight: var.$font-weight-bold;
+  }
+}
+
+.DataWrapper {
+  @include modal-wrapper;
+  width: 544px;
+  height: 740px;
+}
+
+.DataContainer {
+  height: inherit;
+  padding: 32px;
+  color: var.$primary-font-color;
+}
+
+.ModalHeader {
+  width: 238px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  img {
+    @include dimension(72px, 72px);
+  }
+}
+
+.ModalHedInfo {
+  display: flex;
+  flex-direction: row;
+  @include dimension(142px, 69px);
+}
+
+.HeadContent {
+  @include dimension(150px, 86px);
+  margin-top: -18px;
+  padding: 8px 0;
+  line-height: var.$line-height-p;
+
+  h3 {
+    font-size: var.$font-size;
+    font-weight: var.$font-weight-medium;
+    width: 150px;
+    line-height: 16px;
+  }
+
+  p {
+    font-size: var.$font-size-sm;
+    color: var.$quaternary-font-color;
+    opacity: 0.7;
+    margin-top: -8px;
+  }
+}
+
+.ModalStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  margin-top: -65px;
+  margin-left: 165px;
+  font-size: 13px;
+}
+
+.LinkWrapper {
+  @include dimension(64px, 24px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 4px;
+  margin-top: -6px;
+  margin-left: 2.5rem;
+}
+
+.Iconify {
+  @include dimension(16px, 16px);
+  color: #000;
+  margin: 0;
+}
+
+.ModalDescription {
+  text-align: start;
+  font-size: var.$font-size-md;
+  width: 100%;
+  margin: 0;
+  margin-top: var.$d2;
+}
+
+.ModalMainInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  margin-top: 0;
+}
+
+.ContentBody {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: var.$d1;
+  padding-bottom: 8px;
+  gap: 70px;
+  border-bottom: 1.5px solid var.$secondary-color;
+
+  span {
+    width: 150px;
+    text-align: start;
+  }
+
+  .ItemData {
+    margin-left: 22px;
+  }
+}
+
+.noDescription {
+  @include dimension(100%, 85px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var.$fail-color;
+  background: var.$fail-bg;
+  border-radius: var.$border-radius;
+}

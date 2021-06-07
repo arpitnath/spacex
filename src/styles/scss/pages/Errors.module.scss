@@ -1,0 +1,51 @@
+@use '../variables' as var;
+
+//ErrorPage
+
+h3 {
+  position: relative;
+  color: var.$primary-color;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: var.$font-weight-medium;
+  font-size: 3rem;
+  line-height: 0.9;
+  text-align: center;
+}
+
+.errorPage {
+  @include layer;
+  @extend h3;
+}
+.notpath {
+  border-bottom: 4px dotted var.$fail-color;
+  font-family: 'Source Code Pro', monospace;
+  padding: 1rem;
+  color: var.$quaternary-font-color;
+}
+
+.errorPage::before {
+  content: '';
+  background: url('../../../assets/pagenotfound.jpg') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}
+
+.errorComponent {
+  @include layer;
+
+  @extend h3;
+
+  a {
+    text-decoration: none;
+    color: #494949;
+  }
+}
+
+.errorBtn {
+  @include basic-button;
+}

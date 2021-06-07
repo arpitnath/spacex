@@ -1,0 +1,35 @@
+@use '../variables' as var;
+
+.AccordionContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding: 10px;
+  width: 173px;
+  margin-left: 1100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.Accordion {
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  border: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+  width: 173px;
+
+  button {
+    margin-top: -20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.AccordionChildren {
+  overflow: hidden;
+  transition: max-height 0.8s ease;
+  width: inherit;
+}

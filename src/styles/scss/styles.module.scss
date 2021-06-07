@@ -1,0 +1,99 @@
+@use './variables' as var;
+@import 'pages/launch.module.scss';
+@import 'pages/home.module.scss';
+@import 'pages/Errors.module.scss';
+@import 'pages/capsule.module.scss';
+@import 'components/navbar.module.scss';
+@import 'components/table.module.scss';
+@import 'components/pagination.module.scss';
+@import 'components/accordion.module.scss';
+@import 'components/modal.module.scss';
+
+// common styles
+.Container {
+  height: auto;
+  width: inherit;
+  margin: var.$d2;
+  padding: 0;
+}
+
+.Status {
+  @include dimension(104px, 24px);
+  border-radius: var.$border-radius-sm;
+  font-size: inherit;
+  line-height: inherit;
+  left: 50%;
+  transform: translate(50%);
+  span {
+    margin-top: 22px;
+  }
+}
+
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 173px;
+  height: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  background-color: var.$secondary-color;
+  position: relative;
+  border: 1px solid #f4f5f7;
+}
+
+.filterBtn {
+  margin-top: 5px;
+  padding: 1rem 0;
+  background: transparent !important;
+}
+
+.filterBtn:hover {
+  cursor: pointer;
+}
+
+.filterBtn:disabled {
+  cursor: not-allowed;
+}
+
+.Footer {
+  background-color: var.$secondary-color;
+  height: 8rem;
+  width: 100%;
+  padding: var.$d4;
+  position: relative;
+  margin-top: 90vh;
+
+  img {
+    height: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//Ships and events page
+.workInProgress {
+  @include layer;
+
+  .title {
+    border-bottom: 4px dotted var.$fail-color;
+    font-family: 'Source Code Pro', monospace;
+    padding: 1rem;
+    color: var.$secondary-color;
+  }
+}
+
+.workInProgress::before {
+  content: '';
+  background: url('../../assets/underwork.jpg') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}

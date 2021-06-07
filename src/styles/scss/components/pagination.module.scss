@@ -1,0 +1,42 @@
+@use '../variables' as var;
+.PaginationContainer {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+  right: 2.5%;
+  top: 860px;
+}
+.Pagination {
+  display: flex;
+  margin: auto;
+  align-items: center;
+
+  ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    margin: auto;
+    align-items: center;
+  }
+}
+
+.PaginationNumber,
+.PaginationButton {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: var.$primary-color;
+  border: 1px solid var.$border-color;
+  border-radius: var.$d4;
+  padding-top: 15px;
+  justify-content: center;
+  font-weight: var.$font-weight-medium;
+
+  &:hover {
+    background-color: var.$secondary-color;
+  }
+}
+
+.PaginationButton {
+  padding-top: 5px !important;
+}
