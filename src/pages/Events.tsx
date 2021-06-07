@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/scss/styles.module.scss'
 
-const Ships = () => {
+const Events = () => {
   return (
     <div className={styles.workInProgress}>
       <h1 className={styles.title}>Work in Progress 🚀</h1>
@@ -9,4 +9,4 @@ const Ships = () => {
   )
 }
 
-export default Ships
+export default Events

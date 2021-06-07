@@ -73,3 +73,27 @@
     cursor: pointer;
   }
 }
+
+//Ships and events page
+.workInProgress {
+  @include layer;
+
+  .title {
+    border-bottom: 4px dotted var.$fail-color;
+    font-family: 'Source Code Pro', monospace;
+    padding: 1rem;
+    color: var.$secondary-color;
+  }
+}
+
+.workInProgress::before {
+  content: '';
+  background: url('../../assets/underwork.jpg') no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}

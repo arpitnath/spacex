@@ -84,3 +84,15 @@
   top: 0px;
   z-index: 10000000;
 }
+
+@mixin background-layer($imgUrl) {
+  content: '';
+  background: url($imgUrl) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.15;
+}
