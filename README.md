@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src='https://projectspacex.netlify.app/static/media/Logo.6f4942a5.svg' width='200' >
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">SpaceX Dash< 🚀/h1>
 
-## Available Scripts
+### About
 
-In the project directory, you can run:
+It is a personal project inspired from [SpaceX Go!](https://github.com/jesusrp98/spacex-go)
 
-### `npm start`
+It uses the data from the open-source r/SpaceX REST API, which can be found [here](https://github.com/r-spacex/SpaceX-API).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This Project was bootstrapped with [create-react-app](https://create-react-app.dev/docs/getting-started/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/67645175/121082833-4cda6800-c7fc-11eb-806d-339a6e688ce9.png" width='256' hspace="4">
+  <img src="https://user-images.githubusercontent.com/67645175/121083499-22d57580-c7fd-11eb-9cd7-dd9f6442c37b.png" width='256' hspace="4">
+  <img src="https://user-images.githubusercontent.com/67645175/121083717-64662080-c7fd-11eb-9b67-0fbc95a9c3ad.png" width='256' hspace="4">
+  <img src="https://user-images.githubusercontent.com/67645175/121083981-bc048c00-c7fd-11eb-93c3-8e8513c8e8f4.png" width='256' hspace="4">
+  <img src="https://user-images.githubusercontent.com/67645175/121084128-e8200d00-c7fd-11eb-89d8-d5afa3096c32.png" width='256' hspace="4">
+</p>
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Launch tracking & details**: detailed list of past & upcoming launches.
+- **Company details**: general company details & achievements.
+- **Data can be retained in url**: able to filter with launches, and date, and can combine multiple filters. The current page with pagination and filters applied are retained via the URL.
 
-### `npm run build`
+## Run the app locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ git clone git@github.com:arpitnath/spacex.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+> env variable: `REACT_APP_SPACEX_BASE_API=https://api.spacexdata.com/v3/`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`$ npm start` - This will start the application and run on port 3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Folder Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+src
+└───index.tsx              # Application entry point
+└───App.tsx                # Application routes
+└───pages/                 # Views of the App
+└───components/            # All the components live here
+└───styles/scss            # StyleSheets
+    └───components/        # component styles
+    └───pages/             # pages styles
+    └───_mixins.scss       # all mixins
+    └───_variables.scss    # scss/sass variables
+    └───styles.module.scss # common styles & all styles endpoint
+    └───global.scss        # global styles
+└───assets/                # images / logo
+└───helpers
+    └───History.ts         # history object
+    └───Hooks.ts           # Custom Hooks
+    └───icons.ts           # all icons used
+    └───tableheadData.ts   # table head titles
+    └───types.ts           # Types
+    └───utils.ts           # Shared Logic
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> There you go, run & edit the project. Enjoy 🚀
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
+
+If you want to take the time to make this project better, please go ahead.
+Then, you can open an new [issue](https://github.com/arpitnath/spacex/issues) and create a [PR](https://github.com/arpitnath/spacex/pulls)
+
+> > Feel free to reach out to me @arpitnath if you have any questions or feedback or any suggestion for improvements!
